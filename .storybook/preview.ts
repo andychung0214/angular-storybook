@@ -5,6 +5,7 @@ setCompodocJson(docJson);
 
 const preview: Preview = {
   parameters: {
+    baseUrl: '/angular-storybook/',
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
