@@ -101,6 +101,7 @@
         "storybook": {
           "builder": "@storybook/angular:start-storybook",
           "options": {
+            "baseHref": "/angular-storybook/",
             "configDir": ".storybook",
             "browserTarget": "angular-storybook:build",
             "compodoc": true,
@@ -130,5 +131,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "5926694b-626d-4f99-89e9-60868b349b5c"
   }
 }
