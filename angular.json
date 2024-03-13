@@ -126,6 +126,11 @@
               "."
             ],
             "outputDir": "storybook-static"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-storybook:build:production"
+            }
           }
         }
       }
