@@ -1,6 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
 import { fn } from '@storybook/test';
 import { ButtonComponent } from './button.component';
+import { importProvidersFrom } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<ButtonComponent> = {
@@ -14,6 +16,14 @@ const meta: Meta<ButtonComponent> = {
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: { onClick: fn() },
+  decorators: [
+    applicationConfig({
+      providers: [
+        importProvidersFrom(BrowserAnimationsModule),
+        // 添加其他全局模块或服务
+      ],
+    }),
+  ],
 };
 
 export default meta;

@@ -1,7 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
 import { within, userEvent, expect } from '@storybook/test';
 
 import { PageComponent } from './page.component';
+import { importProvidersFrom } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const meta: Meta<PageComponent> = {
   title: 'Example/Page',
@@ -10,6 +12,14 @@ const meta: Meta<PageComponent> = {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
     layout: 'fullscreen',
   },
+  decorators: [
+    applicationConfig({
+      providers: [
+        importProvidersFrom(BrowserAnimationsModule),
+        // 添加其他全局模块或服务
+      ],
+    }),
+  ],
 };
 
 export default meta;
