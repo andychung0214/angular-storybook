@@ -221,6 +221,50 @@
             }
         },
         {
+            "name": "CheckboxComponent",
+            "id": "component-CheckboxComponent-bd7b92601f2ea5307b864711b6bd4c6d0c1ab352df48156500a7fe6b123a8c4c0453dfc0d0d2ca1d36784897bd1b29ab3f63e2ed2a9e16f9f63103522bd5a707",
+            "file": "src/app/components/checkbox/checkbox.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-checkbox",
+            "styleUrls": [
+                "./checkbox.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./checkbox.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-checkbox',\n  templateUrl: './checkbox.component.html',\n  styleUrls: ['./checkbox.component.scss']\n})\nexport class CheckboxComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./checkbox.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>checkbox works!</p>\n"
+        },
+        {
             "name": "HeaderComponent",
             "id": "component-HeaderComponent-cad94b233ec8e80ceb541e7972c5f9737e08237b4e137112f3987ca48ee0cce5c0d57798d41daa5d4d24d6bdbb2df1606ab68cca2aa0a1785e38f99f3cac0729",
             "file": "src/stories/header.component.ts",
@@ -403,13 +447,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-d1e97f473e9718600a109f126db5a2c195a9b7d74dcc762249544527809a52c0da1b52a2fd69c6f58fa8281159fbbcd361ac0d5d071ba0250f39d3ba60fd2707",
+            "id": "module-AppModule-fac1fd9fcd0f9c1637062ce59b9e2ddcde65b4895596cdd7d47dda79900f075c121f2daa378a421c9f21616084e5b8f9ffbf31f95447e6c24fb3e2c5aa761760",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\nimport { CheckboxComponent } from './components/checkbox/checkbox.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    CheckboxComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -420,6 +464,9 @@
                     "elements": [
                         {
                             "name": "AppComponent"
+                        },
+                        {
+                            "name": "CheckboxComponent"
                         }
                     ]
                 },
@@ -502,7 +549,7 @@
         ]
     },
     "coverage": {
-        "count": 16,
+        "count": 13,
         "status": "low",
         "files": [
             {
@@ -512,6 +559,15 @@
                 "name": "AppComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/checkbox/checkbox.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CheckboxComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
