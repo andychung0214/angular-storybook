@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - "master" # change to the branch you wish to deploy from
+      - "gh-pages" # change to the branch you wish to deploy from
 
 permissions:
   contents: read
