@@ -449,6 +449,55 @@
             "extends": []
         },
         {
+            "name": "RadioComponent",
+            "id": "component-RadioComponent-cf8cbfb4959c971017c9a930c7bc0b0b43eac95a8d4ffaa1e69784484d6c52025b423ce9352dac466c489caf1f8b0488723a07f9c50a86d8c105c7b5ea3291d5",
+            "file": "src/app/components/radio/radio.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-radio",
+            "styleUrls": [
+                "./radio.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./radio.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-radio',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './radio.component.html',\n  styleUrls: ['./radio.component.scss']\n})\nexport class RadioComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./radio.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>radio works!</p>\n"
+        },
+        {
             "name": "SwitchComponent",
             "id": "component-SwitchComponent-cd41adcbe6ee86b577f0ccb5443eadaa74a30d11e82931a21d69b9097449aa717205fb590f18afa668fbd45322d7decc1b17d80aa6ef0cc77b8adc4ef4b4ef4d",
             "file": "src/app/components/switch/switch.component.ts",
@@ -600,7 +649,7 @@
         ]
     },
     "coverage": {
-        "count": 11,
+        "count": 10,
         "status": "low",
         "files": [
             {
@@ -617,6 +666,15 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/radio/radio.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RadioComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
