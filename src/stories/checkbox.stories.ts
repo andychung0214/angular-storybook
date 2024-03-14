@@ -1,35 +1,50 @@
-import { moduleMetadata } from '@storybook/angular';
+import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
+import { fn } from '@storybook/test';
+import { importProvidersFrom } from '@angular/core';
 import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-export default {
+const meta: Meta<CheckboxComponent> = {
   title: '數據輸入元件/Checkbox',
+  component: CheckboxComponent,
+  tags: ['autodocs'],
+  argTypes: {
+    backgroundColor: {
+      control: 'color',
+    },
+  },
+  args: { onClick: fn() },
   decorators: [
-    moduleMetadata({
-      declarations: [CheckboxComponent],
+    applicationConfig({
+      providers: [
+        importProvidersFrom(BrowserAnimationsModule),
+        // 添加其他全局模块或服务
+      ],
     }),
   ],
 };
 
-export const Default = () => ({
-  component: CheckboxComponent,
-  props: {
-    label: 'Checkbox',
-    checked: false,
-  },
-});
+export default meta;
+type Story = StoryObj<CheckboxComponent>;
 
-export const Checked = () => ({
-  component: CheckboxComponent,
-  props: {
+export const Default: Story = {
+  args: {
+    checked: false,
+    label: 'Checkbox',
+  },
+};
+
+export const Checked: Story = {
+  args: {
     label: 'Checkbox',
     checked: true,
   },
-});
-export const Disabled = () => ({
-  component: CheckboxComponent,
-  props: {
+};
+
+export const Disabled: Story = {
+  args: {
     label: 'Checkbox',
     checked: false,
     disabled: true,
   },
-});
+};
