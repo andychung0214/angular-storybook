@@ -447,6 +447,55 @@
             ],
             "stylesData": "",
             "extends": []
+        },
+        {
+            "name": "SwitchComponent",
+            "id": "component-SwitchComponent-cd41adcbe6ee86b577f0ccb5443eadaa74a30d11e82931a21d69b9097449aa717205fb590f18afa668fbd45322d7decc1b17d80aa6ef0cc77b8adc4ef4b4ef4d",
+            "file": "src/app/components/switch/switch.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-switch",
+            "styleUrls": [
+                "./switch.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./switch.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-switch',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './switch.component.html',\n  styleUrls: ['./switch.component.scss']\n})\nexport class SwitchComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./switch.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>switch works!</p>\n"
         }
     ],
     "modules": [
@@ -551,7 +600,7 @@
         ]
     },
     "coverage": {
-        "count": 13,
+        "count": 11,
         "status": "low",
         "files": [
             {
@@ -568,6 +617,15 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/switch/switch.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SwitchComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
