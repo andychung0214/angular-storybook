@@ -5,7 +5,7 @@ import { CheckboxComponent } from 'src/app/components/checkbox/checkbox.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const meta: Meta<CheckboxComponent> = {
-  title: '數據輸入元件/Checkbox',
+  title: 'Data-Input-Components/Checkbox',
   component: CheckboxComponent,
   tags: ['autodocs'],
   argTypes: {

@@ -5,7 +5,7 @@ import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const meta: Meta<SwitchComponent> = {
-  title: '數據輸入元件/Switch',
+  title: 'Data-Input-Components/Switch',
   component: SwitchComponent,
   tags: ['autodocs'],
   argTypes: {
