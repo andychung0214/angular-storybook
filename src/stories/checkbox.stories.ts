@@ -29,7 +29,7 @@ type Story = StoryObj<CheckboxComponent>;
 
 export const Default: Story = {
   args: {
-    checked: false,
+    isChecked: false,
     label: 'Checkbox',
   },
 };
@@ -37,14 +37,14 @@ export const Default: Story = {
 export const Checked: Story = {
   args: {
     label: 'Checkbox',
-    checked: true,
+    isChecked: true,
   },
 };
 
 export const Disabled: Story = {
   args: {
     label: 'Checkbox',
-    checked: false,
-    disabled: true,
+    isChecked: false,
+    isDisabled: true,
   },
 };

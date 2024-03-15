@@ -1,1 +1,5 @@
-<p>checkbox works!</p>
+<label [style.background-color]="backgroundColor" style="padding: 10px; display: inline-block; cursor: pointer;">
+  <input [style.backgroundColor]="backgroundColor" type="checkbox" [checked]="isChecked" (change)="toggleCheckbox()"
+    [disabled]="isDisabled">
+  {{ label }}
+</label>
