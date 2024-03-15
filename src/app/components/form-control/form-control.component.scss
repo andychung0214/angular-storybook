@@ -1,0 +1,16 @@
+.form-control {
+  display: inline-flex;
+}
+
+/* Add all placement styles similar to your React component here */
+.top-left {
+  flex-direction: column;
+}
+
+.error-message {
+  font-size: 14px;
+  margin-top: 4px;
+  color: red;
+}
+
+/* Continue with the rest of your CSS */

@@ -1,1 +1,11 @@
-<p>form-control works!</p>
+<div class="form-control" [class]="placement" *ngIf="label || maxLength">
+  <div class="form-control__label-wrapper">
+    <div class="form-control__label">
+      {{ label }}
+      <span *ngIf="isRequired" class="required-sign">*</span>
+    </div>
+    <div *ngIf="maxLength" class="max-length">{{ childrenValue?.length }} / {{ maxLength }}</div>
+  </div>
+  <ng-content></ng-content>
+  <div *ngIf="isError && errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>
