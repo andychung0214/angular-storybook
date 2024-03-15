@@ -13,7 +13,7 @@ const meta: Meta<SwitchComponent> = {
       control: 'color',
     },
   },
-  args: { onClick: fn() },
+  args: { onChange: fn() },
   decorators: [
     applicationConfig({
       providers: [
@@ -29,8 +29,7 @@ type Story = StoryObj<SwitchComponent>;
 
 export const Default: Story = {
   args: {
-    checked: false,
-    label: 'Checkbox',
+    isChecked: false,
   },
 };
 

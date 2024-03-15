@@ -1,13 +1,21 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-switch',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './switch.component.html',
   styleUrls: ['./switch.component.scss']
 })
 export class SwitchComponent {
+  @Input() backgroundColor?: string;
+  @Input() isChecked: boolean = false;
+  @Input() isDisabled: boolean = false;
+  @Input() themeColor: string = 'primary';
+  @Output() onChange: EventEmitter<boolean> = new EventEmitter();
 
+  toggleSwitch(): void {
+    if (!this.isDisabled) {
+      this.isChecked = !this.isChecked;
+      this.onChange.emit(this.isChecked);
+    }
+  }
 }
