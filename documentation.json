@@ -1440,7 +1440,7 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": " <p>radio works!</p>\r\n"
+            "templateData": "<p>radio works!</p>\r\n"
         },
         {
             "name": "RateComponent",
