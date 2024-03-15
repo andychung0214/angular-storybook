@@ -222,7 +222,7 @@
         },
         {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-073429b95b6b0d40699caad9f546d964377b430a53b2700b2ff2a5e7b62d34dffff25d436088c5627b53f5cd9dbc59f5da36f159e3b023fe9cea517549f9e962",
+            "id": "component-CheckboxComponent-73d953ca5d2888f80fa1ce0d157ca8bcc045c47837a72d954d91f8e88dc57b0577fdd0ca0003207c90b078aaf3d0fe8e0e00bb254b6a81025b001962bb4873c9",
             "file": "src/app/components/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -239,25 +239,84 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n主題配色，primary、secondary 或是自己傳入色票",
+                    "description": "<p>主題配色，primary、secondary 或是自己傳入色票</p>\n",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "isChecked",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n開啟或關閉",
+                    "description": "<p>開啟或關閉</p>\n",
+                    "line": 10,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "isDisabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n是否禁用",
+                    "description": "<p>是否禁用</p>\n",
+                    "line": 12,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'checkbox'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n內容",
+                    "description": "<p>內容</p>\n",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "toggleCheckbox",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
+            "standalone": false,
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-checkbox',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './checkbox.component.html',\n  styleUrls: ['./checkbox.component.scss']\n})\nexport class CheckboxComponent {\n\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-checkbox',\n  templateUrl: './checkbox.component.html',\n  styleUrls: ['./checkbox.component.scss']\n})\nexport class CheckboxComponent {\n  /** 開啟或關閉 **/\n  @Input() isChecked = false;\n  /** 是否禁用 **/\n  @Input() isDisabled = false;\n  /** 內容 **/\n  @Input() label = 'checkbox';\n  /** 主題配色，primary、secondary 或是自己傳入色票 **/\n  @Input() backgroundColor?: string;\n\n  @Output() onClick = new EventEmitter<boolean>();\n\n  toggleCheckbox() {\n    if (!this.isDisabled) {\n      this.isChecked = !this.isChecked;\n      this.onClick.emit(this.isChecked);\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -267,7 +326,7 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>checkbox works!</p>\n"
+            "templateData": "<!-- <label [style.background-color]=\"backgroundColor\" class=\"custom-checkbox\">\n  <input type=\"checkbox\" [checked]=\"isChecked\" (change)=\"toggleCheckbox()\" [disabled]=\"isDisabled\">\n  <span>{{ label }}</span>\n</label> -->\n\n<label style=\"padding: 10px; display: inline-block; cursor: pointer;\">\n  <input [style.backgroundColor]=\"backgroundColor\" type=\"checkbox\" [checked]=\"isChecked\" (change)=\"toggleCheckbox()\"\n    [disabled]=\"isDisabled\">\n  {{ label }}\n</label>\n"
         },
         {
             "name": "HeaderComponent",
@@ -499,7 +558,7 @@
         },
         {
             "name": "SwitchComponent",
-            "id": "component-SwitchComponent-cd41adcbe6ee86b577f0ccb5443eadaa74a30d11e82931a21d69b9097449aa717205fb590f18afa668fbd45322d7decc1b17d80aa6ef0cc77b8adc4ef4b4ef4d",
+            "id": "component-SwitchComponent-5c9611122f7ce56c475238ed25243b1f2347273baae0d6c365632dadbe9e11171da17e4fee2841b00927cffb038b4dd28e0c2cbaae3d4a3f618b14e62e6d41a0",
             "file": "src/app/components/switch/switch.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -516,25 +575,76 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "isChecked",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "isDisabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "themeColor",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onChange",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "EventEmitter<boolean>"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "toggleSwitch",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
+            "standalone": false,
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-switch',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './switch.component.html',\n  styleUrls: ['./switch.component.scss']\n})\nexport class SwitchComponent {\n\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-switch',\n  templateUrl: './switch.component.html',\n  styleUrls: ['./switch.component.scss']\n})\nexport class SwitchComponent {\n  @Input() backgroundColor?: string;\n  @Input() isChecked: boolean = false;\n  @Input() isDisabled: boolean = false;\n  @Input() themeColor: string = 'primary';\n  @Output() onChange: EventEmitter<boolean> = new EventEmitter();\n\n  toggleSwitch(): void {\n    if (!this.isDisabled) {\n      this.isChecked = !this.isChecked;\n      this.onChange.emit(this.isChecked);\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -544,7 +654,7 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>switch works!</p>\n"
+            "templateData": "<div class=\"switch-button\" [class.is-disabled]=\"isDisabled\" (click)=\"toggleSwitch()\">\n  <div class=\"thumb\" [class.is-checked]=\"isChecked\"></div>\n</div>\n"
         }
     ],
     "modules": [
@@ -649,7 +759,7 @@
         ]
     },
     "coverage": {
-        "count": 10,
+        "count": 17,
         "status": "low",
         "files": [
             {
@@ -666,9 +776,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
+                "coveragePercent": 57,
+                "coverageCount": "4/7",
+                "status": "good"
             },
             {
                 "filePath": "src/app/components/radio/radio.component.ts",
@@ -685,7 +795,7 @@
                 "linktype": "component",
                 "name": "SwitchComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
