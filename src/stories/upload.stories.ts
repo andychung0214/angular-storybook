@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UploadComponent } from 'src/app/components/upload/upload.component';
 
 const meta: Meta<UploadComponent> = {
-  title: 'Data-Input-Components/Tooltip',
+  title: 'Data-Input-Components/Upload',
   component: UploadComponent,
   tags: ['autodocs'],
   argTypes: {

@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RateComponent } from 'src/app/components/rate/rate.component';
 
 const meta: Meta<RateComponent> = {
-  title: 'Data-Input-Components/ProgressCircle',
+  title: 'Data-Input-Components/Rate',
   component: RateComponent,
   tags: ['autodocs'],
   argTypes: {

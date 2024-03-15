@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PortalComponent } from 'src/app/components/portal/portal.component';
 
 const meta: Meta<PortalComponent> = {
-  title: 'Nav-Components/Port',
+  title: 'Example/Port',
   component: PortalComponent,
   tags: ['autodocs'],
   argTypes: {

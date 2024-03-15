@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsComponent } from 'src/app/components/tabs/tabs.component';
 
 const meta: Meta<TabsComponent> = {
-  title: 'Feedback-Components/Tabs',
+  title: 'Nav-Components/Tabs',
   component: TabsComponent,
   tags: ['autodocs'],
   argTypes: {

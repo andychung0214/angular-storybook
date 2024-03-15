@@ -3,11 +3,11 @@ import { fn } from '@storybook/test';
 import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AccordionComponent } from 'src/app/components/accordion/accordion.component';
+import { PaginationComponent } from 'src/app/components/pagination/pagination.component';
 
-const meta: Meta<AccordionComponent> = {
-  title: 'Nav-Components/Accordion',
-  component: AccordionComponent,
+const meta: Meta<PaginationComponent> = {
+  title: 'Nav-Components/Pagination',
+  component: PaginationComponent,
   tags: ['autodocs'],
   argTypes: {
     backgroundColor: {
@@ -25,7 +25,7 @@ const meta: Meta<AccordionComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<AccordionComponent>;
+type Story = StoryObj<PaginationComponent>;
 
 export const Default: Story = {
   args: {

@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChipComponent } from 'src/app/components/chip/chip.component';
 
 const meta: Meta<ChipComponent> = {
-  title: 'Data-Input-Components/Chip',
+  title: 'Data-Display-Components/Chip',
   component: ChipComponent,
   tags: ['autodocs'],
   argTypes: {

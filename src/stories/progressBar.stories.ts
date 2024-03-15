@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProgressBarComponent } from 'src/app/components/progress-bar/progress-bar.component';
 
 const meta: Meta<ProgressBarComponent> = {
-  title: 'Data-Input-Components/ProgressCircle',
+  title: 'Feedback-Components/ProgressBar',
   component: ProgressBarComponent,
   tags: ['autodocs'],
   argTypes: {

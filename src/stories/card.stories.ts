@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardComponent } from 'src/app/components/card/card.component';
 
 const meta: Meta<CardComponent> = {
-  title: 'Data-Input-Components/Card',
+  title: 'Data-Display-Components/Card',
   component: CardComponent,
   tags: ['autodocs'],
   argTypes: {

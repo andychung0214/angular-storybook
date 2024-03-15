@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProgressCircleComponent } from 'src/app/components/progress-circle/progress-circle.component';
 
 const meta: Meta<ProgressCircleComponent> = {
-  title: 'Nav-Components/ProgressCircle',
+  title: 'Feedback-Components/ProgressCircle',
   component: ProgressCircleComponent,
   tags: ['autodocs'],
   argTypes: {

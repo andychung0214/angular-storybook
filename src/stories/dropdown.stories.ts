@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownComponent } from 'src/app/components/dropdown/dropdown.component';
 
 const meta: Meta<DropdownComponent> = {
-  title: 'Nav/Dropdown',
+  title: 'Nav-components/Dropdown',
   component: DropdownComponent,
   tags: ['autodocs'],
   argTypes: {

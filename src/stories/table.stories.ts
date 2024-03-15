@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from 'src/app/components/table/table.component';
 
 const meta: Meta<TableComponent> = {
-  title: 'Data-Input-Components/Table',
+  title: 'Data-Display-Components/Table',
   component: TableComponent,
   tags: ['autodocs'],
   argTypes: {

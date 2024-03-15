@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkeletonComponent } from 'src/app/components/skeleton/skeleton.component';
 
 const meta: Meta<SkeletonComponent> = {
-  title: 'Feedback-Components/Accordion',
+  title: 'Feedback-Components/Skeleton',
   component: SkeletonComponent,
   tags: ['autodocs'],
   argTypes: {

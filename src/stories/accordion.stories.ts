@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionComponent } from 'src/app/components/accordion/accordion.component';
 
 const meta: Meta<AccordionComponent> = {
-  title: 'Data-Input-Components/Accordion',
+  title: 'Data-Display-Components/Accordion',
   component: AccordionComponent,
   tags: ['autodocs'],
   argTypes: {

@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BadgeComponent } from 'src/app/components/badge/badge.component';
 
 const meta: Meta<BadgeComponent> = {
-  title: 'Data-Input-Components/Badge',
+  title: 'Data-Display-Components/Badge',
   component: BadgeComponent,
   tags: ['autodocs'],
   argTypes: {

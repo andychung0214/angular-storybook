@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselComponent } from 'src/app/components/carousel/carousel.component';
 
 const meta: Meta<CarouselComponent> = {
-  title: 'Data-Input-Components/Carousel',
+  title: 'Data-Display-Components/Carousel',
   component: CarouselComponent,
   tags: ['autodocs'],
   argTypes: {

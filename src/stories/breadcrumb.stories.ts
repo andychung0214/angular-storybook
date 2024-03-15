@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BreadcrumbComponent } from 'src/app/components/breadcrumb/breadcrumb.component';
 
 const meta: Meta<BreadcrumbComponent> = {
-  title: 'Data-Input-Components/Breadcrumb',
+  title: 'Nav-Components/Breadcrumb',
   component: BreadcrumbComponent,
   tags: ['autodocs'],
   argTypes: {
