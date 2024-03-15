@@ -326,7 +326,51 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<!-- <label [style.background-color]=\"backgroundColor\" class=\"custom-checkbox\">\n  <input type=\"checkbox\" [checked]=\"isChecked\" (change)=\"toggleCheckbox()\" [disabled]=\"isDisabled\">\n  <span>{{ label }}</span>\n</label> -->\n\n<label style=\"padding: 10px; display: inline-block; cursor: pointer;\">\n  <input [style.backgroundColor]=\"backgroundColor\" type=\"checkbox\" [checked]=\"isChecked\" (change)=\"toggleCheckbox()\"\n    [disabled]=\"isDisabled\">\n  {{ label }}\n</label>\n"
+            "templateData": "<label [style.background-color]=\"backgroundColor\" style=\"padding: 10px; display: inline-block; cursor: pointer;\">\n  <input [style.backgroundColor]=\"backgroundColor\" type=\"checkbox\" [checked]=\"isChecked\" (change)=\"toggleCheckbox()\"\n    [disabled]=\"isDisabled\">\n  {{ label }}\n</label>\n"
+        },
+        {
+            "name": "FormControlComponent",
+            "id": "component-FormControlComponent-ac2637ffaa1f28bee2cec14587f3dc13f50ca455e2e0f425f7b28ed1af6b37975b3b226768c6116b72d56162089756112b3aabac4b231831f4d15d75e170c682",
+            "file": "src/app/components/form-control/form-control.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-form-control",
+            "styleUrls": [
+                "./form-control.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./form-control.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-form-control',\n  templateUrl: './form-control.component.html',\n  styleUrls: ['./form-control.component.scss']\n})\nexport class FormControlComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./form-control.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>form-control works!</p>\n"
         },
         {
             "name": "HeaderComponent",
@@ -654,7 +698,7 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"switch-button\" [class.is-disabled]=\"isDisabled\" (click)=\"toggleSwitch()\">\n  <div class=\"thumb\" [class.is-checked]=\"isChecked\"></div>\n</div>\n"
+            "templateData": "<div [style.background-color]=\"backgroundColor\" class=\"switch-button\" [class.is-disabled]=\"isDisabled\"\n  (click)=\"toggleSwitch()\">\n  <div class=\"thumb\" [class.is-checked]=\"isChecked\"></div>\n</div>\n"
         }
     ],
     "modules": [
@@ -743,7 +787,86 @@
             ]
         }
     ],
-    "miscellaneous": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/form-control.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    isChecked: false,\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/form-control.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FormControlComponent>",
+                "defaultValue": "{\r\n  title: 'Data-Input-Components/FormControl',\r\n  component: FormControlComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    backgroundColor: {\r\n      control: 'color',\r\n    },\r\n  },\r\n  args: { onChange: fn() },\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(BrowserAnimationsModule),\r\n        // 添加其他全局模块或服务\r\n      ],\r\n    }),\r\n  ],\r\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<FormControlComponent>",
+                "file": "src/stories/form-control.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/stories/form-control.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form-control.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    isChecked: false,\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/form-control.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FormControlComponent>",
+                    "defaultValue": "{\r\n  title: 'Data-Input-Components/FormControl',\r\n  component: FormControlComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    backgroundColor: {\r\n      control: 'color',\r\n    },\r\n  },\r\n  args: { onChange: fn() },\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(BrowserAnimationsModule),\r\n        // 添加其他全局模块或服务\r\n      ],\r\n    }),\r\n  ],\r\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "src/stories/form-control.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FormControlComponent>",
+                    "file": "src/stories/form-control.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ]
+        }
+    },
     "routes": {
         "name": "<root>",
         "kind": "module",
@@ -759,7 +882,7 @@
         ]
     },
     "coverage": {
-        "count": 17,
+        "count": 12,
         "status": "low",
         "files": [
             {
@@ -779,6 +902,15 @@
                 "coveragePercent": 57,
                 "coverageCount": "4/7",
                 "status": "good"
+            },
+            {
+                "filePath": "src/app/components/form-control/form-control.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FormControlComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
             },
             {
                 "filePath": "src/app/components/radio/radio.component.ts",
@@ -806,6 +938,26 @@
                 "coveragePercent": 83,
                 "coverageCount": "5/6",
                 "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/form-control.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/form-control.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
             },
             {
                 "filePath": "src/stories/header.component.ts",
