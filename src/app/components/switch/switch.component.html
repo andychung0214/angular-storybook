@@ -1,4 +1,7 @@
-<div [style.background-color]="backgroundColor" class="switch-button" [class.is-disabled]="isDisabled"
-  (click)="toggleSwitch()">
-  <div class="thumb" [class.is-checked]="isChecked"></div>
+<div class="switch-button" [style.width.px]="switchWidth" [style.background]="switchColor"
+     [style.cursor]="isDisabled ? 'not-allowed' : 'pointer'" (click)="handleClick()">
+  <div class="thumb" [class.checked]="isChecked" [style.width.px]="thumbSize" [style.height.px]="thumbSize"></div>
+  <div class="label" [class.checked]="isChecked">
+    {{ isChecked ? checkedChildren : unCheckedChildren }}
+  </div>
 </div>

@@ -1,15 +1,15 @@
 import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
 import { fn } from '@storybook/test';
 import { importProvidersFrom } from '@angular/core';
-import { SwitchComponent } from 'src/app/components/switch/switch.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SwitchComponent } from 'src/app/components/switch/switch.component';
 
 const meta: Meta<SwitchComponent> = {
   title: 'Data-Input-Components/Switch',
   component: SwitchComponent,
   tags: ['autodocs'],
   argTypes: {
-    backgroundColor: {
+    themeColor: {
       control: 'color',
     },
   },
@@ -29,8 +29,21 @@ type Story = StoryObj<SwitchComponent>;
 
 export const Default: Story = {
   args: {
-    isChecked: false,
+
+  isChecked: false,
+  isDisabled: false,
+  size: 'default',
+  themeColor: 'primary',
+  checkedChildren: 'On',
+  unCheckedChildren: 'Off',
   },
 };
 
+export const Checked: Story = {
+  args: {
+
+    ...Default.args,
+    isChecked: true,
+  },
+};
 
