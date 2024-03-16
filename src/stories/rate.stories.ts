@@ -10,7 +10,7 @@ const meta: Meta<RateComponent> = {
   component: RateComponent,
   tags: ['autodocs'],
   argTypes: {
-    backgroundColor: {
+    themeColor: {
       control: 'color',
     },
   },
@@ -29,8 +29,26 @@ type Story = StoryObj<RateComponent>;
 
 export const Default: Story = {
   args: {
-    isChecked: false,
+    count: 5,
+  defaultValue: 0,
+  character: 'star', // 或使用 Material Icons 字符串
+  size: 32,
+  isDisabled: false,
+  allowHalf: true,
   },
 };
 
+export const HalfRating : Story = {
+  args: {
+    ...Default.args,
+    defaultValue: 2.5,
+  },
+};
+
+export const Disabled : Story = {
+  args: {
+    ...Default.args,
+  isDisabled: true,
+  },
+};
 

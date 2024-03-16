@@ -1,1 +1,17 @@
-<p>rate works!</p>
+<div class="rate-wrapper" [style]="{'font-size.px': size}" *ngFor="let star of stars; let i = index">
+  <div class="character-wrapper">
+    <div *ngIf="allowHalf"
+         (click)="handleOnClick(i + 0.5)"
+         (mouseover)="handleChangePreviewValue(i + 0.5)"
+         (mouseleave)="handleChangePreviewValue(innerValue)"
+         [style]="{ color: i + 0.5 <= previewValue ? themeColor : '#F0F0F0' }">
+      {{ character }}
+    </div>
+    <div (click)="handleOnClick(i + 1)"
+         (mouseover)="handleChangePreviewValue(i + 1)"
+         (mouseleave)="handleChangePreviewValue(innerValue)"
+         [style]="{ color: i + 1 <= previewValue ? themeColor : '#F0F0F0' }">
+      {{ character }}
+    </div>
+  </div>
+</div>

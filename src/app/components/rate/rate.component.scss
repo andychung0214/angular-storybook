@@ -1,0 +1,15 @@
+.rate-wrapper {
+  display: inline-flex;
+  .character-wrapper {
+    position: relative;
+    .character-first, .character-second {
+      position: absolute;
+      width: 50%;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .character-second {
+      left: 50%;
+    }
+  }
+}
