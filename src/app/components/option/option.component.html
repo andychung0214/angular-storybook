@@ -1,0 +1,9 @@
+<div class="option" [class.is-disabled]="isDisabled" (click)="handleClick()">
+  <ng-container *ngIf="isChecked; else unchecked">
+    <!-- <mat-icon [ngClass]="{'option__checked-icon': true, 'disabled': isDisabled}">{{ checkedIcon }}</mat-icon> -->
+  </ng-container>
+  <ng-template #unchecked>
+    <!-- <mat-icon [ngClass]="{'option__unchecked-icon': true, 'disabled': isDisabled}">{{ unCheckedIcon }}</mat-icon> -->
+  </ng-template>
+  <span>{{ children }}</span>
+</div>

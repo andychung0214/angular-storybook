@@ -1,0 +1,31 @@
+.option {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: #222222;
+
+  &.is-disabled {
+    cursor: not-allowed;
+    color: #dadada;
+  }
+
+  .mat-icon {
+    margin-right: 8px;
+    &.option__checked-icon {
+      color: #808080; // 預設顏色, 應根據實際 themeColor 和 isDisabled 狀態調整
+    }
+
+    &.option__unchecked-icon {
+      color: #808080; // 同上
+    }
+
+    &.disabled {
+      color: #dadada;
+    }
+  }
+
+  &:hover .option__unchecked-icon:not(.disabled) {
+    // color: #your-hover-color; // 替換為實際應用顏色
+    color: green; // 替換為實際應用顏色
+  }
+}
