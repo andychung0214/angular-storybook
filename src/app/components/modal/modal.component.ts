@@ -1,9 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges, HostListener, ElementRef } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, HostListener, ElementRef, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
+  standalone: true, // Mark as standalone
   styleUrls: ['./modal.component.scss'],
   animations: [
     trigger('fade', [
@@ -15,7 +17,10 @@ import { animate, style, transition, trigger } from '@angular/animations';
         animate('{{duration}}ms ease-in-out', style({ opacity: 0 })),
       ]),
     ]),
-  ]
+  ],
+  imports: [ButtonComponent], // Import ButtonComponent here,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ModalComponent implements OnChanges {
   @Input() isOpen: boolean = false;
