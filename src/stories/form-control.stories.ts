@@ -1,4 +1,3 @@
-import { TextfieldComponent } from './../app/components/textfield/textfield.component';
 import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
 import { fn } from '@storybook/test';
 
@@ -9,6 +8,7 @@ import { RadioComponent } from 'src/app/components/radio/radio.component';
 import { FormControlComponent } from 'src/app/components/form-control/form-control.component';
 import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TextFieldComponent } from 'src/app/components/text-field/text-field.component';
 
 const meta: Meta<FormControlComponent> = {
   title: 'Data-Input-Components/FormControl',
@@ -31,7 +31,7 @@ const meta: Meta<FormControlComponent> = {
   // ],
   decorators: [
     moduleMetadata({
-      declarations: [TextfieldComponent, RadioComponent, SwitchComponent],
+      declarations: [TextFieldComponent, RadioComponent, SwitchComponent],
     }),
   ],
 };
@@ -40,9 +40,25 @@ export default meta;
 type Story = StoryObj<FormControlComponent>;
 
 
-export const WithLabel: Story = {
+export const Default : Story = {
   args: {
-    label: 'FormControl Label',
+    label: 'Label',
+  isRequired: true,
+  isError: false,
+  errorMessage: 'Error message',
+  maxLength: 10,
+  placement: 'top-left',
+  },
+};
+
+export const Template  : Story = {
+  args: {
+    label: 'Label',
+  isRequired: true,
+  isError: false,
+  errorMessage: 'Error message',
+  maxLength: 10,
+  placement: 'top-left',
   },
 };
 
