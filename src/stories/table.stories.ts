@@ -22,21 +22,72 @@ const meta: Meta<TableComponent> = {
   ],
 };
 
+
+const columns: { key: string; title: string; dataIndex: string; width: number; fixed?: boolean; }[] = [
+  { key: 'id', title: 'ID', dataIndex: 'id', width: 100 },
+  { key: 'name', title: 'Name', dataIndex: 'name', width: 200 },
+  { key: 'age', title: 'Age', dataIndex: 'age', width: 100, fixed: true },
+  { key: 'address', title: 'Address', dataIndex: 'address', width: 100, fixed: true },
+];
+
+const dataSource: any[] = [
+  { id: 1, name: 'John Brown', age: 32, address:'	New York No. 1 Lake Park' },
+  { id: 2, name: 'Jim Green', age: 42, address:'London No. 1 Lake Park' },
+  { id: 3, name: 'Joe Black', age: 32, address:'Sidney No. 1 Lake Park' }
+  // Add more data as needed
+];
+
 export default meta;
 type Story = StoryObj<TableComponent>;
 
+
+
 export const Default: Story = {
   args: {
+    columns,
+    dataSource,
+  },
+};
+
+export const AntdStyledTable: Story = {
+  args: {
+    columns,
+    dataSource,
+  },
+};
+
+export const StickyColumn: Story = {
+  args: {
+    ...columns.map((column, index) => {
+      if (index === 0) {
+        return {
+          ...column,
+          fixed: true
+        };
+      }
+      return column;
+    }),
+    dataSource,
+  },
+};
+
+export const CustomContent: Story = {
+
+  args: {
     columns: [
-      { key: 'id', title: 'ID', dataIndex: 'id', width: 100 },
-      { key: 'name', title: 'Name', dataIndex: 'name', width: 200 },
-      { key: 'age', title: 'Age', dataIndex: 'age', width: 100, fixed: true },
+      ...columns,
+      {
+        title: '操作',
+        dataIndex: 'actions',
+        key: 'actions',
+        render: () => (
+          `<button themeColor="secondary">
+            <span>刪除</span>
+          </button>`
+        ),
+      },
     ],
-    dataSource: [
-      { id: 1, name: 'John Doe', age: 30 },
-      { id: 2, name: 'Jane Doe', age: 25 }
-      // Add more data as needed
-    ],
+    dataSource,
   },
 };
 
