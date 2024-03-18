@@ -1,0 +1,26 @@
+.progress-circle {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  .progress-circle__info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  circle {
+    fill: transparent;
+  }
+
+  .progress-circle__rail {
+    stroke: #EEE;
+  }
+
+  .progress-circle__track {
+    transition: stroke-dasharray 0.5s linear;
+  }
+}

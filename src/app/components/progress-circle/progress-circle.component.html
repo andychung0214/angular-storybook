@@ -1,1 +1,12 @@
-<p>progress-circle works!</p>
+<div class="progress-circle" [style.width.px]="size" [style.height.px]="size">
+  <svg width="100%" height="100%" [attr.viewBox]="'0 0 ' + size + ' ' + size" [style.transform]="transform">
+    <circle class="progress-circle__rail" [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="radius"
+             [attr.stroke-width]="defaultStrokeWidth" stroke="#EEE"/>
+    <circle *ngIf="value > 0" class="progress-circle__track" [attr.cx]="size / 2" [attr.cy]="size / 2" [attr.r]="radius"
+             [attr.stroke-width]="defaultStrokeWidth" [attr.stroke-dasharray]="strokeDasharray" stroke="currentColor"
+             strokeLinecap="round"/>
+  </svg>
+  <div class="progress-circle__info" [style.fontSize.px]="size / 4">
+    {{ value }}<span class="progress-circle__percent-sign" [style.fontSize.px]="size / 6">%</span>
+  </div>
+</div>

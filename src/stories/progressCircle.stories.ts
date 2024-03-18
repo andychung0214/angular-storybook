@@ -9,12 +9,6 @@ const meta: Meta<ProgressCircleComponent> = {
   title: 'Feedback-Components/ProgressCircle',
   component: ProgressCircleComponent,
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
-  },
-  args: { onChange: fn() },
   decorators: [
     applicationConfig({
       providers: [
@@ -29,7 +23,9 @@ type Story = StoryObj<ProgressCircleComponent>;
 
 export const Default: Story = {
   args: {
-    isChecked: false,
+    value: 50,
+  themeColor: 'primary',
+  isClockwise: true,
   },
 };
 
