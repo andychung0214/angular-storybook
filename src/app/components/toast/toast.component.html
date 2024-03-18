@@ -1,1 +1,7 @@
-<p>toast works!</p>
+<div class="toast" [class]="type">
+  <!-- <div class="icon">{{ iconMap[type] }}</div> -->
+  <div class="content">
+    <ng-container *ngIf="content; else defaultContent">{{ content }}</ng-container>
+    <ng-template #defaultContent>No content</ng-template>
+  </div>
+</div>
