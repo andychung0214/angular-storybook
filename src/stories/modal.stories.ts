@@ -1,4 +1,4 @@
-import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
+import { applicationConfig, moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { fn } from '@storybook/test';
 import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,13 +9,12 @@ const meta: Meta<ModalComponent> = {
   title: 'Feedback-Components/Modal',
   component: ModalComponent,
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
-  },
-  args: { onChange: fn() },
   decorators: [
+
+    moduleMetadata({
+      declarations: [ModalComponent],
+      imports: [BrowserAnimationsModule],
+    }),
     applicationConfig({
       providers: [
         importProvidersFrom(BrowserAnimationsModule),
@@ -29,7 +28,9 @@ type Story = StoryObj<ModalComponent>;
 
 export const Default: Story = {
   args: {
-    isChecked: false,
+    isOpen: true,
+  hasMask: true,
+  animationDuration: 200,
   },
 };
 
