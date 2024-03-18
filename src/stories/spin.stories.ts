@@ -1,4 +1,4 @@
-import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
+import { applicationConfig, moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { fn } from '@storybook/test';
 import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,13 +9,10 @@ const meta: Meta<SpinComponent> = {
   title: 'Feedback-Components/Spin',
   component: SpinComponent,
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
-  },
-  args: { onChange: fn() },
   decorators: [
+    moduleMetadata({
+      declarations: [SpinComponent],
+    }),
     applicationConfig({
       providers: [
         importProvidersFrom(BrowserAnimationsModule),
@@ -29,7 +26,22 @@ type Story = StoryObj<SpinComponent>;
 
 export const Default: Story = {
   args: {
-    isChecked: false,
+    isLoading: true,
+    indicator: '<div>Loading...</div>', // Example of passing HTML as indicator
+  },
+};
+
+export const WithContent : Story = {
+  args: {
+    isLoading: true,
+  // children: `<div style="width: 200px; height: 100px; background: #eee;"></div>`
+  },
+};
+
+export const CustomIndicator : Story = {
+  args: {
+    isLoading: true,
+  indicator: `<div style="font-size: 24px; color: #ff0000;">Loading...</div>`
   },
 };
 

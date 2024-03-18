@@ -1,1 +1,13 @@
-<p>spin works!</p>
+<ng-container *ngIf="!isLoading; else loadingContent">
+  <ng-content></ng-content>
+</ng-container>
+<ng-template #loadingContent>
+  <div class="spin-container">
+    <ng-content></ng-content>
+    <div class="mask"></div>
+    <div class="indicator" #indicatorElement [style]="{'width.px': indicatorSize.width, 'height.px': indicatorSize.height}">
+      <!-- Assume the indicator is passed as an HTML string or Angular component -->
+      <ng-container *ngIf="indicator as component">{{component}}</ng-container>
+    </div>
+  </div>
+</ng-template>
