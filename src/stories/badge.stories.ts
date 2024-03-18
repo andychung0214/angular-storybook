@@ -9,12 +9,6 @@ const meta: Meta<BadgeComponent> = {
   title: 'Data-Display-Components/Badge',
   component: BadgeComponent,
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
-  },
-  args: { onChange: fn() },
   decorators: [
     applicationConfig({
       providers: [
@@ -29,8 +23,23 @@ type Story = StoryObj<BadgeComponent>;
 
 export const Default: Story = {
   args: {
-    isChecked: false,
+    content: '4',
+    placement: 'top-right',
   },
 };
 
+
+export const TopRight : Story = {
+  args: {
+    content: '4',
+    placement: 'top-right',
+  },
+};
+
+export const BottomLeft : Story = {
+  args: {
+    content: '99+',
+  placement: 'bottom-left',
+  },
+};
 

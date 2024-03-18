@@ -1,0 +1,20 @@
+/* badge.component.scss */
+.badge-container {
+  position: relative;
+  display: inline-block;
+}
+
+.badge {
+  min-width: 20px;
+  padding: 0 6px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #F85149; /* 可以透過 @Input 進行自定義 */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
+}
