@@ -1,1 +1,8 @@
-<p>dropdown works!</p>
+<span role="presentation" (click)="onClick.emit()">
+  <ng-content select="[dropdown-trigger]"></ng-content>
+</span>
+<ng-container *ngIf="isOpen">
+  <div class="overlay-wrapper" [style]="{'top.px': position.top, 'left.px': position.left}" [class]="placement">
+    <ng-content select="[dropdown-overlay]"></ng-content>
+  </div>
+</ng-container>

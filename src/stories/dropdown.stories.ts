@@ -10,11 +10,11 @@ const meta: Meta<DropdownComponent> = {
   component: DropdownComponent,
   tags: ['autodocs'],
   argTypes: {
-    backgroundColor: {
+    themeColor: {
       control: 'color',
     },
   },
-  args: { onChange: fn() },
+  args: { onClick: fn() },
   decorators: [
     applicationConfig({
       providers: [
@@ -29,7 +29,24 @@ type Story = StoryObj<DropdownComponent>;
 
 export const Default: Story = {
   args: {
-    isChecked: false,
+    isOpen: true,
+  placement: 'bottom',
+  overlay: 'Dropdown Content',
+  },
+};
+
+export const Top: Story = {
+  args: {
+    ...Default.args,
+  placement: 'top',
+  },
+};
+
+export const Interactive : Story = {
+  args: {
+    isOpen: true,
+  overlay: '這裡是下拉內容',
+  placement: 'bottom',
   },
 };
 
