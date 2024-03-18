@@ -1,0 +1,22 @@
+<button
+  type="button"
+  [class]="['btn', variant, className]"
+  [style]="{
+    'background-color': variant === 'contained' ? btnColor : '#FFF',
+    'color': variant === 'contained' ? '#FFF' : btnColor,
+    'border': variant === 'outlined' ? '1px solid ' + btnColor : 'none'
+  }"
+  [disabled]="isDisabled"
+  (click)="handleClick($event)"
+>
+  <ng-container *ngIf="isLoading">
+    <!-- Adapt CircularProgress logic here. Use Angular Material Progress Spinner as an alternative -->
+  </ng-container>
+  <span *ngIf="startIcon" class="start-icon">
+    <!-- Display start icon -->
+  </span>
+  <span>{{content}}</span>
+  <span *ngIf="endIcon" class="end-icon">
+    <!-- Display end icon -->
+  </span>
+</button>

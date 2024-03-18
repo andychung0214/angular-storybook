@@ -1,19 +1,16 @@
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
-
 import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
 import { fn } from '@storybook/test';
+import { ButtonComponent } from './button.component';
 import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ButtonComponent } from 'src/app/components/button/button.component';
 
-
+// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<ButtonComponent> = {
-  title: 'Data-Input-Components/Button',
+  title: 'Data-Input-Components/ButtonOld',
   component: ButtonComponent,
   tags: ['autodocs'],
   argTypes: {
-    themeColor: {
+    backgroundColor: {
       control: 'color',
     },
   },
@@ -29,50 +26,33 @@ const meta: Meta<ButtonComponent> = {
   ],
 };
 
-
-
 export default meta;
 type Story = StoryObj<ButtonComponent>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    variant: 'contained',
-  themeColor: 'primary',
-  content: 'Contained Button',
+    primary: true,
+    label: 'Button',
   },
 };
 
-export const Outlined: Story = {
+export const Secondary: Story = {
   args: {
-    variant: 'outlined',
-  themeColor: 'secondary',
-  content: 'Outlined Button',
+    label: 'Button',
   },
 };
 
-export const WithStartIcon: Story = {
+export const Large: Story = {
   args: {
-    variant: 'outlined',
-  themeColor: 'secondary',
-  content: 'Outlined Button',
+    size: 'large',
+    label: 'Button',
   },
 };
 
-export const Loading: Story = {
+export const Small: Story = {
   args: {
-    variant: 'contained',
-  themeColor: 'primary',
-  content: 'Loading...',
-  isLoading: true,
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    variant: 'contained',
-  themeColor: 'primary',
-  content: 'Disabled Button',
-  isDisabled: true,
+    size: 'small',
+    label: 'Button',
   },
 };
