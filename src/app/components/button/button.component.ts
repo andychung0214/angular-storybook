@@ -1,10 +1,13 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
 import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-button',
+  standalone:true,
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class ButtonComponent {
   @Input() variant: 'contained' | 'outlined' | 'text' = 'contained';

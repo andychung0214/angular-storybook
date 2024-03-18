@@ -35,7 +35,7 @@ export default meta;
 type Story = StoryObj<ButtonComponent>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
+export const Default : Story = {
   args: {
     variant: 'contained',
   themeColor: 'primary',
@@ -43,23 +43,15 @@ export const Primary: Story = {
   },
 };
 
-export const Outlined: Story = {
+export const Text: Story = {
   args: {
-    variant: 'outlined',
+    variant: 'text',
   themeColor: 'secondary',
   content: 'Outlined Button',
   },
 };
 
-export const WithStartIcon: Story = {
-  args: {
-    variant: 'outlined',
-  themeColor: 'secondary',
-  content: 'Outlined Button',
-  },
-};
-
-export const Loading: Story = {
+export const LoadingButton: Story = {
   args: {
     variant: 'contained',
   themeColor: 'primary',
@@ -68,7 +60,8 @@ export const Loading: Story = {
   },
 };
 
-export const Disabled: Story = {
+
+export const DisabledButton : Story = {
   args: {
     variant: 'contained',
   themeColor: 'primary',
@@ -76,3 +69,43 @@ export const Disabled: Story = {
   isDisabled: true,
   },
 };
+
+export const StartIconButton: Story = {
+  args: {
+    variant: 'outlined',
+  themeColor: 'secondary',
+  content: 'Outlined Button',
+  // startIcon: <CloudDownloadIcon />,
+  },
+};
+
+
+export const OutlinedStartIconButton : Story = {
+  args: {
+    variant: 'outlined',
+  themeColor: 'secondary',
+  content: 'Outlined Button',
+  },
+};
+
+
+export const EndIconButton : Story = {
+  args: {
+    variant: 'outlined',
+  themeColor: 'secondary',
+  content: 'Outlined Button',
+  },
+};
+
+
+export const CustomizeButton : Story = {
+  args: {
+    variant: 'outlined',
+  themeColor: 'secondary',
+  content: 'Outlined Button',
+
+  },
+};
+
+
+
