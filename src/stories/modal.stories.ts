@@ -4,6 +4,7 @@ import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ModalComponent } from 'src/app/components/modal/modal.component';
+import { ButtonComponent } from 'src/app/components/button/button.component';
 
 const meta: Meta<ModalComponent> = {
   title: 'Feedback-Components/Modal',
@@ -12,7 +13,7 @@ const meta: Meta<ModalComponent> = {
   decorators: [
 
     moduleMetadata({
-      declarations: [ModalComponent],
+      // declarations: [ModalComponent],
       imports: [BrowserAnimationsModule],
     }),
     applicationConfig({
@@ -20,7 +21,7 @@ const meta: Meta<ModalComponent> = {
         importProvidersFrom(BrowserAnimationsModule),
       ],
     }),
-  ],
+  ]
 };
 
 export default meta;
