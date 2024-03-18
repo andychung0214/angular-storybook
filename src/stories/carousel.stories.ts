@@ -9,12 +9,6 @@ const meta: Meta<CarouselComponent> = {
   title: 'Data-Display-Components/Carousel',
   component: CarouselComponent,
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
-  },
-  args: { onChange: fn() },
   decorators: [
     applicationConfig({
       providers: [
@@ -29,7 +23,14 @@ type Story = StoryObj<CarouselComponent>;
 
 export const Default: Story = {
   args: {
-    isChecked: false,
+    dataSource: [
+      'https://via.placeholder.com/600x400/FF0000/FFFFFF?text=1',
+      'https://via.placeholder.com/600x400/00FF00/FFFFFF?text=2',
+      'https://via.placeholder.com/600x400/0000FF/FFFFFF?text=3',
+    ],
+    hasDots: true,
+    hasControlArrow: true,
+    autoplay: false,
   },
 };
 

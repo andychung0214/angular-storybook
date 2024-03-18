@@ -1,1 +1,20 @@
-<p>carousel works!</p>
+<!-- <div class="carousel-wrapper" #carouselWrapper>
+  <div class="image-wrapper">
+    <ng-container *ngFor="let imageUrl of dataSource; let i = index">
+      <img [src]="imageUrl" [style.left.px]="makePosition(i)" [alt]="`Image ${i}`" class="image">
+    </ng-container>
+  </div>
+  <ng-container *ngIf="hasControlArrow">
+    <div class="control-buttons">
+      <svg (click)="handleClickPrev()"> Left</svg>
+      <svg (click)="handleClickNext()">Right</svg>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="hasDots">
+    <div class="dots">
+      <ng-container *ngFor="let dot of dataSource; let k = index">
+        <div class="dot" [class.is-current]="k === currentIndex" (click)="setCurrentIndex(k)"></div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div> -->
