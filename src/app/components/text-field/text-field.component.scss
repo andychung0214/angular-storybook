@@ -1,0 +1,42 @@
+.styled-text-field {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  height: 36px;
+
+  &:hover {
+    border: 1px solid #222;
+  }
+
+  &.error {
+    border: 1px solid red;
+    &:hover {
+      border: 1px solid red;
+    }
+  }
+
+  &.disabled {
+    border: 1px solid #CCC;
+    cursor: not-allowed;
+    background: #EEE;
+
+    .input {
+      cursor: not-allowed;
+      background: none;
+    }
+    &:hover {
+      border: 1px solid #CCC;
+    }
+  }
+
+  .input {
+    outline: none;
+    border: none;
+    font-size: 14px;
+    color: #333;
+    width: 100%;
+  }
+}

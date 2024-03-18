@@ -1,0 +1,5 @@
+<div class="styled-text-field" [class]="{'error': isError, 'disabled': isDisabled}">
+  <ng-content select="[prefix]"></ng-content>
+  <input type="text" class="input" [placeholder]="placeholder" [disabled]="isDisabled" (input)="onChange($event)">
+  <ng-content select="[suffix]"></ng-content>
+</div>
