@@ -1,1 +1,9 @@
-<p>upload works!</p>
+<input
+  #inputFileRef
+  type="file"
+  [attr.accept]="accept"
+  [attr.multiple]="multiple ? 'multiple' : null"
+  style="display: none"
+  (change)="handleOnChange($event)"
+/>
+<ng-content (click)="handleOnClickUpload()"></ng-content>
