@@ -1,36 +1,34 @@
-import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
-import { importProvidersFrom } from '@angular/core';
+import { Meta, moduleMetadata } from '@storybook/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AccordionComponent } from 'src/app/components/accordion/accordion.component';
+import { AccordionHeaderComponent } from 'src/app/components/accordion-header/accordion-header.component';
+import { AccordionPanelComponent } from 'src/app/components/accordion-panel/accordion-panel.component';
 
-const meta: Meta<AccordionComponent> = {
+export default {
   title: 'Data-Display-Components/Accordion',
   component: AccordionComponent,
-  tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
-  },
-  args: { onChange: fn() },
   decorators: [
-    applicationConfig({
-      providers: [
-        importProvidersFrom(BrowserAnimationsModule),
-      ],
+    moduleMetadata({
+      imports: [BrowserAnimationsModule],
     }),
   ],
-};
+} as Meta<AccordionComponent>;
 
-export default meta;
-type Story = StoryObj<AccordionComponent>;
-
-export const Default: Story = {
+export const Default = {
   args: {
-    isChecked: false,
+    header: 'Header Content Here',
+    isExpand: false,
+  },
+  template: `
+    <app-accordion
+      [header]="header"
+      [isExpand]="isExpand"
+      (onClick)="onClick()">
+      <div>Panel Content Here</div>
+    </app-accordion>
+  `,
+  props: {
+    onClick: () => console.log('Accordion header clicked'),
   },
 };
-
-

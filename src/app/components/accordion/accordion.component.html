@@ -1,1 +1,6 @@
-<p>accordion works!</p>
+<div class="styled-accordion">
+  <app-accordion-header [header]="header" [isExpand]="isExpand" (onClick)="onClick.emit()"></app-accordion-header>
+  <app-accordion-panel [isExpand]="isExpand">
+    <ng-content></ng-content>
+  </app-accordion-panel>
+</div>
