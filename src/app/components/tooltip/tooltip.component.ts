@@ -1,16 +1,26 @@
-import { Directive, Input, ElementRef, HostListener, ComponentRef, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Directive, Input, ElementRef, HostListener, ComponentRef, ViewContainerRef, ComponentFactoryResolver, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation, Component } from '@angular/core';
 import { TooltipContentComponent } from '../tooltip-content/tooltip-content.component';
 
-@Directive({
-  selector: '[appTooltip]'
+// @Directive({
+//   selector: '[appTooltip]'
+// })
+
+@Component({
+  selector: 'app-tooltip',
+  standalone:true,
+  templateUrl: './tooltip.component.html',
+  styleUrls: ['./tooltip.component.scss'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class TooltipComponent {
-  @Input('appTooltip') content: string | undefined;
+  // @Input('appTooltip') content: string | undefined;
   @Input() placement: string = 'top';
   @Input() themeColor: string = '#101010';
   @Input() showArrow: boolean = true;
 
   private tooltipComponentRef: ComponentRef<TooltipContentComponent> | undefined;
+  content: string | undefined;
 
   constructor(private elementRef: ElementRef, private viewContainerRef: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {}
 
