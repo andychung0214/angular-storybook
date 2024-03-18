@@ -1,0 +1,7 @@
+<div class="styled-item" (click)="handleClick()" [class.clickable]="to">
+  <ng-container *ngIf="icon; else noIcon">
+    <span [ngClass]="icon"></span> <!-- 如果 icon 是 Material Icons 名稱 -->
+  </ng-container>
+  <ng-template #noIcon></ng-template>
+  <span>{{ label }}</span>
+</div>

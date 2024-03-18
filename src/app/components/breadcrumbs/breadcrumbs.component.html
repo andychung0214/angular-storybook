@@ -1,0 +1,15 @@
+<div class="styled-breadcrumbs">
+  <ng-container *ngIf="isCollapse; else expanded">
+    <app-breadcrumb-item [label]="breadcrumbItems.first.label"></app-breadcrumb-item>
+    <span class="separator">{{ separator }}</span>
+    <span class="collapsed-content" (click)="isCollapse = false">...</span>
+    <span class="separator">{{ separator }}</span>
+    <app-breadcrumb-item [label]="breadcrumbItems.last.label"></app-breadcrumb-item>
+  </ng-container>
+  <ng-template #expanded>
+    <ng-container *ngFor="let item of breadcrumbItems; let last = last">
+      <app-breadcrumb-item [label]="item.label"></app-breadcrumb-item>
+      <span class="separator" *ngIf="!last">{{ separator }}</span>
+    </ng-container>
+  </ng-template>
+</div>

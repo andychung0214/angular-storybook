@@ -1,0 +1,13 @@
+.styled-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+  & > *:not(:first-child) {
+    margin-left: 4px;
+  }
+}
