@@ -9,12 +9,6 @@ const meta: Meta<ProgressBarComponent> = {
   title: 'Feedback-Components/ProgressBar',
   component: ProgressBarComponent,
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
-  },
-  args: { onChange: fn() },
   decorators: [
     applicationConfig({
       providers: [
@@ -29,7 +23,10 @@ type Story = StoryObj<ProgressBarComponent>;
 
 export const Default: Story = {
   args: {
-    isChecked: false,
+    value: 50,
+    themeColor: 'primary',
+    showInfo: true,
+    isStatusActive: false,
   },
 };
 

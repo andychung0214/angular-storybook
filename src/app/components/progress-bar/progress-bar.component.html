@@ -1,1 +1,6 @@
-<p>progress-bar works!</p>
+<div class="progress-bar" [class]="className">
+  <div class="trail">
+    <div class="track" [style.width.%]="formattedValue" [style.background]="themeColor" [@activeAnimation]="isStatusActive ? '*' : null"></div>
+  </div>
+  <div *ngIf="showInfo" class="info">{{ formattedValue }}%</div>
+</div>
