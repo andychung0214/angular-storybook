@@ -1,1 +1,23 @@
-<p>table works!</p>
+<div class="table-wrapper">
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <ng-container *ngFor="let column of columns">
+          <th [style]="{'width.px': column.width}" [class.fixed]="column.fixed">
+            {{ column.title }}
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dataSource">
+        <ng-container *ngFor="let column of columns">
+          <td [class.fixed]="column.fixed">
+            {{ column.render ? column.render(data[column.dataIndex]) : data[column.dataIndex] }}
+          </td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>
+s

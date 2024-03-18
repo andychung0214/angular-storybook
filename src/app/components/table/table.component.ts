@@ -1,4 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+interface TableColumn {
+  key: string;
+  title: string;
+  width?: number;
+  fixed?: boolean;
+  dataIndex?: string;
+  render?: (data: any) => any;
+}
 
 @Component({
   selector: 'app-table',
@@ -6,5 +15,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
-
+  @Input() columns: TableColumn[] = [];
+  @Input() dataSource: any[] = [];
 }
