@@ -1,1 +1,18 @@
-<p>select works!</p>
+<div class="select-box" [class.disabled]="isDisabled || isLoading" (click)="toggleDropdown()">
+      <span>{{ selectedOption?.label || placeholder }}</span>
+      <ng-container *ngIf="isLoading; else arrowDown">
+        <div class="circular-progress"></div>
+      </ng-container>
+      <ng-template #arrowDown>
+        <div class="arrow-down" [class.open]="isOpen">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5z" />
+          </svg>
+        </div>
+      </ng-template>
+    </div>
+    <div class="menu" *ngIf="isOpen">
+      <div class="menu-item" *ngFor="let option of options" [class.selected]="option.value === value" (click)="selectOption(option.value)">
+        {{ option.label }}
+      </div>
+    </div>

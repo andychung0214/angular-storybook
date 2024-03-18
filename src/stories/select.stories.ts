@@ -9,12 +9,6 @@ const meta: Meta<SelectComponent> = {
   title: 'Nav-Components/Select',
   component: SelectComponent,
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
-  },
-  args: { onChange: fn() },
   decorators: [
     applicationConfig({
       providers: [
@@ -27,9 +21,37 @@ const meta: Meta<SelectComponent> = {
 export default meta;
 type Story = StoryObj<SelectComponent>;
 
+const options = [
+  { value: 'option1', label: 'Option 1' },
+  { value: 'option2', label: 'Option 2' },
+  { value: 'option3', label: 'Option 3' },
+];
+
 export const Default: Story = {
   args: {
-    isChecked: false,
+    options,
+  placeholder: 'Please select an option',
+  },
+};
+
+export const WithValue : Story = {
+  args: {
+    ...Default.args,
+  value: 'option2',
+  },
+};
+
+export const Disabled : Story = {
+  args: {
+    ...Default.args,
+  isDisabled: true,
+  },
+};
+
+export const Loading : Story = {
+  args: {
+    ...Default.args,
+  isLoading: true,
   },
 };
 
