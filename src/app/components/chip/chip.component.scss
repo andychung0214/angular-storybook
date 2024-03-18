@@ -1,0 +1,13 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 50px;
+  height: 32px;
+  .label {
+    padding: 0px 12px;
+  }
+  .chip__start-icon, .chip__end-icon {
+    // Add specific styles for icons
+  }
+  // Add more styles based on the original React component's styled-components
+}

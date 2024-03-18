@@ -1,1 +1,10 @@
-<p>chip works!</p>
+<div class="chip" [class]="variant" [style]="{'border-color': color, 'background-color': variant === 'contained' ? color : '#FFF', 'color': variant === 'outlined' ? color : '#FFF'}">
+  <ng-container *ngIf="icon">
+    <!-- Placeholder for icon; Adjust based on how you implement icons -->
+  </ng-container>
+  <span class="label">{{ label }}</span>
+  <ng-container *ngIf="deleteIcon || onDelete">
+    <!-- Placeholder for deleteIcon; Add click event binding for onDelete -->
+    <span (click)="handleDelete()">✖</span>
+  </ng-container>
+</div>

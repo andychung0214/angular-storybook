@@ -10,11 +10,11 @@ const meta: Meta<ChipComponent> = {
   component: ChipComponent,
   tags: ['autodocs'],
   argTypes: {
-    backgroundColor: {
+    themeColor: {
       control: 'color',
     },
   },
-  args: { onChange: fn() },
+  args: { onDelete: fn() },
   decorators: [
     applicationConfig({
       providers: [
@@ -29,7 +29,9 @@ type Story = StoryObj<ChipComponent>;
 
 export const Default: Story = {
   args: {
-    isChecked: false,
+    label: 'Example Chip',
+  variant: 'contained',
+  themeColor: 'primary',
   },
 };
 
