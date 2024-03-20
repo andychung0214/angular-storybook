@@ -33,4 +33,22 @@ export const Default: Story = {
   },
 };
 
+export const WithDataSource: Story = {
+  args: {
+    isChecked: false,
+  },
+};
+
+export const MuiStyle: Story = {
+  args: {
+    isChecked: false,
+  },
+};
+
+export const WithEllipsis: Story = {
+  args: {
+    isChecked: false,
+  },
+};
+
 

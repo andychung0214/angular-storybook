@@ -33,4 +33,22 @@ export const Default: Story = {
   },
 };
 
+export const WithoutAnimation: Story = {
+  args: {
+    isChecked: false,
+  },
+};
+
+export const FlashAnimation: Story = {
+  args: {
+    isChecked: false,
+  },
+};
+
+export const BackgroundSlide: Story = {
+  args: {
+    isChecked: false,
+  },
+};
+
 

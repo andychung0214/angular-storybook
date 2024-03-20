@@ -29,10 +29,31 @@ type Story = StoryObj<ChipComponent>;
 
 export const Default: Story = {
   args: {
-    label: 'Example Chip',
+    label: 'Chip',
   variant: 'contained',
   themeColor: 'primary',
   },
 };
 
+export const Variant: Story = {
+  args: {
+    label: 'Chip',
+  variant: 'contained',
+  themeColor: 'primary',
+  },
+};
+export const CustomColor: Story = {
+  args: {
+    label: 'Chip',
+  variant: 'contained',
+  themeColor: 'primary',
+  },
+};
+export const WithIcon: Story = {
+  args: {
+    label: 'Chip',
+  variant: 'contained',
+  themeColor: 'primary',
+  },
+};
 

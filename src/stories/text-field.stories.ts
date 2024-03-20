@@ -33,4 +33,49 @@ export const Default: Story = {
   },
 };
 
+export const WithPrefix: Story = {
+  args: {
+    placeholder: 'Enter text here',
+  isError: false,
+  isDisabled: false,
+  },
+};
+
+
+export const WithSuffix: Story = {
+  args: {
+    placeholder: 'Enter text here',
+  isError: false,
+  isDisabled: false,
+  },
+};
+
+
+export const FullWidth: Story = {
+  args: {
+    placeholder: 'Enter text here',
+  isError: false,
+  isDisabled: false,
+  },
+};
+
+
+export const ErrorStyle: Story = {
+  args: {
+    placeholder: 'Enter text here',
+  isError: false,
+  isDisabled: false,
+  },
+};
+
+
+export const DisabledStyle: Story = {
+  args: {
+    placeholder: 'Enter text here',
+  isError: false,
+  isDisabled: false,
+  },
+};
+
+
 

@@ -43,6 +43,14 @@ export const Default : Story = {
   },
 };
 
+export const Outlined: Story = {
+  args: {
+    variant: 'text',
+  themeColor: 'secondary',
+  content: 'Outlined Button',
+  },
+};
+
 export const Text: Story = {
   args: {
     variant: 'text',

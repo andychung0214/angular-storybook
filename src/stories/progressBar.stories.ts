@@ -30,4 +30,49 @@ export const Default: Story = {
   },
 };
 
+export const WithoutInfo: Story = {
+  args: {
+    value: 50,
+    themeColor: 'primary',
+    showInfo: true,
+    isStatusActive: false,
+  },
+};
+
+export const CustomColor: Story = {
+  args: {
+    value: 50,
+    themeColor: 'primary',
+    showInfo: true,
+    isStatusActive: false,
+  },
+};
+
+export const GradientTrack: Story = {
+  args: {
+    value: 50,
+    themeColor: 'primary',
+    showInfo: true,
+    isStatusActive: false,
+  },
+};
+
+export const HasActiveAnimation: Story = {
+  args: {
+    value: 50,
+    themeColor: 'primary',
+    showInfo: true,
+    isStatusActive: false,
+  },
+};
+
+export const HasTransition: Story = {
+  args: {
+    value: 50,
+    themeColor: 'primary',
+    showInfo: true,
+    isStatusActive: false,
+  },
+};
+
 

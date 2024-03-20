@@ -28,6 +28,41 @@ export const Default: Story = {
   },
 };
 
+export const Placement: Story = {
+  args: {
+    content: '4',
+    placement: 'top-right',
+  },
+};
+
+export const WithMax: Story = {
+  args: {
+    content: '4',
+    placement: 'top-right',
+  },
+};
+
+export const VariantDot: Story = {
+  args: {
+    content: '4',
+    placement: 'top-right',
+  },
+};
+
+export const CustomColor: Story = {
+  args: {
+    content: '4',
+    placement: 'top-right',
+  },
+};
+
+export const ShowZero: Story = {
+  args: {
+    content: '4',
+    placement: 'top-right',
+  },
+};
+
 
 export const TopRight : Story = {
   args: {

@@ -34,14 +34,14 @@ export const Default: Story = {
   },
 };
 
-export const Checked: Story = {
+export const CustomizeColor: Story = {
   args: {
     label: 'Checkbox',
     isChecked: true,
   },
 };
 
-export const Disabled: Story = {
+export const DisabledCheckbox: Story = {
   args: {
     label: 'Checkbox',
     isChecked: false,

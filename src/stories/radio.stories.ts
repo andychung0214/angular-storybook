@@ -46,3 +46,10 @@ export const DisabledRadio: Story = {
     isDisabled: true,
   },
 };
+
+export const WithRadioGroup: Story = {
+  args: {
+    value: 'Radio',
+    isDisabled: true,
+  },
+};

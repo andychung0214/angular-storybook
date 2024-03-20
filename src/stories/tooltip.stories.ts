@@ -1,3 +1,4 @@
+import { Placement } from './badge.stories';
 import { applicationConfig, moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
 import { fn } from '@storybook/test';
 import { importProvidersFrom } from '@angular/core';
@@ -28,6 +29,24 @@ export default meta;
 type Story = StoryObj<TooltipComponent>;
 
 export const Default: Story = {
+  args: {
+    showArrow: true,
+  },
+};
+
+export const placement: Story = {
+  args: {
+    showArrow: true,
+  },
+};
+
+export const CustomColor: Story = {
+  args: {
+    showArrow: true,
+  },
+};
+
+export const ShowArrow: Story = {
   args: {
     showArrow: true,
   },

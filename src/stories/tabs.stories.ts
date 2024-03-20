@@ -36,3 +36,21 @@ export const Default: Story = {
   args: {
   },
 };
+
+export const Centered: Story = {
+  args: {
+  },
+};
+
+
+export const IconTab: Story = {
+  args: {
+  },
+};
+
+
+export const ColoredTab: Story = {
+  args: {
+  },
+};
+

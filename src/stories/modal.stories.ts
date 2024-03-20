@@ -35,4 +35,12 @@ export const Default: Story = {
   },
 };
 
+export const ModalAsDialog: Story = {
+  args: {
+    isOpen: true,
+  hasMask: true,
+  animationDuration: 200,
+  },
+};
+
 

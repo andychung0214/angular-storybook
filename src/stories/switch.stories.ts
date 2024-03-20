@@ -39,6 +39,56 @@ export const Default: Story = {
   },
 };
 
+
+export const CustomColor: Story = {
+  args: {
+
+  isChecked: false,
+  isDisabled: false,
+  size: 'default',
+  themeColor: 'primary',
+  checkedChildren: 'On',
+  unCheckedChildren: 'Off',
+  },
+};
+
+export const DisabledSwitch: Story = {
+  args: {
+
+  isChecked: false,
+  isDisabled: false,
+  size: 'default',
+  themeColor: 'primary',
+  checkedChildren: 'On',
+  unCheckedChildren: 'Off',
+  },
+};
+
+export const SwitchWithSize: Story = {
+  args: {
+
+  isChecked: false,
+  isDisabled: false,
+  size: 'default',
+  themeColor: 'primary',
+  checkedChildren: 'On',
+  unCheckedChildren: 'Off',
+  },
+};
+
+
+export const SwitchWithChildrenLabel: Story = {
+  args: {
+
+  isChecked: false,
+  isDisabled: false,
+  size: 'default',
+  themeColor: 'primary',
+  checkedChildren: 'On',
+  unCheckedChildren: 'Off',
+  },
+};
+
 export const Checked: Story = {
   args: {
 

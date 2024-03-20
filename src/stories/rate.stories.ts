@@ -38,6 +38,94 @@ export const Default: Story = {
   },
 };
 
+export const WithDefaultValue: Story = {
+  args: {
+    count: 5,
+  defaultValue: 0,
+  character: 'star', // 或使用 Material Icons 字符串
+  size: 32,
+  isDisabled: false,
+  allowHalf: true,
+  },
+};
+
+export const WithCount: Story = {
+  args: {
+    count: 5,
+  defaultValue: 0,
+  character: 'star', // 或使用 Material Icons 字符串
+  size: 32,
+  isDisabled: false,
+  allowHalf: true,
+  },
+};
+
+export const DisableInteraction: Story = {
+  args: {
+    count: 5,
+  defaultValue: 0,
+  character: 'star', // 或使用 Material Icons 字符串
+  size: 32,
+  isDisabled: false,
+  allowHalf: true,
+  },
+};
+
+export const WithOnChange: Story = {
+  args: {
+    count: 5,
+  defaultValue: 0,
+  character: 'star', // 或使用 Material Icons 字符串
+  size: 32,
+  isDisabled: false,
+  allowHalf: true,
+  },
+};
+
+export const AllowHalf: Story = {
+  args: {
+    count: 5,
+  defaultValue: 0,
+  character: 'star', // 或使用 Material Icons 字符串
+  size: 32,
+  isDisabled: false,
+  allowHalf: true,
+  },
+};
+
+export const WithSize: Story = {
+  args: {
+    count: 5,
+  defaultValue: 0,
+  character: 'star', // 或使用 Material Icons 字符串
+  size: 32,
+  isDisabled: false,
+  allowHalf: true,
+  },
+};
+
+export const WithColor: Story = {
+  args: {
+    count: 5,
+  defaultValue: 0,
+  character: 'star', // 或使用 Material Icons 字符串
+  size: 32,
+  isDisabled: false,
+  allowHalf: true,
+  },
+};
+
+export const CustomCharacter: Story = {
+  args: {
+    count: 5,
+  defaultValue: 0,
+  character: 'star', // 或使用 Material Icons 字符串
+  size: 32,
+  isDisabled: false,
+  allowHalf: true,
+  },
+};
+
 export const HalfRating : Story = {
   args: {
     ...Default.args,

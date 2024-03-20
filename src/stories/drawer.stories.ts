@@ -33,4 +33,11 @@ export const Default: Story = {
   },
 };
 
+export const placement: Story = {
+  args: {
+    isChecked: false,
+  },
+};
+
+
 

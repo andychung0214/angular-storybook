@@ -31,4 +31,25 @@ export const Default: Story = {
   },
 };
 
+export const PreviewUploadImage: Story = {
+  args: {
+    accept: 'image/*',
+  multiple: true,
+  },
+};
+
+export const UploadMultiple: Story = {
+  args: {
+    accept: 'image/*',
+  multiple: true,
+  },
+};
+
+export const PictureWall: Story = {
+  args: {
+    accept: 'image/*',
+  multiple: true,
+  },
+};
+
 

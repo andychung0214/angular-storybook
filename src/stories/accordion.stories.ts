@@ -32,3 +32,23 @@ export const Default = {
     onClick: () => console.log('Accordion header clicked'),
   },
 };
+
+export const ShowSingleAccordion = {
+  args: {
+    title: 'Section 1',
+    header: 'Header Content Here',
+    isExpand: true,
+  },
+  template: `
+  <app-accordion title="Section 1">
+  This is the content of the first section.
+</app-accordion>
+
+<app-accordion title="Section 2">
+  This is the content of the second section.
+</app-accordion>
+  `,
+  props: {
+    onClick: () => console.log('Accordion header clicked'),
+  },
+};

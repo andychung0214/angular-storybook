@@ -33,4 +33,27 @@ export const Default: Story = {
   },
 };
 
+export const CustomColor: Story = {
+  args: {
+    isChecked: false,
+  },
+};
+
+export const WithStep: Story = {
+  args: {
+    isChecked: false,
+  },
+};
+
+export const WithDefaultValue: Story = {
+  args: {
+    isChecked: false,
+  },
+};
+
+export const HandmadeSlider: Story = {
+  args: {
+    isChecked: false,
+  },
+};
 

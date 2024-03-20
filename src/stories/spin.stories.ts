@@ -31,12 +31,6 @@ export const Default: Story = {
   },
 };
 
-export const WithContent : Story = {
-  args: {
-    isLoading: true,
-  // children: `<div style="width: 200px; height: 100px; background: #eee;"></div>`
-  },
-};
 
 export const CustomIndicator : Story = {
   args: {
@@ -44,5 +38,13 @@ export const CustomIndicator : Story = {
   indicator: `<div style="font-size: 24px; color: #ff0000;">Loading...</div>`
   },
 };
+
+export const SpinAsContainer : Story = {
+  args: {
+    isLoading: true,
+  // children: `<div style="width: 200px; height: 100px; background: #eee;"></div>`
+  },
+};
+
 
 

@@ -10,7 +10,7 @@ import { BreadcrumbComponent } from 'src/app/components/breadcrumb/breadcrumb.co
 import { BreadcrumbsComponent } from 'src/app/components/breadcrumbs/breadcrumbs.component';
 
 const meta: Meta<BreadcrumbComponent> =  {
-  title: 'Data-Input-Components/ButtonOld',
+  title: 'Nav-Components/Breadcrumb',
   component: BreadcrumbComponent,
   tags: ['autodocs'],
 
@@ -33,6 +33,58 @@ type Story = StoryObj<BreadcrumbComponent>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
+  args: {
+
+  routes: [
+    { label: 'Home', to: '/' },
+    { label: 'Catalog', to: '/catalog' },
+    { label: 'Product', to: '/catalog/product' }
+  ],
+  maxItems: 3,
+  separator: '>',
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+
+  routes: [
+    { label: 'Home', to: '/' },
+    { label: 'Catalog', to: '/catalog' },
+    { label: 'Product', to: '/catalog/product' }
+  ],
+  maxItems: 3,
+  separator: '>',
+  },
+};
+
+export const WithCustomSeparator: Story = {
+  args: {
+
+  routes: [
+    { label: 'Home', to: '/' },
+    { label: 'Catalog', to: '/catalog' },
+    { label: 'Product', to: '/catalog/product' }
+  ],
+  maxItems: 3,
+  separator: '>',
+  },
+};
+
+export const WithMaxItems: Story = {
+  args: {
+
+  routes: [
+    { label: 'Home', to: '/' },
+    { label: 'Catalog', to: '/catalog' },
+    { label: 'Product', to: '/catalog/product' }
+  ],
+  maxItems: 3,
+  separator: '>',
+  },
+};
+
+export const WithCustomNode: Story = {
   args: {
 
   routes: [

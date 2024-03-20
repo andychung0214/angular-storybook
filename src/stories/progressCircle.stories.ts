@@ -1,3 +1,4 @@
+import { GradientTrack } from './progressBar.stories';
 import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
 import { fn } from '@storybook/test';
 import { importProvidersFrom } from '@angular/core';
@@ -22,6 +23,47 @@ export default meta;
 type Story = StoryObj<ProgressCircleComponent>;
 
 export const Default: Story = {
+  args: {
+    value: 50,
+  themeColor: 'primary',
+  isClockwise: true,
+  },
+};
+
+export const LimitValue: Story = {
+  args: {
+    value: 50,
+  themeColor: 'primary',
+  isClockwise: true,
+  },
+};
+
+export const CustomColor: Story = {
+  args: {
+    value: 50,
+  themeColor: 'primary',
+  isClockwise: true,
+  },
+};
+
+export const GradientTrackk: Story = {
+  args: {
+    value: 50,
+  themeColor: 'primary',
+  isClockwise: true,
+  },
+};
+
+
+export const CounterClockwise: Story = {
+  args: {
+    value: 50,
+  themeColor: 'primary',
+  isClockwise: true,
+  },
+};
+
+export const Size: Story = {
   args: {
     value: 50,
   themeColor: 'primary',

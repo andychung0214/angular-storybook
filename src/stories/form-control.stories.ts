@@ -40,7 +40,7 @@ export default meta;
 type Story = StoryObj<FormControlComponent>;
 
 
-export const Default : Story = {
+export const WithLabel : Story = {
   args: {
     label: 'Label',
   isRequired: true,
@@ -51,7 +51,62 @@ export const Default : Story = {
   },
 };
 
-export const Template  : Story = {
+export const Required  : Story = {
+  args: {
+    label: 'Label',
+  isRequired: true,
+  isError: false,
+  errorMessage: 'Error message',
+  maxLength: 10,
+  placement: 'top-left',
+  },
+};
+
+export const LimitMaxLength  : Story = {
+  args: {
+    label: 'Label',
+  isRequired: true,
+  isError: false,
+  errorMessage: 'Error message',
+  maxLength: 10,
+  placement: 'top-left',
+  },
+};
+
+export const ErrorMessage  : Story = {
+  args: {
+    label: 'Label',
+  isRequired: true,
+  isError: false,
+  errorMessage: 'Error message',
+  maxLength: 10,
+  placement: 'top-left',
+  },
+};
+
+export const WithDiffPlacementLabel  : Story = {
+  args: {
+    label: 'Label',
+  isRequired: true,
+  isError: false,
+  errorMessage: 'Error message',
+  maxLength: 10,
+  placement: 'top-left',
+  },
+};
+
+export const RadioWithLabel  : Story = {
+  args: {
+    label: 'Label',
+  isRequired: true,
+  isError: false,
+  errorMessage: 'Error message',
+  maxLength: 10,
+  placement: 'top-left',
+  },
+};
+
+export const SwitchWithLabel  : Story = {
   args: {
     label: 'Label',
   isRequired: true,

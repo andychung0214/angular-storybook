@@ -35,6 +35,13 @@ export const Default: Story = {
   },
 };
 
+export const WithPlacement: Story = {
+  args: {
+    ...Default.args,
+  placement: 'top',
+  },
+};
+
 export const Top: Story = {
   args: {
     ...Default.args,

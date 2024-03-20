@@ -34,12 +34,6 @@ export const Default: Story = {
   },
 };
 
-export const WithValue : Story = {
-  args: {
-    ...Default.args,
-  value: 'option2',
-  },
-};
 
 export const Disabled : Story = {
   args: {
@@ -52,6 +46,14 @@ export const Loading : Story = {
   args: {
     ...Default.args,
   isLoading: true,
+  },
+};
+
+
+export const WithValue : Story = {
+  args: {
+    ...Default.args,
+  value: 'option2',
   },
 };
 
