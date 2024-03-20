@@ -1,9 +1,13 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-rate',
   templateUrl: './rate.component.html',
-  styleUrls: ['./rate.component.scss']
+  styleUrls: ['./rate.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatIconModule]
 })
 export class RateComponent implements OnInit {
   @Input() count: number = 5;

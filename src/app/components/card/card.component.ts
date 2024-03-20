@@ -1,20 +1,26 @@
-import { Component, Input } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-card',
-  template: `
-    <div class="card">
-      <ng-content select="app-card-cover"></ng-content>
-      <ng-content select="app-card-meta"></ng-content>
-    </div>
-  `,
-  styles: [`
-    .card {
-      border: 1px solid #DDD;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-  `]
+  templateUrl: './card.component.html',
+  standalone: true,
+  styleUrls: ['./card.component.scss'],
+  imports: [CommonModule, MatIconModule,MatButtonModule]
 })
 export class CardComponent {
+  @Input() imageUrl?: string;
+  @Input() title?: string;
+  @Input() description?: string;
+  @Input() avatarUrl?: string;
+  @Input()
+  backgroundColor?: string;
+  @Output()
+  onClick = new EventEmitter<Event>();
+
+  // constructor(private matIconRegistry: MatIconRegistry) {
+  //   // this.matIconRegistry.addSvgIcon('choose1', this.avatarUrl);
+  //   this.matIconRegistry.setDefaultFontSetClass('my-icons');
+  // }
 }

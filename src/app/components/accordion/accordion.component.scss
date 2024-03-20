@@ -1,5 +1,2 @@
-.styled-accordion {
-  display: inline-flex;
-  flex-direction: column;
-  border: 1px solid #DDD;
-}
+.accordion-header { cursor: pointer; padding: 10px; background-color: #f0f0f0; }
+    .accordion-body { padding: 10px; border: 1px solid #f0f0f0; }

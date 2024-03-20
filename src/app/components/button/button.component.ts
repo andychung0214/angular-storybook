@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
 import { ColorService } from 'src/app/services/color.service';
 
@@ -7,7 +8,8 @@ import { ColorService } from 'src/app/services/color.service';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  encapsulation: ViewEncapsulation.ShadowDom
+  encapsulation: ViewEncapsulation.ShadowDom,
+  imports: [CommonModule]
 })
 export class ButtonComponent {
   @Input() variant: 'contained' | 'outlined' | 'text' = 'contained';

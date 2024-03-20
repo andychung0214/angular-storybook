@@ -1,5 +1,7 @@
 <!-- badge.component.html -->
 <div class="badge-container">
-  <ng-content></ng-content> <!-- 用於插入 badge 元件的 children -->
+  <!-- <ng-content></ng-content> 用於插入 badge 元件的 children -->
+        <mat-icon aria-label="Example icon-button with a heart icon">mail</mat-icon>
+
   <div class="badge" [style]="placementStyle">{{ content }}</div>
 </div>

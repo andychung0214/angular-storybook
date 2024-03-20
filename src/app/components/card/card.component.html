@@ -1,1 +1,76 @@
-<p>card works!</p>
+ <!-- <div class="card">
+      <div class="card-cover">
+        <ng-content select="[card-cover]"></ng-content>
+      </div>
+      <div class="card-body">
+        <ng-content select="[card-body]"></ng-content>
+      </div>
+      <div class="card-actions">
+        <ng-content select="[card-actions]"></ng-content>
+      </div>
+    </div> -->
+<div class="verticalStyle">
+     <div class="card" [style]="{'backgound-color': backgroundColor}">
+      <div class="card-cover">
+      <img [src]="imageUrl" alt="cover">
+    </div>
+      <div class="meta-content">
+
+
+<div *ngIf="avatarUrl" class="meta-avatar">
+        <img [src]="avatarUrl" alt="avatar">
+      </div>
+        <div class="meta-title" *ngIf="title">{{ title }}</div>
+        <div class="meta-description" *ngIf="description">{{ description }}</div>
+      </div>
+      <div class="Actions">
+        <mat-icon>thumb_up</mat-icon>
+        <mat-icon>share</mat-icon>
+        <mat-icon>alarm</mat-icon>
+      </div>
+    </div>
+</div>
+<!-- <div class="card-cover">
+      <img [src]="imageUrl" alt="cover">
+    </div> -->
+
+
+<!-- <div class="card-meta">
+      <div *ngIf="avatarUrl" class="meta-avatar">
+        <img [src]="avatarUrl" alt="avatar">
+      </div>
+      <div class="meta-content">
+        <div class="meta-title" *ngIf="title">{{ title }}</div>
+        <div class="meta-description" *ngIf="description">{{ description }}</div>
+      </div>
+    </div> -->
+
+
+<!-- <div class="VariantGroup">
+  <div class="card">
+<div class="card-cover">
+      <img [src]="imageUrl" alt="cover">
+
+      <div class="meta-content">
+
+<div *ngIf="avatarUrl" class="meta-avatar">
+        <img [src]="avatarUrl" alt="avatar">
+      </div>
+        <div class="meta-title" *ngIf="title">{{ title }}</div>
+        <div class="meta-description" *ngIf="description">{{ description }}</div>
+      </div>
+    </div>
+
+<footer class="Actions">
+  <div>
+    <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+
+    <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+
+    <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+
+  </div>
+</footer>
+</div>
+</div> -->
+

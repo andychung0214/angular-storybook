@@ -1,7 +1,11 @@
-<div class="switch-button" [style.width.px]="switchWidth" [style.background]="switchColor"
-     [style.cursor]="isDisabled ? 'not-allowed' : 'pointer'" (click)="handleClick()">
-  <div class="thumb" [class.checked]="isChecked" [style.width.px]="thumbSize" [style.height.px]="thumbSize"></div>
-  <div class="label" [class.checked]="isChecked">
-    {{ isChecked ? checkedChildren : unCheckedChildren }}
-  </div>
-</div>
+<div
+      class="switch-button"
+      [style]="{ 'width.px': switchWidth, 'background-color': switchColor, 'border-color': switchColor }"
+      (click)="isDisabled ? null : toggleSwitch()"
+    >
+      <div class="thumb" [style]="{ 'left.px': isChecked ? switchWidth - thumbSize : 0 }"></div>
+      <div class="label" [style]="{ 'padding.px': thumbSize / 3 }">
+        <span *ngIf="isChecked">{{ checkedChildren }}</span>
+        <span *ngIf="!isChecked">{{ unCheckedChildren }}</span>
+      </div>
+    </div>

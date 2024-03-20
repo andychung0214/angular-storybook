@@ -6,36 +6,29 @@ import { ColorService } from 'src/app/services/color.service';
   templateUrl: './switch.component.html',
   styleUrls: ['./switch.component.scss']
 })
-export class SwitchComponent implements AfterViewInit {
+export class SwitchComponent {
   @Input() isChecked: boolean = false;
   @Input() isDisabled: boolean = false;
-  @Input() size: 'default' | 'small' = 'default';
+  @Input() size: string = 'default';
   @Input() themeColor: string = 'primary';
   @Input() checkedChildren: string = '';
   @Input() unCheckedChildren: string = '';
-
   @Output() onChange = new EventEmitter<boolean>();
 
-  labelWidth: number = 0;
-  thumbSize: number = 18;
-  switchWidth: number = this.thumbSize * 2; // Initial value, adjust as needed
-  switchColor: string = '';
-
-  constructor(private colorService: ColorService, private elRef: ElementRef) {}
-
-  ngAfterViewInit(): void {
-    this.adjustLabelWidth();
+  get switchWidth(): number {
+    return this.size === 'small' ? 40 : 60;
   }
 
-  adjustLabelWidth() {
-    // Adjust your label width calculation based on your actual element refs
-     /* your logic to calculate switch width based on label width */;
-    this.switchWidth = this.labelWidth + this.thumbSize * 2;
+  get thumbSize(): number {
+    return this.size === 'small' ? 12 : 20;
   }
 
-  handleClick() {
-    if (!this.isDisabled) {
-      this.onChange.emit(!this.isChecked);
-    }
+  get switchColor(): string {
+    // 實際應用中，themeColor 可以根據需要來決定顏色
+    return this.isChecked ? '#1890ff' : '#ccc';
+  }
+
+  toggleSwitch() {
+    this.onChange.emit(!this.isChecked);
   }
 }

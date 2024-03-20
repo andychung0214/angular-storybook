@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges, HostListener, ElementRef, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ButtonComponent } from '../button/button.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-modal',
@@ -18,7 +19,7 @@ import { ButtonComponent } from '../button/button.component';
       ]),
     ]),
   ],
-  imports: [ButtonComponent], // Import ButtonComponent here,
+  imports: [ButtonComponent, CommonModule], // Import ButtonComponent here,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.ShadowDom
 })

@@ -1,5 +1,6 @@
 import { Directive, Input, ElementRef, HostListener, ComponentRef, ViewContainerRef, ComponentFactoryResolver, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation, Component } from '@angular/core';
 import { TooltipContentComponent } from '../tooltip-content/tooltip-content.component';
+import { CommonModule } from '@angular/common';
 
 // @Directive({
 //   selector: '[appTooltip]'
@@ -11,7 +12,8 @@ import { TooltipContentComponent } from '../tooltip-content/tooltip-content.comp
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.scss'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  encapsulation: ViewEncapsulation.ShadowDom
+  encapsulation: ViewEncapsulation.ShadowDom,
+  imports: [CommonModule]
 })
 export class TooltipComponent {
   // @Input('appTooltip') content: string | undefined;
