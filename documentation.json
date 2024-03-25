@@ -96,12 +96,12 @@
         },
         {
             "name": "TableColumn",
-            "id": "interface-TableColumn-7fbeef40ab5da5e651106068591929d8c14ab9cae42217fceb139fb0c562d6c1c0ce9764dfb5253d2f46ac4fbc6a579ec105f0fb7bab089878ed4ae531551c10",
+            "id": "interface-TableColumn-7ea162daf5fb66638e5722e38354e1594d56cf9d2518f136a3716ad7d4d3abea9524c5688c97622bd9de9bb7df8d3453f71fbf302e6f5e6e194235822d5080ee",
             "file": "src/app/components/table/table.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\ninterface TableColumn {\n  key: string;\n  title: string;\n  width?: number;\n  fixed?: boolean;\n  dataIndex?: string;\n  render?: (data: any) => any;\n}\n\n@Component({\n  selector: 'app-table',\n  templateUrl: './table.component.html',\n  styleUrls: ['./table.component.scss']\n})\nexport class TableComponent {\n  @Input() columns: TableColumn[] = [];\n  @Input() dataSource: any[] = [];\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\ninterface TableColumn {\n  key: string;\n  title: string;\n  width?: number;\n  fixed?: boolean;\n  dataIndex?: string;\n  render?: (data: any) => any;\n}\n\n@Component({\n  selector: 'app-table',\n  templateUrl: './table.component.html',\n  styleUrls: ['./table.component.scss']\n})\nexport class TableComponent {\n  @Input() columns: TableColumn[] = [];\n  @Input() dataSource: any[] = [];\n  @Input() tableClass: string = '';\n}\n",
             "properties": [
                 {
                     "name": "dataIndex",
@@ -424,7 +424,7 @@
     "components": [
         {
             "name": "AccordionComponent",
-            "id": "component-AccordionComponent-ef7365cf4161741d53c4c3d569f855f84fe83bcc6fa2e44b9e8f572c71e21120c5ccd148b5953d76d0e92a0c5c3bb9af22c610edff73bd0515913a426f097473",
+            "id": "component-AccordionComponent-c416785163d4b157de3221d15413a6db5841a9c3e0657282a7061e7f9225330b1275283ab3fb62c9fe34b81b3b612cf7bf4124fbd291d2a85633250810bd2dda",
             "file": "src/app/components/accordion/accordion.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -443,69 +443,108 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "title",
-                    "defaultValue": "''",
+                    "name": "items",
+                    "defaultValue": "[\n  { question: 'Who is your favorite artist?', answer: 'Leonardo da Vinci.' },\n  { question: 'What is your favorite movie genre?', answer: 'Science fiction.' },\n  { question: 'What is your favorite book?', answer: '\"To Kill a Mockingbird\" by Harper Lee.' },\n  { question: 'Do you have any pets?', answer: 'Yes, I have a dog named Max.' }\n]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
-                    "type": "string",
+                    "line": 11,
+                    "type": "{}",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "isOpen",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 19
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [
                 {
-                    "name": "toggle",
-                    "args": [],
+                    "name": "toggleAccordion",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 27,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "AccordionPanelComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
+            "standalone": false,
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, EventEmitter, Output } from '@angular/core';\nimport { AccordionHeaderComponent } from '../accordion-header/accordion-header.component';\nimport { AccordionPanelComponent } from '../accordion-panel/accordion-panel.component';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'app-accordion',\n  standalone: true,\n  imports:[\n    AccordionPanelComponent,\n    CommonModule\n  ],\n  templateUrl: './accordion.component.html',\n  styleUrls: ['./accordion.component.scss'],\n\n})\nexport class AccordionComponent {\n  @Input() title: string = '';\n  isOpen: boolean = false;\n\n  toggle() {\n    this.isOpen = !this.isOpen;\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Renderer2 } from '@angular/core';\n\n@Component({\n  selector: 'app-accordion',\n  templateUrl: './accordion.component.html',\n  styleUrls: ['./accordion.component.scss'],\n  // No need for 'inputs' property to import CommonModule, remove it.\n})\nexport class AccordionComponent {\n\n@Input() items= [\n  { question: 'Who is your favorite artist?', answer: 'Leonardo da Vinci.' },\n  { question: 'What is your favorite movie genre?', answer: 'Science fiction.' },\n  { question: 'What is your favorite book?', answer: '\"To Kill a Mockingbird\" by Harper Lee.' },\n  { question: 'Do you have any pets?', answer: 'Yes, I have a dog named Max.' }\n];\n\n  // items = [\n  //   { question: 'Who is your favorite artist?', answer: 'Leonardo da Vinci.' },\n  //   { question: 'What is your favorite movie genre?', answer: 'Science fiction.' },\n  //   { question: 'What is your favorite book?', answer: '\"To Kill a Mockingbird\" by Harper Lee.' },\n  //   { question: 'Do you have any pets?', answer: 'Yes, I have a dog named Max.' }\n  // ];\n\n  constructor(private renderer: Renderer2) {}\n\n  toggleAccordion(item: any, index: number): void {\n    const isActive = item.classList.toggle('active'); // This toggles and returns the new state\n    const content = item.querySelector('.item-content');\n    const icon = item.querySelector('.item-icon i');\n\n    this.renderer.setStyle(content, 'maxHeight', isActive ? `${content.scrollHeight}px` : null);\n    console.log(`Accordion ${index} is now ${isActive ? 'open' : 'closed'}.`);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".accordion-header { cursor: pointer; padding: 10px; background-color: #f0f0f0; }\r\n    .accordion-body { padding: 10px; border: 1px solid #f0f0f0; }\r\n",
+                    "data": "@import url(\"https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap\");\r\n\r\n        :root {\r\n            --main-bg: #e1e1e1;\r\n            --border-color: #999;\r\n            --box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);\r\n            --icon-bg: #000;\r\n        }\r\n\r\n        body {\r\n            font-family: 'Jost', sans-serif;\r\n            background: var(--main-bg);\r\n            color: #333;\r\n            display: grid;\r\n            place-items: center;\r\n            min-height: 100vh;\r\n        }\r\n\r\n        h2 {\r\n            text-align: center;\r\n            margin: 0px 0px 40px 0px;\r\n        }\r\n\r\n        .accordion-container {\r\n            max-width: 450px;\r\n            width: 100%;\r\n            margin: 0 auto;\r\n            padding: 2rem;\r\n            background: #fff;\r\n            box-shadow: var(--box-shadow);\r\n            border-radius: 8px;\r\n        }\r\n\r\n        .accordion-item {\r\n            display: flex;\r\n            flex-direction: column;\r\n            padding: 0 1rem;\r\n            border-radius: 6px;\r\n            border: 1px solid var(--border-color);\r\n            box-shadow: var(--box-shadow);\r\n            background: var(--main-bg);\r\n            margin-bottom: 0.5em;\r\n            cursor: pointer;\r\n        }\r\n\r\n        .accordion-item:nth-child(2) {\r\n            background-color: rgba(255, 0, 0, 0.2);\r\n        }\r\n\r\n        .accordion-item:nth-child(3) {\r\n            background-color: rgba(0, 128, 0, 0.2);\r\n        }\r\n\r\n        .accordion-item:nth-child(4) {\r\n            background-color: rgba(0, 0, 255, 0.2);\r\n        }\r\n\r\n        .accordion-item:nth-child(5) {\r\n            background-color: rgba(255, 255, 0, 0.2);\r\n        }\r\n\r\n        .item-header {\r\n            display: flex;\r\n            justify-content: space-between;\r\n            column-gap: 0.2em;\r\n            font-size: 18px;\r\n        }\r\n\r\n        .item-icon {\r\n            margin-top: 1rem;\r\n            flex: 0 0 25px;\r\n            display: grid;\r\n            place-items: center;\r\n            font-size: 1.35rem;\r\n            height: 25px;\r\n            width: 25px;\r\n            border-radius: 4px;\r\n            background: var(--icon-bg);\r\n            cursor: pointer;\r\n            box-shadow: var(--box-shadow);\r\n        }\r\n\r\n        .item-icon i {\r\n            transition: all 0.25s cubic-bezier(0.5, 0, 0.1, 1);\r\n        }\r\n\r\n        .item-question {\r\n            font-size: 1em;\r\n            line-height: 1;\r\n            font-weight: 500;\r\n        }\r\n\r\n        .active .item-icon i {\r\n            transform: rotate(180deg);\r\n        }\r\n\r\n        .active .item-question {\r\n            font-weight: 500;\r\n        }\r\n\r\n        .item-content {\r\n            max-height: 0;\r\n            overflow: hidden;\r\n            transition: all 300ms ease;\r\n        }\r\n\r\n        .item-answer {\r\n            line-height: 150%;\r\n            opacity: 0.8;\r\n        }\r\n",
                     "styleUrl": "./accordion.component.scss"
                 }
             ],
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 16,
+                "jsdoctags": [
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
-            "templateData": "<div class=\"accordion\">\n      <div class=\"accordion-header\" (click)=\"toggle()\">\n        {{ title }}\n      </div>\n      <div *ngIf=\"isOpen\" class=\"accordion-body\">\n        <ng-content></ng-content>\n      </div>\n    </div>\n"
+            "templateData": "<div class=\"accordion-container\">\n    <h2>Accordion Design</h2>\n\n    <div class=\"accordion-item\" #item *ngFor=\"let qa of items; let i = index\">\n        <header class=\"item-header\" (click)=\"toggleAccordion(item, i)\">\n            <h4 class=\"item-question\">{{ qa.question }}</h4>\n            <div class=\"item-icon\">\n                <i class='bx bx-chevron-down'></i>\n            </div>\n        </header>\n        <div class=\"item-content\">\n            <p class=\"item-answer\">{{ qa.answer }}</p>\n        </div>\n    </div>\n</div>\n"
         },
         {
             "name": "AccordionHeaderComponent",
@@ -747,7 +786,7 @@
         },
         {
             "name": "BadgeComponent",
-            "id": "component-BadgeComponent-20c8f13ea2234811f3343c7cb8157860509c04d31ce82c7d34faad498b5c8817ffdba5eba9545499b4054c6ad3f60a583364b2aeeb3b6026b87558b2905770de",
+            "id": "component-BadgeComponent-6002bb710c4ca293716aae12d1a64ab7b95ab07ec10df82729ea1df2ef559f75d0a98c867dc3e8bcf38a198a1cca845f5d0cfa97c73c89cd0a640ba1fc21d912",
             "file": "src/app/components/badge/badge.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -766,26 +805,70 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "content",
-                    "defaultValue": "null",
+                    "name": "badgeContent",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
-                    "type": "string | number | null",
+                    "line": 17,
+                    "type": "string | number | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "color",
+                    "defaultValue": "'red'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "dot",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "max",
+                    "defaultValue": "99",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "number",
                     "decorators": []
                 },
                 {
                     "name": "placement",
-                    "defaultValue": "'top-right'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
-                    "type": "BadgePlacement",
+                    "line": 16,
+                    "type": "string | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "showZero",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "boolean",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "content",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -805,28 +888,17 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { BadgePlacement, getPlacementStyle, PlacementStyle } from './placement-style.util';\nimport { MatIconRegistry, MatIconModule } from '@angular/material/icon';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'app-badge',\n  templateUrl: './badge.component.html',\n  styleUrls: ['./badge.component.scss'],\n  standalone: true,\n  imports: [MatIconModule,CommonModule]\n})\nexport class BadgeComponent {\n  @Input() placement: BadgePlacement = 'top-right';\n  @Input() content: string | number | null = null; // 徽章的內容\n\n  get placementStyle(): PlacementStyle {\n    return getPlacementStyle(this.placement);\n  }\n}\n",
+            "sourceCode": "import { ShowZero } from './../../../stories/badge.stories';\n// badge.component.ts\nimport { Component, Input } from '@angular/core';\nimport { BadgePlacement, getPlacementStyle, PlacementStyle } from './placement-style.util';\nimport { MatIconRegistry, MatIconModule } from '@angular/material/icon';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'app-badge',\n  templateUrl: './badge.component.html',\n  styleUrls: ['./badge.component.scss'],\n  standalone: true,\n  imports: [MatIconModule,CommonModule]\n})\nexport class BadgeComponent {\n  @Input() placement : string | undefined;\n  @Input() badgeContent: string | number | undefined; // 徽章的內容\n\n  @Input() max: number = 99; // 最大值\n  @Input() showZero: boolean = false; // 是否顯示 0\n  @Input() dot: boolean = false; // 是否是點\n  @Input() color: string = 'red'; // 徽章的顏色\n\n  content !: string | null;\n\n//   ngOnInit(): void {\n//     this.content = this.makeBadgeContent({ showZero: this.showZero, max: this.max, badgeContent: this.badgeContent });\n//   }\n\n//   makeBadgeContent({ showZero, max, badgeContent }: { showZero: boolean, max: number, badgeContent: number | undefined }): string | null {\n//     if (showZero && badgeContent === 0) {\n//       return '0';\n//     }\n\n//     if (!showZero && badgeContent === 0) {\n//       return null;\n//     }\n\n//     return badgeContent && badgeContent > max ? `${max}+` : (this.badgeContent?.toString() ?? null);\n//   }\n// }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/* badge.component.scss */\r\n.badge-container {\r\n  position: relative;\r\n  display: inline-block;\r\n}\r\n\r\n.badge {\r\n  min-width: 20px;\r\n  padding: 0 6px;\r\n  height: 20px;\r\n  border-radius: 10px;\r\n  background-color: #F85149; /* 可以透過 @Input 進行自定義 */\r\n  color: white;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  font-size: 12px;\r\n  line-height: 1;\r\n  font-weight: 500;\r\n}\r\n",
+                    "data": "/* badge.component.scss */\r\n.badge-container {\r\n  position: relative;\r\n  display: inline-block;\r\n}\r\n\r\n.badge {\r\n  min-width: 20px;\r\n  padding: 0 6px;\r\n  height: 20px;\r\n  border-radius: 10px;\r\n  background-color: #F85149; /* 可以透過 @Input 進行自定義 */\r\n  color: white;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  font-size: 12px;\r\n  line-height: 1;\r\n  font-weight: 500;\r\n}\r\n\r\n.topLeftStyle {\r\n  top: 0px;\r\n  left: 0px;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.topRightStyle {\r\n  top: 0px;\r\n  right: 0px;\r\n  transform: translate(50%, -50%);\r\n}\r\n\r\n.bottomLeftStyle {\r\n  bottom: 0px;\r\n  left: 0px;\r\n  transform: translate(-50%, 50%);\r\n}\r\n\r\n.bottomRightStyle {\r\n  bottom: 0px;\r\n  right: 0px;\r\n  transform: translate(50%, 50%);\r\n}\r\n\r\n\r\n.BadgeWrapper {\r\n  display: inline-flex;\r\n  position: relative;\r\n}\r\n.StandardBadge {\r\n  display: flex;\r\n  flex-flow: row wrap;\r\n  place-content: center;\r\n  align-items: center;\r\n  position: absolute;\r\n  box-sizing: border-box;\r\n  font-family: Roboto, Helvetica, Arial, sans-serif;\r\n  font-weight: 500;\r\n  font-size: 12px;\r\n  min-width: 20px;\r\n  padding: 0px 6px;\r\n  height: 20px;\r\n  border-radius: 10px;\r\n  z-index: 1;\r\n  transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\r\n  // background-color: ${(props) => props.$color};\r\n  color: #FFF;\r\n}\r\n\r\n.DotBadge {\r\n  position: absolute;\r\n  width: 6px;\r\n  height: 6px;\r\n  border-radius: 100%;\r\n  // background-color: ${(props) => props.$color};\r\n  // ${(props) => placementStyleMap[props.$placement] || topRightStyle}\r\n}\r\n",
                     "styleUrl": "./badge.component.scss"
                 }
             ],
             "stylesData": "",
             "extends": [],
-            "accessors": {
-                "placementStyle": {
-                    "name": "placementStyle",
-                    "getSignature": {
-                        "name": "placementStyle",
-                        "type": "",
-                        "returnType": "PlacementStyle",
-                        "line": 18
-                    }
-                }
-            },
-            "templateData": "<!-- badge.component.html -->\r\n<div class=\"badge-container\">\r\n  <!-- <ng-content></ng-content> 用於插入 badge 元件的 children -->\r\n        <mat-icon aria-label=\"Example icon-button with a heart icon\">mail</mat-icon>\r\n\r\n  <div class=\"badge\" [style]=\"placementStyle\">{{ content }}</div>\r\n</div>\r\n"
+            "templateData": "<!-- badge.component.html -->\r\n<div class=\"badge-container\">\r\n  <!-- <ng-content></ng-content> 用於插入 badge 元件的 children -->\r\n\r\n        <mat-icon [class]=\"placement\" aria-label=\"Example icon-button with a heart icon\">mail</mat-icon>\r\n  <div class=\"badge\">{{ badgeContent }}\r\n        </div>\r\n</div>\r\n"
         },
         {
             "name": "BreadcrumbComponent",
@@ -892,13 +964,13 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "nav.breadcrumb {\r\n  padding: 0.8em 1em;\r\n  border: 1px solid hsl(0deg 0% 90%);\r\n  border-radius: 4px;\r\n  background: hsl(300deg 14% 97%);\r\n}\r\n\r\nnav.breadcrumb ol {\r\n  margin: 0;\r\n  padding-left: 0;\r\n  list-style: none;\r\n}\r\n\r\nnav.breadcrumb li {\r\n  display: inline;\r\n}\r\n\r\nnav.breadcrumb li + li::before {\r\n  display: inline-block;\r\n  margin: 0 0.25em;\r\n  transform: rotate(15deg);\r\n  border-right: 0.1em solid currentcolor;\r\n  height: 0.8em;\r\n  content: \"\";\r\n}\r\n\r\nnav.breadcrumb [aria-current=\"page\"] {\r\n  color: #000;\r\n  font-weight: 700;\r\n  text-decoration: none;\r\n}\r\n",
                     "styleUrl": "./breadcrumb.component.scss"
                 }
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<!-- <app-breadcrumbs [maxItems]=\"maxItems\" [separator]=\"separator\">\n  <app-breadcrumb-item *ngFor=\"let route of routes\" [label]=\"route.label\" [icon]=\"route.icon\" [to]=\"route.to\"></app-breadcrumb-item>\n</app-breadcrumbs> -->\n"
+            "templateData": "<nav aria-label=\"Breadcrumb\" class=\"breadcrumb\">\n  <ol>\n    <li>\n      <a href=\"../../../..\">WAI-ARIA Authoring Practices Guide (APG)</a>\n    </li>\n    <li>\n      <a href=\"../../../\">Patterns</a>\n    </li>\n    <li>\n      <a href=\"../../\">Breadcrumb Pattern</a>\n    </li>\n    <li>\n      <a href=\"\" aria-current=\"page\">Breadcrumb Example</a>\n    </li>\n  </ol>\n</nav>\n"
         },
         {
             "name": "BreadcrumbItemComponent",
@@ -1087,7 +1159,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".styled-breadcrumbs {\r\n  display: flex;\r\n  align-items: center;\r\n\r\n  .separator {\r\n    margin: 0 8px;\r\n  }\r\n}\r\n",
+                    "data": "nav.breadcrumb {\r\n  padding: 0.8em 1em;\r\n  border: 1px solid hsl(0deg 0% 90%);\r\n  border-radius: 4px;\r\n  background: hsl(300deg 14% 97%);\r\n}\r\n\r\nnav.breadcrumb ol {\r\n  margin: 0;\r\n  padding-left: 0;\r\n  list-style: none;\r\n}\r\n\r\nnav.breadcrumb li {\r\n  display: inline;\r\n}\r\n\r\nnav.breadcrumb li + li::before {\r\n  display: inline-block;\r\n  margin: 0 0.25em;\r\n  transform: rotate(15deg);\r\n  border-right: 0.1em solid currentcolor;\r\n  height: 0.8em;\r\n  content: \"\";\r\n}\r\n\r\nnav.breadcrumb [aria-current=\"page\"] {\r\n  color: #000;\r\n  font-weight: 700;\r\n  text-decoration: none;\r\n}\r\n",
                     "styleUrl": "./breadcrumbs.component.scss"
                 }
             ],
@@ -1096,7 +1168,7 @@
             "implements": [
                 "AfterContentInit"
             ],
-            "templateData": "<div class=\"styled-breadcrumbs\">\n  <ng-container *ngIf=\"isCollapse; else expanded\">\n    <app-breadcrumb-item [label]=\"breadcrumbItems.first.label\"></app-breadcrumb-item>\n    <span class=\"separator\">{{ separator }}</span>\n    <span class=\"collapsed-content\" (click)=\"isCollapse = false\">...</span>\n    <span class=\"separator\">{{ separator }}</span>\n    <app-breadcrumb-item [label]=\"breadcrumbItems.last.label\"></app-breadcrumb-item>\n  </ng-container>\n  <ng-template #expanded>\n    <ng-container *ngFor=\"let item of breadcrumbItems; let last = last\">\n      <app-breadcrumb-item [label]=\"item.label\"></app-breadcrumb-item>\n      <span class=\"separator\" *ngIf=\"!last\">{{ separator }}</span>\n    </ng-container>\n  </ng-template>\n</div>\n"
+            "templateData": "<nav aria-label=\"Breadcrumb\" class=\"breadcrumb\">\n  <ol>\n    <li>\n      <a href=\"../../../..\">WAI-ARIA Authoring Practices Guide (APG)</a>\n    </li>\n    <li>\n      <a href=\"../../../\">Patterns</a>\n    </li>\n    <li>\n      <a href=\"../../\">Breadcrumb Pattern</a>\n    </li>\n    <li>\n      <a href=\"\" aria-current=\"page\">Breadcrumb Example</a>\n    </li>\n  </ol>\n</nav>\n"
         },
         {
             "name": "ButtonComponent",
@@ -1443,7 +1515,7 @@
         },
         {
             "name": "CardComponent",
-            "id": "component-CardComponent-a0d56c65b49505d65fe23fdea259c5cb21d86bab7d7285c76d9320a627ccea89f62b5527702641a4054e0530f3821faa6e346bac75f57bd1bd34c65c433d5f26",
+            "id": "component-CardComponent-9d57abe6eaa351231007e7c8a0daa605ae4107711b688212cdf5e15ce7ea1ea4a5e434697e32f4483d9102e2ee133d1ec00d9af434b5025234bfd3a4b76d4357",
             "file": "src/app/components/card/card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1465,7 +1537,7 @@
                     "name": "avatarUrl",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 17,
                     "type": "string",
                     "decorators": []
                 },
@@ -1473,15 +1545,23 @@
                     "name": "backgroundColor",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 19,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "className",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "\"verticalStyle\" | \"horizontalReverseStyle\" | \"horizontalStyle\"",
                     "decorators": []
                 },
                 {
                     "name": "description",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 16,
                     "type": "string",
                     "decorators": []
                 },
@@ -1489,7 +1569,7 @@
                     "name": "imageUrl",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 14,
                     "type": "string",
                     "decorators": []
                 },
@@ -1497,7 +1577,7 @@
                     "name": "title",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 15,
                     "type": "string",
                     "decorators": []
                 }
@@ -1508,7 +1588,7 @@
                     "defaultValue": "new EventEmitter<Event>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 21,
                     "type": "EventEmitter"
                 }
             ],
@@ -1536,17 +1616,17 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { MatIconRegistry, MatIconModule } from '@angular/material/icon';\nimport {MatButtonModule} from '@angular/material/button';\n@Component({\n  selector: 'app-card',\n  templateUrl: './card.component.html',\n  standalone: true,\n  styleUrls: ['./card.component.scss'],\n  imports: [CommonModule, MatIconModule,MatButtonModule]\n})\nexport class CardComponent {\n  @Input() imageUrl?: string;\n  @Input() title?: string;\n  @Input() description?: string;\n  @Input() avatarUrl?: string;\n  @Input()\n  backgroundColor?: string;\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  // constructor(private matIconRegistry: MatIconRegistry) {\n  //   // this.matIconRegistry.addSvgIcon('choose1', this.avatarUrl);\n  //   this.matIconRegistry.setDefaultFontSetClass('my-icons');\n  // }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { MatIconRegistry, MatIconModule } from '@angular/material/icon';\nimport {MatButtonModule} from '@angular/material/button';\n@Component({\n  selector: 'app-card',\n  templateUrl: './card.component.html',\n  standalone: true,\n  styleUrls: ['./card.component.scss'],\n  imports: [CommonModule, MatIconModule,MatButtonModule]\n})\nexport class CardComponent {\n  @Input() className?: 'verticalStyle' | 'horizontalReverseStyle' | 'horizontalStyle';\n  @Input() imageUrl?: string;\n  @Input() title?: string;\n  @Input() description?: string;\n  @Input() avatarUrl?: string;\n  @Input()\n  backgroundColor?: string;\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  // constructor(private matIconRegistry: MatIconRegistry) {\n  //   // this.matIconRegistry.addSvgIcon('choose1', this.avatarUrl);\n  //   this.matIconRegistry.setDefaultFontSetClass('my-icons');\n  // }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".card {\r\n  border: 1px solid #DDD;\r\n  border-radius: 4px;\r\n  overflow: hidden;\r\n  width: 300px;\r\n}\r\n\r\n.card-cover img {\r\n  width: 100%;\r\n  display: block;\r\n  height: auto;\r\n}\r\n\r\n.card-meta {\r\n  display: flex;\r\n  padding: 16px;\r\n}\r\n.meta-avatar img {\r\n  width: 40px;\r\n  height: 40px;\r\n  border-radius: 50%;\r\n  margin-right: 16px;\r\n}\r\n.meta-content {\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  height:84px;\r\n}\r\n.meta-title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n}\r\n.meta-description {\r\n  font-size: 14px;\r\n  color: #666;\r\n}\r\n\r\n.verticalStyle {\r\n  display: inline-flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.VariantGroup{\r\n  display: inline-flex;\r\n  flex-direction: column;\r\n  & > *:not(:first-child) {\r\n    margin-top: 20px;\r\n  }\r\n}\r\n\r\n.Actions {\r\n  padding: 16px 16px 4px 16px;\r\n  color: #888;\r\n  & > svg {\r\n    cursor: pointer;\r\n  }\r\n  & > *:not(:first-child) {\r\n    margin-left: 20px;\r\n  }\r\n}\r\n",
+                    "data": ".card {\r\n  border: 1px solid #DDD;\r\n  border-radius: 4px;\r\n  overflow: hidden;\r\n  width: 300px;\r\n}\r\n\r\n.card-cover img {\r\n  width: 100%;\r\n  display: block;\r\n  height: auto;\r\n}\r\n\r\n.card-meta {\r\n  display: flex;\r\n  padding: 16px;\r\n}\r\n.meta-avatar img {\r\n  width: 40px;\r\n  height: 40px;\r\n  border-radius: 50%;\r\n  margin-right: 16px;\r\n}\r\n.meta-content {\r\n  display: flex;\r\n  flex-direction: unset;\r\n  justify-content: left;\r\n  // height:84px;\r\n  margin-left: 1.2rem;\r\n}\r\n.meta-title {\r\n  font-size: 16px;\r\n  font-weight: bold;\r\n}\r\n.meta-description {\r\n  font-size: 14px;\r\n  color: #666;\r\n}\r\n\r\n.verticalStyle {\r\n  display: inline-flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.horizontalReverseStyle   {\r\n  display: flex;\r\n}\r\n\r\n.horizontalReverseStyle {\r\n  display: flex;\r\n  flex-direction: row-reverse;\r\n}\r\n\r\n.VariantGroup{\r\n  display: inline-flex;\r\n  flex-direction: column;\r\n  & > *:not(:first-child) {\r\n    margin-top: 20px;\r\n  }\r\n}\r\n\r\n.Actions {\r\n  padding: 16px 16px 4px 16px;\r\n  color: #888;\r\n  & > svg {\r\n    cursor: pointer;\r\n  }\r\n  & > *:not(:first-child) {\r\n    margin-left: 20px;\r\n  }\r\n}\r\n",
                     "styleUrl": "./card.component.scss"
                 }
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": " <!-- <div class=\"card\">\r\n      <div class=\"card-cover\">\r\n        <ng-content select=\"[card-cover]\"></ng-content>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <ng-content select=\"[card-body]\"></ng-content>\r\n      </div>\r\n      <div class=\"card-actions\">\r\n        <ng-content select=\"[card-actions]\"></ng-content>\r\n      </div>\r\n    </div> -->\r\n<div class=\"verticalStyle\">\r\n     <div class=\"card\" [style]=\"{'backgound-color': backgroundColor}\">\r\n      <div class=\"card-cover\">\r\n      <img [src]=\"imageUrl\" alt=\"cover\">\r\n    </div>\r\n      <div class=\"meta-content\">\r\n\r\n\r\n<div *ngIf=\"avatarUrl\" class=\"meta-avatar\">\r\n        <img [src]=\"avatarUrl\" alt=\"avatar\">\r\n      </div>\r\n        <div class=\"meta-title\" *ngIf=\"title\">{{ title }}</div>\r\n        <div class=\"meta-description\" *ngIf=\"description\">{{ description }}</div>\r\n      </div>\r\n      <div class=\"Actions\">\r\n        <mat-icon>thumb_up</mat-icon>\r\n        <mat-icon>share</mat-icon>\r\n        <mat-icon>alarm</mat-icon>\r\n      </div>\r\n    </div>\r\n</div>\r\n<!-- <div class=\"card-cover\">\r\n      <img [src]=\"imageUrl\" alt=\"cover\">\r\n    </div> -->\r\n\r\n\r\n<!-- <div class=\"card-meta\">\r\n      <div *ngIf=\"avatarUrl\" class=\"meta-avatar\">\r\n        <img [src]=\"avatarUrl\" alt=\"avatar\">\r\n      </div>\r\n      <div class=\"meta-content\">\r\n        <div class=\"meta-title\" *ngIf=\"title\">{{ title }}</div>\r\n        <div class=\"meta-description\" *ngIf=\"description\">{{ description }}</div>\r\n      </div>\r\n    </div> -->\r\n\r\n\r\n<!-- <div class=\"VariantGroup\">\r\n  <div class=\"card\">\r\n<div class=\"card-cover\">\r\n      <img [src]=\"imageUrl\" alt=\"cover\">\r\n\r\n      <div class=\"meta-content\">\r\n\r\n<div *ngIf=\"avatarUrl\" class=\"meta-avatar\">\r\n        <img [src]=\"avatarUrl\" alt=\"avatar\">\r\n      </div>\r\n        <div class=\"meta-title\" *ngIf=\"title\">{{ title }}</div>\r\n        <div class=\"meta-description\" *ngIf=\"description\">{{ description }}</div>\r\n      </div>\r\n    </div>\r\n\r\n<footer class=\"Actions\">\r\n  <div>\r\n    <mat-icon svgIcon=\"thumbs-up\" aria-hidden=\"false\" aria-label=\"Example thumbs up SVG icon\"></mat-icon>\r\n\r\n    <mat-icon svgIcon=\"thumbs-up\" aria-hidden=\"false\" aria-label=\"Example thumbs up SVG icon\"></mat-icon>\r\n\r\n    <mat-icon svgIcon=\"thumbs-up\" aria-hidden=\"false\" aria-label=\"Example thumbs up SVG icon\"></mat-icon>\r\n\r\n  </div>\r\n</footer>\r\n</div>\r\n</div> -->\r\n\r\n"
+            "templateData": " <!-- <div class=\"card\">\r\n      <div class=\"card-cover\">\r\n        <ng-content select=\"[card-cover]\"></ng-content>\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <ng-content select=\"[card-body]\"></ng-content>\r\n      </div>\r\n      <div class=\"card-actions\">\r\n        <ng-content select=\"[card-actions]\"></ng-content>\r\n      </div>\r\n    </div> -->\r\n<div [class]=\"className\">\r\n     <div class=\"card\" [style]=\"{'backgound-color': backgroundColor}\">\r\n      <div class=\"card-cover\">\r\n      <img [src]=\"imageUrl\" alt=\"cover\">\r\n    </div>\r\n      <div class=\"meta-content\">\r\n\r\n\r\n<div *ngIf=\"avatarUrl\" class=\"meta-avatar\">\r\n        <img [src]=\"avatarUrl\" alt=\"avatar\">\r\n      </div>\r\n      <div class=\"rowFlex\">\r\n        <div class=\"meta-title\" *ngIf=\"title\">{{ title }}</div>\r\n        <div class=\"meta-description\" *ngIf=\"description\">{{ description }}</div>\r\n        </div>\r\n      </div>\r\n      <div class=\"Actions\">\r\n        <mat-icon>thumb_up</mat-icon>\r\n        <mat-icon>share</mat-icon>\r\n        <mat-icon>alarm</mat-icon>\r\n      </div>\r\n    </div>\r\n</div>\r\n<!-- <div class=\"card-cover\">\r\n      <img [src]=\"imageUrl\" alt=\"cover\">\r\n    </div> -->\r\n\r\n\r\n<!-- <div class=\"card-meta\">\r\n      <div *ngIf=\"avatarUrl\" class=\"meta-avatar\">\r\n        <img [src]=\"avatarUrl\" alt=\"avatar\">\r\n      </div>\r\n      <div class=\"meta-content\">\r\n        <div class=\"meta-title\" *ngIf=\"title\">{{ title }}</div>\r\n        <div class=\"meta-description\" *ngIf=\"description\">{{ description }}</div>\r\n      </div>\r\n    </div> -->\r\n\r\n\r\n<!-- <div class=\"VariantGroup\">\r\n  <div class=\"card\">\r\n<div class=\"card-cover\">\r\n      <img [src]=\"imageUrl\" alt=\"cover\">\r\n\r\n      <div class=\"meta-content\">\r\n\r\n<div *ngIf=\"avatarUrl\" class=\"meta-avatar\">\r\n        <img [src]=\"avatarUrl\" alt=\"avatar\">\r\n      </div>\r\n        <div class=\"meta-title\" *ngIf=\"title\">{{ title }}</div>\r\n        <div class=\"meta-description\" *ngIf=\"description\">{{ description }}</div>\r\n      </div>\r\n    </div>\r\n\r\n<footer class=\"Actions\">\r\n  <div>\r\n    <mat-icon svgIcon=\"thumbs-up\" aria-hidden=\"false\" aria-label=\"Example thumbs up SVG icon\"></mat-icon>\r\n\r\n    <mat-icon svgIcon=\"thumbs-up\" aria-hidden=\"false\" aria-label=\"Example thumbs up SVG icon\"></mat-icon>\r\n\r\n    <mat-icon svgIcon=\"thumbs-up\" aria-hidden=\"false\" aria-label=\"Example thumbs up SVG icon\"></mat-icon>\r\n\r\n  </div>\r\n</footer>\r\n</div>\r\n</div> -->\r\n\r\n"
         },
         {
             "name": "CardCoverComponent",
@@ -2547,7 +2627,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".overlay-wrapper {\r\n  position: fixed;\r\n  z-index: 1000;\r\n  background: #FFF;\r\n  border-radius: 4px;\r\n  box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);\r\n  animation: fadeIn .3s ease-in-out forwards;\r\n\r\n  &.top, &.bottom, &.left, &.right {\r\n    // 這裡添加具體的位置樣式，例如:\r\n    &.top { transform: translateY(-100%); }\r\n    // 繼續根據需求添加其他位置的樣式\r\n  }\r\n}\r\n\r\n@keyframes fadeIn {\r\n  from { opacity: 0; }\r\n  to { opacity: 1; }\r\n}\r\n",
+                    "data": ":root {\r\n  --primary: #0969DA;\r\n  --background: #24292F;\r\n  --gray: #847F90;\r\n  --white: #FCFCFC;\r\n  --navbar-height: 60px;\r\n}\r\n\r\nbody {\r\n  font-family: \"Red Hat Display\",\r\n      sans-serif;\r\n  font-size: 16px;\r\n}\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\n.menu__wrapper {\r\n  display: flex;\r\n  position: fixed;\r\n  flex-direction: row;\r\n  justify-content: space-between;\r\n  width: 100vw;\r\n  z-index: 2;\r\n  gap: 24px;\r\n  background-color: var(\r\n      --background\r\n  );\r\n  height: var(--navbar-height);\r\n  padding: 0px 16px;\r\n  align-items: center;\r\n}\r\n\r\n.menu__bar {\r\n  display: flex;\r\n  gap: 24px;\r\n  align-items: center;\r\n}\r\n\r\n.logo {\r\n  width: 32px;\r\n  height: 32px;\r\n  cursor: pointer;\r\n}\r\n\r\n.logo svg {\r\n  fill: var(--white);\r\n}\r\n\r\n.navigation {\r\n  display: flex;\r\n  flex-direction: row;\r\n  list-style-type: none;\r\n  align-items: center;\r\n  gap: 8px;\r\n  background-color: var(\r\n      --background);\r\n}\r\n\r\n.navigation > li {\r\ndisplay: flex;\r\nposition: relative;\r\ncursor: pointer;\r\nalign-items: center;\r\nheight: 42px;\r\n}\r\n\r\n.navigation > li > button > svg {\r\n  stroke: var(--white);\r\n  fill: var(--white);\r\n  color: var(--white);\r\n  margin-top: -2px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\n.navigation > li > a {\r\n  color: var(--white);\r\n  font-size: 14px;\r\n  text-decoration: none;\r\n}\r\n\r\n.navigation > li > button {\r\n  color: var(--white);\r\n  border-bottom: 2px solid transparent;\r\n  transition: all 0.3s ease;\r\n  text-decoration: none;\r\n  border: none;\r\n  cursor: pointer;\r\n  font-weight: 500;\r\n  gap: 4px;\r\n  opacity: 1;\r\n  align-items: center;\r\n  font-size: 14px;\r\n  flex-wrap: nowrap;\r\n  white-space: nowrap;\r\n  background: none;\r\n  display: flex;\r\n  padding: 3px 0;\r\n  position: relative;\r\n  transition: all 0.2s\r\n      ease-in-out;\r\n}\r\n\r\n.navigation > li > button:hover,\r\n.navigation > li > a:hover {\r\n  opacity: 0.75;\r\n}\r\n\r\n.navigation > li > button:hover > svg {\r\n  opacity: 0.75;\r\n  margin-top: 0;\r\n}\r\n\r\n.dropdown {\r\n  position: absolute;\r\n  top: 42px;\r\n  min-width: 240px;\r\n  border-radius: 8px;\r\n  background-color: var(--white);\r\n  display: none;\r\n  flex-direction: column;\r\n  padding: 16px;\r\n  box-shadow: 0 5px 30px\r\n      rgba(27, 31, 35, 0.1),\r\n      0 0 1px rgba(27, 31, 35, 0.4),\r\n      0 1px 2px rgba(27, 31, 35, 0.15);\r\n  z-index: 2;\r\n  animation: fadeIn 0.2s ease-in-out;\r\n}\r\n\r\n@keyframes fadeIn {\r\n  from {\r\n      opacity: 0;\r\n      transform: scale(0.99)\r\n          translateY(-0.7em);\r\n      transform-origin: top;\r\n  }\r\n  to {\r\n      opacity: 1;\r\n      transform: scale(1)\r\n          translateY(0);\r\n  }\r\n}\r\n\r\n.dropdown h3 {\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n  margin-bottom: 8px;\r\n}\r\n\r\n.list-menu-items {\r\n  display: flex;\r\n  list-style-type: none;\r\n  flex-direction: column;\r\n  gap: 4px;\r\n}\r\n\r\n\r\n.list-menu-items > li > a {\r\n  display: flex;\r\n  gap: 16px;\r\n  font-size: 14px;\r\n  width: 100%;\r\n  color: var(--gray);\r\n  text-decoration: none;\r\n}\r\n\r\n\r\n.list-menu-items > li > a:hover {\r\n  color: var(--primary);\r\n}\r\n\r\n.list-items-with-description {\r\n  list-style-type: none;\r\n}\r\n\r\n.list-items-with-description li {\r\n  display: flex;\r\n  padding: 4px;\r\n  gap: 16px;\r\n  width: 100%;\r\n}\r\n\r\n.list-items-with-description li:hover {\r\n  color: var(--primary);\r\n}\r\n\r\n.list-items-with-description li svg {\r\n  margin-top: 4px;\r\n  width: 16px;\r\n  height: 16px;\r\n}\r\n\r\n.list-items-with-description li:hover svg {\r\n  stroke: var(--primary);\r\n}\r\n\r\n.item-title h3 {\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n}\r\n\r\n.item-title p {\r\n  font-size: 12px;\r\n}\r\n\r\n.navigation > li:hover .dropdown {\r\n  display: flex;\r\n  opacity: 1;\r\n}\r\n\r\n.action-buttons {\r\n  display: flex;\r\n  gap: 8px;\r\n  align-items: center;\r\n  flex-wrap: nowrap;\r\n}\r\n\r\n.action-buttons a {\r\n  text-decoration: none;\r\n  font-size: 16px;\r\n  white-space: nowrap;\r\n  padding: 4px 8px;\r\n  transition: all 0.2s ease-in-out;\r\n}\r\n\r\n.action-buttons a:hover {\r\n  opacity: .75;\r\n}\r\n\r\n.secondary {\r\n  background: none;\r\n  color: var(--white);\r\n  outline: none;\r\n  border: none;\r\n}\r\n\r\n.primary {\r\n  color: var(--white);\r\n  border-radius: 8px;\r\n  border: 1px solid var(--white);\r\n}\r\n\r\n.burger-menu {\r\n  display: none;\r\n  outline: none;\r\n  border: none;\r\n  cursor: pointer;\r\n  background-color: transparent;\r\n}\r\n\r\n.burger-menu svg {\r\n  stroke: var(--white);\r\n}\r\n\r\n\r\n@media (max-width: 600px) {\r\n  .hide {\r\n      display: none;\r\n  }\r\n\r\n  .menu__wrapper {\r\n      justify-content: space-between;\r\n  }\r\n\r\n  .action-buttons {\r\n      order: -1;\r\n  }\r\n}\r\n\r\n\r\n@media (max-width: 600px) {\r\n  .burger-menu {\r\n      display: flex;\r\n      align-items: center;\r\n  }\r\n}\r\n",
                     "styleUrl": "./dropdown.component.scss"
                 }
             ],
@@ -2582,7 +2662,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<span role=\"presentation\" (click)=\"onClick.emit()\">\n  <ng-content select=\"[dropdown-trigger]\"></ng-content>\n</span>\n<ng-container *ngIf=\"isOpen\">\n  <div class=\"overlay-wrapper\" [style]=\"{'top.px': position.top, 'left.px': position.left}\" [class]=\"placement\">\n    <ng-content select=\"[dropdown-overlay]\"></ng-content>\n  </div>\n</ng-container>\n"
+            "templateData": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link\n    href=\"https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap\"\n    rel=\"stylesheet\"\n>\n\n<div class=\"background\">\n            <nav class=\"menu__wrapper\">\n                <div class=\"menu__bar\">\n                    <a\n                        href=\"#\"\n                        title=\"Logo\"\n                        class=\"logo\"\n                    >\n                        <svg height=\"32\" aria-hidden=\"true\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"32\" data-view-component=\"true\">\n                            <path d=\"M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z\"></path>\n                        </svg>\n                    </a>\n                    <ul class=\"navigation hide\">\n                        <li>\n                            <button>\n                                Product\n                                <svg opacity=\"0.5\" aria-hidden=\"true\" height=\"16\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" data-view-component=\"true\" class=\"octicon octicon-chevron-down HeaderMenu-icon ml-1\">\n                                    <path d=\"M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z\"></path>\n                                </svg>\n                            </button>\n                            <div class=\"dropdown\">\n                                <ul class=\"list-items-with-description\">\n                                    <li>\n                                        <svg aria-hidden=\"true\" height=\"24\" viewBox=\"0 0 24 24\" version=\"1.1\" width=\"24\" data-view-component=\"true\" class=\"octicon octicon-workflow color-fg-subtle mr-3\">\n                                            <path d=\"M1 3a2 2 0 0 1 2-2h6.5a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2H7v4.063C7 16.355 7.644 17 8.438 17H12.5v-2.5a2 2 0 0 1 2-2H21a2 2 0 0 1 2 2V21a2 2 0 0 1-2 2h-6.5a2 2 0 0 1-2-2v-2.5H8.437A2.939 2.939 0 0 1 5.5 15.562V11.5H3a2 2 0 0 1-2-2Zm2-.5a.5.5 0 0 0-.5.5v6.5a.5.5 0 0 0 .5.5h6.5a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5ZM14.5 14a.5.5 0 0 0-.5.5V21a.5.5 0 0 0 .5.5H21a.5.5 0 0 0 .5-.5v-6.5a.5.5 0 0 0-.5-.5Z\"></path>\n                                        </svg>\n                                        <div class=\"item-title\">\n                                            <h3>Actions</h3>\n                                            <p>Automate any workflow</p>\n                                        </div>\n                                    </li>\n                                    <li>\n                                        <svg aria-hidden=\"true\" height=\"24\" viewBox=\"0 0 24 24\" version=\"1.1\" width=\"24\" data-view-component=\"true\" class=\"octicon octicon-package color-fg-subtle mr-3\">\n                                            <path d=\"M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z\"></path>\n                                        </svg>\n                                        <div class=\"item-title\">\n                                            <h3>Packages</h3>\n                                            <p>Host and manage packages</p>\n                                        </div>\n                                    </li>\n                                    <li>\n                                        <svg aria-hidden=\"true\" height=\"24\" viewBox=\"0 0 24 24\" version=\"1.1\" width=\"24\" data-view-component=\"true\" class=\"octicon octicon-shield-check color-fg-subtle mr-3\">\n                                            <path d=\"M16.53 9.78a.75.75 0 0 0-1.06-1.06L11 13.19l-1.97-1.97a.75.75 0 0 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.06 0l5-5Z\"></path><path d=\"m12.54.637 8.25 2.675A1.75 1.75 0 0 1 22 4.976V10c0 6.19-3.771 10.704-9.401 12.83a1.704 1.704 0 0 1-1.198 0C5.77 20.705 2 16.19 2 10V4.976c0-.758.489-1.43 1.21-1.664L11.46.637a1.748 1.748 0 0 1 1.08 0Zm-.617 1.426-8.25 2.676a.249.249 0 0 0-.173.237V10c0 5.46 3.28 9.483 8.43 11.426a.199.199 0 0 0 .14 0C17.22 19.483 20.5 15.461 20.5 10V4.976a.25.25 0 0 0-.173-.237l-8.25-2.676a.253.253 0 0 0-.154 0Z\"></path>\n                                        </svg>\n                                        <div class=\"item-title\">\n                                            <h3>Security</h3>\n                                            <p>Find and fix vulnerabilities</p>\n                                        </div>\n                                    </li>\n                                    <li>\n                                        <svg aria-hidden=\"true\" height=\"24\" viewBox=\"0 0 24 24\" version=\"1.1\" width=\"24\" data-view-component=\"true\" class=\"octicon octicon-copilot color-fg-subtle mr-3\">\n                                            <path d=\"M23.922 16.992c-.861 1.495-5.859 5.023-11.922 5.023-6.063 0-11.061-3.528-11.922-5.023A.641.641 0 0 1 0 16.736v-2.869a.841.841 0 0 1 .053-.22c.372-.935 1.347-2.292 2.605-2.656.167-.429.414-1.055.644-1.517a10.195 10.195 0 0 1-.052-1.086c0-1.331.282-2.499 1.132-3.368.397-.406.89-.717 1.474-.952 1.399-1.136 3.392-2.093 6.122-2.093 2.731 0 4.767.957 6.166 2.093.584.235 1.077.546 1.474.952.85.869 1.132 2.037 1.132 3.368 0 .368-.014.733-.052 1.086.23.462.477 1.088.644 1.517 1.258.364 2.233 1.721 2.605 2.656a.832.832 0 0 1 .053.22v2.869a.641.641 0 0 1-.078.256ZM12.172 11h-.344a4.323 4.323 0 0 1-.355.508C10.703 12.455 9.555 13 7.965 13c-1.725 0-2.989-.359-3.782-1.259a2.005 2.005 0 0 1-.085-.104L4 11.741v6.585c1.435.779 4.514 2.179 8 2.179 3.486 0 6.565-1.4 8-2.179v-6.585l-.098-.104s-.033.045-.085.104c-.793.9-2.057 1.259-3.782 1.259-1.59 0-2.738-.545-3.508-1.492a4.323 4.323 0 0 1-.355-.508h-.016.016Zm.641-2.935c.136 1.057.403 1.913.878 2.497.442.544 1.134.938 2.344.938 1.573 0 2.292-.337 2.657-.751.384-.435.558-1.15.558-2.361 0-1.14-.243-1.847-.705-2.319-.477-.488-1.319-.862-2.824-1.025-1.487-.161-2.192.138-2.533.529-.269.307-.437.808-.438 1.578v.021c0 .265.021.562.063.893Zm-1.626 0c.042-.331.063-.628.063-.894v-.02c-.001-.77-.169-1.271-.438-1.578-.341-.391-1.046-.69-2.533-.529-1.505.163-2.347.537-2.824 1.025-.462.472-.705 1.179-.705 2.319 0 1.211.175 1.926.558 2.361.365.414 1.084.751 2.657.751 1.21 0 1.902-.394 2.344-.938.475-.584.742-1.44.878-2.497Z\"></path><path d=\"M14.5 14.25a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1Zm-5 0a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1Z\"></path>\n                                        </svg>\n                                        <div class=\"item-title\">\n                                            <h3>Copilot</h3>\n                                            <p>Write better code with AI</p>\n                                        </div>\n                                    </li>\n                                </ul>\n                            </div>\n                        </li>\n                        <li>\n                            <button>\n                                Solutions\n                                <svg opacity=\"0.5\" aria-hidden=\"true\" height=\"16\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" data-view-component=\"true\" class=\"octicon octicon-chevron-down HeaderMenu-icon ml-1\">\n                                    <path d=\"M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z\"></path>\n                                </svg>\n                            </button>\n                            <div class=\"dropdown\">\n                                <h3>For</h3>\n                                <ul class=\"list-menu-items\">\n                                    <li>\n                                        <a href=\"#enterprise\" title=\"Enterprise\">\n                                            Enterprise\n                                        </a>\n                                    </li>\n                                    <li>\n                                        <a href=\"#teams\" title=\"Teams\">\n                                            Teams\n                                        </a>\n                                    </li>\n                                    <li>\n                                        <a href=\"#startups\" title=\"Startups\">\n                                            Startups\n                                        </a>\n                                    </li>\n                                    <li>\n                                        <a href=\"#education\" title=\"Education\">\n                                            Education\n                                        </a>\n                                    </li>\n                                </ul>\n                            </div>\n                        </li>\n                        <li>\n                            <button>\n                                Open Source\n                                <svg opacity=\"0.5\" aria-hidden=\"true\" height=\"16\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" data-view-component=\"true\" class=\"octicon octicon-chevron-down HeaderMenu-icon ml-1\">\n                                    <path d=\"M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z\"></path>\n                                </svg>\n                            </button>\n                            <div class=\"dropdown\">\n                                <h3>Repositories</h3>\n                                <ul class=\"list-menu-items\">\n                                    <li>\n                                        <a href=\"#topics\" title=\"Topics\">\n                                            Topics\n                                        </a>\n                                    </li>\n                                    <li>\n                                        <a href=\"#trending\" title=\"Trending\">\n                                            Trending\n                                        </a>\n                                    </li>\n                                    <li>\n                                        <a href=\"#collections\" title=\"Collections\">\n                                            Collections\n                                        </a>\n                                    </li>\n                                </ul>\n                            </div>\n                        </li>\n                        <li>\n                            <a\n                                href=\"#pricing\"\n                                title=\"Pricing\"\n                            >\n                                Pricing\n                            </a>\n                        </li>\n                    </ul>\n                </div>\n                <div class=\"action-buttons\">\n                    <a href=\"#sign-in\" title=\"Sign in\" class=\"secondary hide\">\n                        Sign in\n                    </a>\n                    <a href=\"#sign-up\" title=\"Sign up\" class=\"primary\">\n                        Sign up\n                    </a>\n                </div>\n                <button class=\"burger-menu\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n                        <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"></path>\n                        <path d=\"M4 6l16 0\"></path>\n                        <path d=\"M4 12l16 0\"></path>\n                        <path d=\"M4 18l16 0\"></path>\n                    </svg>\n                </button>\n            </nav>\n        </div>\n"
         },
         {
             "name": "FormControlComponent",
@@ -3653,7 +3733,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".progress-bar {\r\n  display: flex;\r\n  align-items: center;\r\n\r\n  .trail {\r\n    width: 100%;\r\n    height: 8px;\r\n    background: #EEE;\r\n    border-radius: 50px;\r\n    position: relative;\r\n    overflow: hidden;\r\n  }\r\n\r\n  .track {\r\n    height: 8px;\r\n    border-radius: 50px;\r\n    position: relative;\r\n  }\r\n\r\n  .track:before {\r\n    content: '';\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 80px;\r\n    top: 0px;\r\n    background: linear-gradient(to right, transparent 0%, #FFFFFF99 50%, transparent 100%);\r\n    box-shadow: 0 4px 10px 0 #FFFFFF33;\r\n  }\r\n\r\n  .info {\r\n    flex: 0 0 50px;\r\n    text-align: right;\r\n    margin-left: 4px;\r\n  }\r\n}\r\n",
+                    "data": "#myProgress {\r\n  width: 100%;\r\n  background-color: #ddd;\r\n}\r\n\r\n#myBar {\r\n  width: 10%;\r\n  height: 30px;\r\n  background-color: #04AA6D;\r\n  text-align: center;\r\n  line-height: 30px;\r\n  color: white;\r\n}\r\n",
                     "styleUrl": "./progress-bar.component.scss"
                 }
             ],
@@ -3662,7 +3742,7 @@
             "implements": [
                 "OnChanges"
             ],
-            "templateData": "<div class=\"progress-bar\" [class]=\"className\">\n  <div class=\"trail\">\n    <div class=\"track\" [style.width.%]=\"formattedValue\" [style.background]=\"themeColor\" [@activeAnimation]=\"isStatusActive ? '*' : null\"></div>\n  </div>\n  <div *ngIf=\"showInfo\" class=\"info\">{{ formattedValue }}%</div>\n</div>\n"
+            "templateData": "<div id=\"myProgress\">\n  <div id=\"myBar\">10%</div>\n</div>\n"
         },
         {
             "name": "ProgressCircleComponent",
@@ -3888,7 +3968,7 @@
         },
         {
             "name": "RadioComponent",
-            "id": "component-RadioComponent-b9cfc7430d5da56789e6289e3e6e495249fd22f9eab7d37a60ffca702c820afe84e02d75504df3b2d8a15a5dad81fe6ccf7517aa42ec9d6932629698160404d1",
+            "id": "component-RadioComponent-18f996ccc6229e9f4ea96d861c37130389faeed19332429ff10746648e37b11c5e03503fcf997e6c2139836b823589dbf7fdcdadaad36fd13dba2d81e0a75ea9",
             "file": "src/app/components/radio/radio.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3907,30 +3987,48 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "isChecked",
+                    "name": "backgroundColor",
+                    "defaultValue": "'#f0f0f0'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "checked",
                     "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "isDisable",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 9,
-                    "type": "boolean",
+                    "type": "string",
                     "decorators": []
                 },
                 {
-                    "name": "isDisabled",
-                    "defaultValue": "false",
+                    "name": "name",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "themeColor",
-                    "defaultValue": "'primary'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 11,
-                    "type": "\"primary\" | \"secondary\" | string",
+                    "line": 12,
+                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -3938,7 +4036,7 @@
                     "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
+                    "line": 14,
                     "type": "any",
                     "decorators": []
                 }
@@ -3949,19 +4047,19 @@
                     "defaultValue": "new EventEmitter<any>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 17,
                     "type": "EventEmitter"
                 }
             ],
             "propertiesClass": [],
             "methodsClass": [
                 {
-                    "name": "handleClick",
+                    "name": "onChange",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 19,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -3975,17 +4073,17 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-radio',\r\n  templateUrl: './radio.component.html',\r\n  styleUrls: ['./radio.component.scss']\r\n})\r\nexport class RadioComponent {\r\n  @Input() isChecked: boolean = false;\r\n  @Input() isDisabled: boolean = false;\r\n  @Input() themeColor: 'primary' | 'secondary' | string = 'primary';\r\n  @Input() value: any = null;\r\n  @Output() change = new EventEmitter<any>();\r\n\r\n  handleClick(): void {\r\n    if (!this.isDisabled) {\r\n      this.change.emit(this.value);\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-radio',\r\n  templateUrl: './radio.component.html',\r\n  styleUrls: ['./radio.component.scss']\r\n})\r\nexport class RadioComponent {\r\n  @Input() label: string = '';\r\n\r\n\r\n@Input() name: string = '';\r\n@Input() backgroundColor: string = '#f0f0f0';\r\n  @Input() value: any = null;\r\n  @Input() checked: boolean = false;\r\n  @Input() isDisable: boolean = false;\r\n  @Output() change = new EventEmitter<any>();\r\n\r\n  onChange() {\r\n    this.change.emit(this.value);\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "/* src/app/components/radio/radio.component.scss */\r\n.radio-container {\r\n  display: block;\r\n  position: relative;\r\n  padding-left: 35px;\r\n  margin-bottom: 12px;\r\n  cursor: pointer;\r\n  user-select: none;\r\n}\r\n\r\n/* 隱藏 radio 按鈕 */\r\n.radio-container input {\r\n  position: absolute;\r\n  opacity: 0;\r\n  cursor: pointer;\r\n}\r\n\r\n/* 自定義的 radio 按鈕標記 */\r\n.checkmark {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  height: 25px;\r\n  width: 25px;\r\n  background-color: #eee;\r\n  border-radius: 50%;\r\n}\r\n\r\n/* 當選中時，添加一個藍色背景 */\r\n.radio-container input:checked ~ .checkmark {\r\n  background-color: #2196F3;\r\n}\r\n\r\n/* 創建標記的指示器（\"點\"） */\r\n.checkmark:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  display: none;\r\n}\r\n\r\n/* 當選中時顯示指示器（\"點\"） */\r\n.radio-container input:checked ~ .checkmark:after {\r\n  display: block;\r\n}\r\n\r\n/* 自定義指示器（\"點\"）的樣式 */\r\n.radio-container .checkmark:after {\r\n  top: 9px;\r\n  left: 9px;\r\n  width: 8px;\r\n  height: 8px;\r\n  border-radius: 50%;\r\n  background: white;\r\n}\r\n",
                     "styleUrl": "./radio.component.scss"
                 }
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<!-- <div class=\"radio-option\" (click)=\"handleClick()\">\r\n  <mat-icon *ngIf=\"isChecked; else unchecked\">{{ checkedIcon }}</mat-icon>\r\n  <ng-template #unchecked><mat-icon>{{ unCheckedIcon }}</mat-icon></ng-template>\r\n  <span><ng-content></ng-content></span>\r\n</div> -->\r\n"
+            "templateData": "<!-- src/app/components/radio/radio.component.html -->\r\n<label class=\"radio-container\">\r\n  {{label}}\r\n  <input type=\"radio\" [name]=\"name\" [value]=\"value\" [checked]=\"checked\" [disabled]=\"isDisable\" (change)=\"onChange()\" [style]=\"{'backgound-color': backgroundColor}\">\r\n  <span class=\"checkmark\"></span>\r\n</label>\r\n"
         },
         {
             "name": "RadioGroupComponent",
@@ -4573,7 +4671,7 @@
         },
         {
             "name": "SliderComponent",
-            "id": "component-SliderComponent-5f95786fdeb57f44ce8a90ea519f1d9c932dffcc92d6741ecf9a143ae89c2f72ff2685613231b903955378e5f42634ec42e71ef981747bfd884946363208e9fc",
+            "id": "component-SliderComponent-8a1a023404d9f2f2c7f1d7bad8e2ee4fad1809f7a64fcdd433a2f3d0f3697053c1266c21b068ba741722807e165b29bf15cd6abaef097fb1f8047f75c321cb5e",
             "file": "src/app/components/slider/slider.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4592,32 +4690,48 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "value",
+                    "defaultValue": "50",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": false,
-            "imports": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-slider',\n  templateUrl: './slider.component.html',\n  styleUrls: ['./slider.component.scss']\n})\nexport class SliderComponent {\n\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\n@Component({\n  selector: 'app-slider',\n  templateUrl: './slider.component.html',\n  styleUrls: ['./slider.component.scss'],\n  imports: [FormsModule],\n  standalone: true\n})\nexport class SliderComponent {\n  value: number = 50; // 默認滑塊值\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": ".slidecontainer {\r\n  width: 100%;\r\n}\r\n\r\n.slider {\r\n  -webkit-appearance: none;\r\n  width: 100%;\r\n  height: 25px;\r\n  background: #d3d3d3;\r\n  outline: none;\r\n  opacity: 0.7;\r\n  -webkit-transition: .2s;\r\n  transition: opacity .2s;\r\n}\r\n\r\n.slider:hover {\r\n  opacity: 1;\r\n}\r\n\r\n.slider::-webkit-slider-thumb {\r\n  -webkit-appearance: none;\r\n  appearance: none;\r\n  width: 25px;\r\n  height: 25px;\r\n  background: #04AA6D;\r\n  cursor: pointer;\r\n}\r\n\r\n.slider::-moz-range-thumb {\r\n  width: 25px;\r\n  height: 25px;\r\n  background: #04AA6D;\r\n  cursor: pointer;\r\n}\r\n",
                     "styleUrl": "./slider.component.scss"
                 }
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>slider works!</p>\n"
+            "templateData": "<!-- slider.component.html -->\n<div class=\"slidecontainer\">\n  <input type=\"range\" min=\"1\" max=\"100\" [(ngModel)]=\"value\" class=\"slider\" id=\"myRange\">\n  <p>Value: <span>{{ value }}</span></p>\n</div>\n"
         },
         {
             "name": "SpinComponent",
-            "id": "component-SpinComponent-aa3646a2307c159c40d005198d48065855cc6c729b41358a095a9dd9a604626c18af7f42af96a7f6e4ddd8a49be240df0df392f7f6d7091ac79dab903f4c9fdf",
+            "id": "component-SpinComponent-aefb0345f02b096aa417e678a51c41535d8e1e92a0e5ac90d25e55980728af464ecf7bb71a21a63d95bf5873f883317416d76a6c8200e4424f8f62f5082d5824",
             "file": "src/app/components/spin/spin.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4652,6 +4766,15 @@
                     "line": 10,
                     "type": "boolean",
                     "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "50",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "number",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
@@ -4663,7 +4786,7 @@
                     "type": "ElementRef | undefined",
                     "optional": false,
                     "description": "",
-                    "line": 11,
+                    "line": 12,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -4682,7 +4805,7 @@
                     "type": "literal type",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 14
                 }
             ],
             "methodsClass": [
@@ -4692,7 +4815,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 16,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -4706,11 +4829,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, AfterViewInit, ViewChild, ElementRef } from '@angular/core';\n\n@Component({\n  selector: 'app-spin',\n  templateUrl: './spin.component.html',\n  styleUrls: ['./spin.component.scss']\n})\nexport class SpinComponent implements AfterViewInit {\n  @Input() indicator: string | HTMLElement = '';\n  @Input() isLoading: boolean = false;\n  @ViewChild('indicatorElement') indicatorElement: ElementRef | undefined;\n\n  indicatorSize: { width: number, height: number } = { width: 0, height: 0 };\n\n  ngAfterViewInit(): void {\n    setTimeout(() => { // Ensure view has been initialized\n      if (this.indicatorElement) {\n        const element = this.indicatorElement.nativeElement.children[0];\n        this.indicatorSize = {\n          width: element.clientWidth,\n          height: element.clientHeight,\n        };\n      }\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, Input, AfterViewInit, ViewChild, ElementRef } from '@angular/core';\n\n@Component({\n  selector: 'app-spin',\n  templateUrl: './spin.component.html',\n  styleUrls: ['./spin.component.scss']\n})\nexport class SpinComponent implements AfterViewInit {\n  @Input() indicator: string | HTMLElement = '';\n  @Input() isLoading: boolean = false;\n  @Input() size: number = 50; // 默認大小為 50px\n  @ViewChild('indicatorElement') indicatorElement: ElementRef | undefined;\n\n  indicatorSize: { width: number, height: number } = { width: 0, height: 0 };\n\n  ngAfterViewInit(): void {\n    setTimeout(() => { // Ensure view has been initialized\n      if (this.indicatorElement) {\n        const element = this.indicatorElement.nativeElement.children[0];\n        this.indicatorSize = {\n          width: element.clientWidth,\n          height: element.clientHeight,\n        };\n      }\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".spin-container {\r\n  position: relative;\r\n  display: inline-flex;\r\n\r\n  .mask {\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #FFF;\r\n    opacity: 0.8;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1;\r\n  }\r\n\r\n  .indicator {\r\n    position: absolute;\r\n    z-index: 2;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n}\r\n",
+                    "data": ".spin-container {\r\n  position: relative;\r\n  display: inline-flex;\r\n\r\n  .mask {\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #FFF;\r\n    opacity: 0.8;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1;\r\n  }\r\n\r\n  .indicator {\r\n    position: absolute;\r\n    z-index: 2;\r\n    top: 50%;\r\n    left: 50%;\r\n    transform: translate(-50%, -50%);\r\n  }\r\n}\r\n\r\n// src/app/components/spin/spin.component.scss\r\n\r\n.spin {\r\n  border: 4px solid rgba(0,0,0,0.1);\r\n  border-radius: 50%;\r\n  border-top-color: #000;\r\n  animation: spin 1s ease-in-out infinite;\r\n  -webkit-animation: spin 1s ease-in-out infinite;\r\n}\r\n\r\n@keyframes spin {\r\n  0% { transform: rotate(0deg); }\r\n  100% { transform: rotate(360deg); }\r\n}\r\n\r\n// .spin {\r\n//   background-color: #000;\r\n//   border-radius: 50%;\r\n//   opacity: 0.5;\r\n//   animation: fadeInOut 1.5s ease-in-out infinite;\r\n// }\r\n\r\n@keyframes fadeInOut {\r\n  0%, 100% { opacity: 0; }\r\n  50% { opacity: 1; }\r\n}\r\n",
                     "styleUrl": "./spin.component.scss"
                 }
             ],
@@ -4719,11 +4842,11 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<ng-container *ngIf=\"!isLoading; else loadingContent\">\n  <ng-content></ng-content>\n</ng-container>\n<ng-template #loadingContent>\n  <div class=\"spin-container\">\n    <ng-content></ng-content>\n    <div class=\"mask\"></div>\n    <div class=\"indicator\" #indicatorElement [style]=\"{'width.px': indicatorSize.width, 'height.px': indicatorSize.height}\">\n      <!-- Assume the indicator is passed as an HTML string or Angular component -->\n      <ng-container *ngIf=\"indicator as component\">{{component}}</ng-container>\n    </div>\n  </div>\n</ng-template>\n"
+            "templateData": "<!-- src/app/components/spin/spin.component.html -->\n<div *ngIf=\"isLoading\" class=\"spin\" [style]=\"{'width.px': size, 'height.px': size}\"></div>\n"
         },
         {
             "name": "SwitchComponent",
-            "id": "component-SwitchComponent-7fc6a9fa1af4041f886bb4ec8e34016aaa12cb8e8e2c29add8631d9182d6183540a251b9aba58a8eee3b5459eedc8c29f8c3f647ad1eeedfd421a02ac7fa7629",
+            "id": "component-SwitchComponent-5744e897a2e70329447d9e21384b71f7f4a3c876422d2685675e98d83da892cd98272388f758d91fdb1cb89985fcef47e849a1d58a628173a6020b7a5c9f49e5",
             "file": "src/app/components/switch/switch.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4746,7 +4869,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 18,
                     "type": "string",
                     "decorators": []
                 },
@@ -4755,7 +4878,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "line": 14,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4764,7 +4887,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -4773,8 +4896,8 @@
                     "defaultValue": "'default'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
-                    "type": "string",
+                    "line": 16,
+                    "type": "\"default\" | \"small\"",
                     "decorators": []
                 },
                 {
@@ -4782,7 +4905,7 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 17,
                     "type": "string",
                     "decorators": []
                 },
@@ -4791,7 +4914,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 19,
                     "type": "string",
                     "decorators": []
                 }
@@ -4802,7 +4925,7 @@
                     "defaultValue": "new EventEmitter<boolean>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 21,
                     "type": "EventEmitter"
                 }
             ],
@@ -4814,7 +4937,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -4823,16 +4946,25 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": false,
-            "imports": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter, ElementRef, AfterViewInit } from '@angular/core';\r\nimport { ColorService } from 'src/app/services/color.service';\r\n\r\n@Component({\r\n  selector: 'app-switch',\r\n  templateUrl: './switch.component.html',\r\n  styleUrls: ['./switch.component.scss']\r\n})\r\nexport class SwitchComponent {\r\n  @Input() isChecked: boolean = false;\r\n  @Input() isDisabled: boolean = false;\r\n  @Input() size: string = 'default';\r\n  @Input() themeColor: string = 'primary';\r\n  @Input() checkedChildren: string = '';\r\n  @Input() unCheckedChildren: string = '';\r\n  @Output() onChange = new EventEmitter<boolean>();\r\n\r\n  get switchWidth(): number {\r\n    return this.size === 'small' ? 40 : 60;\r\n  }\r\n\r\n  get thumbSize(): number {\r\n    return this.size === 'small' ? 12 : 20;\r\n  }\r\n\r\n  get switchColor(): string {\r\n    // 實際應用中，themeColor 可以根據需要來決定顏色\r\n    return this.isChecked ? '#1890ff' : '#ccc';\r\n  }\r\n\r\n  toggleSwitch() {\r\n    this.onChange.emit(!this.isChecked);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input, Output, EventEmitter, ElementRef, AfterViewInit } from '@angular/core';\r\nimport { MatIcon, MatIconModule } from '@angular/material/icon';\r\nimport { ColorService } from 'src/app/services/color.service';\r\n\r\n@Component({\r\n  selector: 'app-switch',\r\n  templateUrl: './switch.component.html',\r\n  styleUrls: ['./switch.component.scss'],\r\n  standalone: true,\r\n  imports:[CommonModule, MatIconModule]\r\n})\r\nexport class SwitchComponent {\r\n  @Input() isChecked = false;\r\n  @Input() isDisabled = false;\r\n  @Input() size: 'default' | 'small' = 'default';\r\n  @Input() themeColor = 'primary';\r\n  @Input() checkedChildren = '';\r\n  @Input() unCheckedChildren = '';\r\n\r\n  @Output() onChange = new EventEmitter<boolean>();\r\n\r\n  get switchWidth() {\r\n    return this.size === 'small' ? 40 : 60;\r\n  }\r\n\r\n  get thumbSize() {\r\n    return this.size === 'small' ? 12 : 18;\r\n  }\r\n\r\n  get switchColor() {\r\n    return this.isChecked ? 'green' : '#ccc';\r\n  }\r\n\r\n  toggleSwitch() {\r\n    if (!this.isDisabled) {\r\n      this.isChecked = !this.isChecked;\r\n      this.onChange.emit(this.isChecked);\r\n    }\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".switch-button {\r\n  height: 20px;\r\n  display: inline-flex;\r\n  align-items: center;\r\n  border-radius: 50px;\r\n  position: relative;\r\n  cursor: pointer;\r\n  box-sizing: content-box;\r\n}\r\n.thumb {\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #FFF;\r\n  border-radius: 50%;\r\n  position: absolute;\r\n  transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\r\n}\r\n.label {\r\n  position: absolute;\r\n  font-size: 14px;\r\n  white-space: nowrap;\r\n  top: 50%;\r\n  transform: translateY(-50%);\r\n}\r\n",
+                    "data": ".switch-button {\r\n  height: 20px;\r\n  display: inline-flex;\r\n  align-items: center;\r\n  border-radius: 50px;\r\n  position: relative;\r\n  cursor: pointer;\r\n  box-sizing: content-box;\r\n}\r\n.thumb {\r\n  width: 20px;\r\n  height: 20px;\r\n  background-color: #FFF;\r\n  border-radius: 50%;\r\n  position: absolute;\r\n  transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\r\n}\r\n.label {\r\n  position: absolute;\r\n  font-size: 14px;\r\n  white-space: nowrap;\r\n  top: 50%;\r\n  transform: translateY(-50%);\r\n}\r\n\r\n\r\n.transitionStyle {\r\n  transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, right 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\r\n}\r\n\r\n\r\n/* app-switch.component.css */\r\n.switch-container {\r\n  display: inline-flex;\r\n  align-items: center;\r\n  cursor: pointer;\r\n  position: relative;\r\n  width: 60px; /* 滑動按鈕的寬度 */\r\n  height: 24px; /* 滑動按鈕的高度 */\r\n  background-color: #ccc; /* 未選中時的背景顏色 */\r\n  border-radius: 12px; /* 圓角 */\r\n  transition: background-color 0.3s ease;\r\n}\r\n\r\n.switch-container.checked {\r\n  background-color: #4caf50; /* 選中時的背景顏色 */\r\n}\r\n\r\n.switch-icon {\r\n  position: absolute;\r\n  color: white; /* icon 顏色 */\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.switch-container.checked .switch-icon {\r\n  transform: translateX(36px); /* 根據滑動按鈕的寬度調整 */\r\n}\r\n\r\n.switch-button {\r\n  position: absolute;\r\n  top: 2px;\r\n  left: 2px;\r\n  width: 20px; /* 滑塊的大小 */\r\n  height: 20px;\r\n  background-color: white;\r\n  border-radius: 50%;\r\n  transition: transform 0.3s ease;\r\n}\r\n\r\n.switch-container.checked .switch-button {\r\n  transform: translateX(36px); /* 滑塊移動的距離 */\r\n}\r\n\r\nmat-icon {\r\n  user-select: none;\r\n  pointer-events: none;\r\n}\r\n",
                     "styleUrl": "./switch.component.scss"
                 }
             ],
@@ -4843,31 +4975,31 @@
                     "name": "switchWidth",
                     "getSignature": {
                         "name": "switchWidth",
-                        "type": "number",
-                        "returnType": "number",
-                        "line": 18
+                        "type": "",
+                        "returnType": "",
+                        "line": 23
                     }
                 },
                 "thumbSize": {
                     "name": "thumbSize",
                     "getSignature": {
                         "name": "thumbSize",
-                        "type": "number",
-                        "returnType": "number",
-                        "line": 22
+                        "type": "",
+                        "returnType": "",
+                        "line": 27
                     }
                 },
                 "switchColor": {
                     "name": "switchColor",
                     "getSignature": {
                         "name": "switchColor",
-                        "type": "string",
-                        "returnType": "string",
-                        "line": 26
+                        "type": "",
+                        "returnType": "",
+                        "line": 31
                     }
                 }
             },
-            "templateData": "<div\r\n      class=\"switch-button\"\r\n      [style]=\"{ 'width.px': switchWidth, 'background-color': switchColor, 'border-color': switchColor }\"\r\n      (click)=\"isDisabled ? null : toggleSwitch()\"\r\n    >\r\n      <div class=\"thumb\" [style]=\"{ 'left.px': isChecked ? switchWidth - thumbSize : 0 }\"></div>\r\n      <div class=\"label\" [style]=\"{ 'padding.px': thumbSize / 3 }\">\r\n        <span *ngIf=\"isChecked\">{{ checkedChildren }}</span>\r\n        <span *ngIf=\"!isChecked\">{{ unCheckedChildren }}</span>\r\n      </div>\r\n    </div>\r\n"
+            "templateData": "<!-- <div class=\"switch-button\" [style]=\"{'width.px': switchWidth, 'background-color': switchColor}\" (click)=\"toggleSwitch()\">\r\n      <div class=\"thumb\" [style]=\"{'left.px': isChecked ? switchWidth - thumbSize : 0}\"></div>\r\n      <div class=\"label\" [style]=\"{'padding.px': thumbSize / 3}\">\r\n        {{ isChecked ? checkedChildren : unCheckedChildren }}\r\n      </div>\r\n    </div> -->\r\n\r\n<!-- app-switch.component.html -->\r\n<div class=\"switch-container\" [class.checked]=\"isChecked\" (click)=\"toggleSwitch()\" [style]=\"{'background-color': themeColor} \">\r\n  <div class=\"switch-icon\">\r\n    <!-- 條件顯示 icon，這裡以 done 為例 -->\r\n    <mat-icon *ngIf=\"isChecked\">done</mat-icon>\r\n    <mat-icon *ngIf=\"!isChecked\">close</mat-icon>\r\n  </div>\r\n  <div class=\"switch-button\"></div>\r\n</div>\r\n"
         },
         {
             "name": "TabComponent",
@@ -4924,7 +5056,7 @@
         },
         {
             "name": "TableComponent",
-            "id": "component-TableComponent-7fbeef40ab5da5e651106068591929d8c14ab9cae42217fceb139fb0c562d6c1c0ce9764dfb5253d2f46ac4fbc6a579ec105f0fb7bab089878ed4ae531551c10",
+            "id": "component-TableComponent-7ea162daf5fb66638e5722e38354e1594d56cf9d2518f136a3716ad7d4d3abea9524c5688c97622bd9de9bb7df8d3453f71fbf302e6f5e6e194235822d5080ee",
             "file": "src/app/components/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4959,6 +5091,15 @@
                     "line": 19,
                     "type": "any[]",
                     "decorators": []
+                },
+                {
+                    "name": "tableClass",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
                 }
             ],
             "outputsClass": [],
@@ -4973,21 +5114,21 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\ninterface TableColumn {\n  key: string;\n  title: string;\n  width?: number;\n  fixed?: boolean;\n  dataIndex?: string;\n  render?: (data: any) => any;\n}\n\n@Component({\n  selector: 'app-table',\n  templateUrl: './table.component.html',\n  styleUrls: ['./table.component.scss']\n})\nexport class TableComponent {\n  @Input() columns: TableColumn[] = [];\n  @Input() dataSource: any[] = [];\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\ninterface TableColumn {\n  key: string;\n  title: string;\n  width?: number;\n  fixed?: boolean;\n  dataIndex?: string;\n  render?: (data: any) => any;\n}\n\n@Component({\n  selector: 'app-table',\n  templateUrl: './table.component.html',\n  styleUrls: ['./table.component.scss']\n})\nexport class TableComponent {\n  @Input() columns: TableColumn[] = [];\n  @Input() dataSource: any[] = [];\n  @Input() tableClass: string = '';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".table-wrapper {\r\n  width: 100%;\r\n  overflow: auto;\r\n}\r\n\r\n.styled-table {\r\n  border-collapse: collapse;\r\n  th, td {\r\n    border: 1px solid #000;\r\n    box-sizing: border-box;\r\n  }\r\n\r\n  th.fixed, td.fixed {\r\n    position: sticky;\r\n    left: 0px;\r\n    z-index: 2;\r\n    &:after {\r\n      content: \"\";\r\n      position: absolute;\r\n      right: 0px;\r\n      top: 0px;\r\n      width: 30px;\r\n      height: 100%;\r\n      box-shadow: inset 10px 0 8px -8px #00000026;\r\n      transform: translateX(100%);\r\n    }\r\n  }\r\n}\r\n",
+                    "data": ".table-wrapper {\r\n  width: 100%;\r\n  overflow: auto;\r\n}\r\n\r\n.styled-table {\r\n  border-collapse: collapse;\r\n  th, td {\r\n    border: 1px solid #000;\r\n    box-sizing: border-box;\r\n  }\r\n\r\n  th.fixed, td.fixed {\r\n    position: sticky;\r\n    left: 0px;\r\n    z-index: 2;\r\n    &:after {\r\n      content: \"\";\r\n      position: absolute;\r\n      right: 0px;\r\n      top: 0px;\r\n      width: 30px;\r\n      height: 100%;\r\n      box-shadow: inset 10px 0 8px -8px #00000026;\r\n      transform: translateX(100%);\r\n    }\r\n  }\r\n}\r\n\r\n\r\n.styledTable {\r\n  border-collapse: collapse;\r\n  * {\r\n    border: 1px solid #000;\r\n    box-sizing: border-box;\r\n  }\r\n  background-color: gold;\r\n  width: 100%;\r\n}\r\n\r\n.stickyLeftStyle {\r\n  position: sticky;\r\n  left: 0px;\r\n  z-index: 2;\r\n  &:after {\r\n    content: \"\";\r\n    position: absolute;\r\n    right: 0px;\r\n    top: 0px;\r\n    width: 30px;\r\n    height: 100%;\r\n    box-shadow: inset 10px 0 8px -8px #00000026;\r\n    transform: translateX(100%);\r\n  }\r\n}\r\n",
                     "styleUrl": "./table.component.scss"
                 }
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"table-wrapper\">\n  <table class=\"styled-table\">\n    <thead>\n      <tr>\n        <ng-container *ngFor=\"let column of columns\">\n          <th [style]=\"{'width.px': column.width}\" [class.fixed]=\"column.fixed\">\n            {{ column.title }}\n          </th>\n        </ng-container>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let data of dataSource\">\n        <ng-container *ngFor=\"let column of columns\">\n          <td [class.fixed]=\"column.fixed\">\n            {{ column.render ? column.render(data[column.dataIndex]) : data[column.dataIndex] }}\n          </td>\n        </ng-container>\n      </tr>\n    </tbody>\n  </table>\n</div>\n"
+            "templateData": "<div class=\"table-wrapper\">\n  <table [class]=\"tableClass\">\n    <thead>\n      <tr>\n        <ng-container *ngFor=\"let column of columns\">\n          <th [style]=\"{'width.px': column.width}\" [class.fixed]=\"column.fixed\">\n            {{ column.title }}\n          </th>\n        </ng-container>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let data of dataSource\">\n        <ng-container *ngFor=\"let column of columns\">\n          <td [class.fixed]=\"column.fixed\">\n            {{ column.render ? column.render(data[column.dataIndex]) : data[column.dataIndex] }}\n          </td>\n        </ng-container>\n      </tr>\n    </tbody>\n  </table>\n</div>\n"
         },
         {
             "name": "TabsComponent",
-            "id": "component-TabsComponent-07400deef118fcfd2b9489b8e09115e5f7093885478a8784d24e42c76e8fbe32cd7a102f7b651decf428592a627ac7f491d61884a883af8c3c625f7a57762162",
+            "id": "component-TabsComponent-8379de269e265bd8ca85d0be2a1b606fea1a026fdaf072abac60916d354eba45f73ba3a6366615219d619b094000910fe598e46ade44e2147733f80b92e89fa4",
             "file": "src/app/components/tabs/tabs.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4995,36 +5136,18 @@
             "outputs": [],
             "providers": [],
             "selector": "app-tabs",
-            "styleUrls": [],
-            "styles": [
-                "\n    .tabs li.active {\n      background-color: #ddd;\n    }\n  "
+            "styleUrls": [
+                "./tabs.component.scss"
             ],
-            "template": "<ul class=\"tabs\">\n  <li *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" [class.active]=\"tab.active\">\n    {{ tab.tabTitle }}\n  </li>\n</ul>\n<ng-content></ng-content>\n",
-            "templateUrl": [],
+            "styles": [],
+            "templateUrl": [
+                "./tabs.component.html"
+            ],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "tabs",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "QueryList<TabComponent> | undefined",
-                    "optional": false,
-                    "description": "",
-                    "line": 21,
-                    "decorators": [
-                        {
-                            "name": "ContentChildren",
-                            "stringifiedArguments": "TabComponent"
-                        }
-                    ],
-                    "modifierKind": [
-                        170
-                    ]
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [
                 {
                     "name": "ngAfterContentInit",
@@ -5032,37 +5155,9 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 10,
                     "deprecated": false,
                     "deprecationMessage": ""
-                },
-                {
-                    "name": "selectTab",
-                    "args": [
-                        {
-                            "name": "tab",
-                            "type": "TabComponent",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 30,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "tab",
-                            "type": "TabComponent",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
                 }
             ],
             "deprecated": false,
@@ -5074,14 +5169,20 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ContentChildren, QueryList, AfterContentInit } from '@angular/core';\nimport { TabComponent } from '../tab/tab.component';\n\n@Component({\n  selector: 'app-tabs',\n  template: `\n    <ul class=\"tabs\">\n      <li *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" [class.active]=\"tab.active\">\n        {{ tab.tabTitle }}\n      </li>\n    </ul>\n    <ng-content></ng-content>\n  `,\n  styles: [`\n    .tabs li.active {\n      background-color: #ddd;\n    }\n  `]\n})\nexport class TabsComponent implements AfterContentInit {\n  @ContentChildren(TabComponent) tabs: QueryList<TabComponent> | undefined;\n\n  ngAfterContentInit() {\n    const activeTabs = this.tabs?.filter(tab => tab.active);\n    if (activeTabs && activeTabs.length === 0) {\n      this.selectTab(this.tabs?.first!); // Add the non-null assertion operator (!) to ensure that the tab is not undefined\n    }\n  }\n\n  selectTab(tab: TabComponent) {\n    this.tabs?.toArray().forEach(t => t.active = false);\n    tab.active = true;\n  }\n}\n",
+            "sourceCode": "import { Component, ContentChildren, QueryList, AfterContentInit } from '@angular/core';\nimport { TabComponent } from '../tab/tab.component';\n\n@Component({\n  selector: 'app-tabs',\n  templateUrl: './tabs.component.html',\n  styleUrls: ['./tabs.component.scss']\n})\nexport class TabsComponent implements AfterContentInit {\n  ngAfterContentInit(): void {\n    throw new Error('Method not implemented.');\n  }\n  // @ContentChildren(TabComponent) tabs: QueryList<TabComponent> | undefined;\n\n  // ngAfterContentInit() {\n  //   const activeTabs = this.tabs?.filter(tab => tab.active);\n  //   if (activeTabs && activeTabs.length === 0) {\n  //     this.selectTab(this.tabs?.first!); // Add the non-null assertion operator (!) to ensure that the tab is not undefined\n  //   }\n  // }\n\n  // selectTab(tab: TabComponent) {\n  //   this.tabs?.toArray().forEach(t => t.active = false);\n  //   tab.active = true;\n  // }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "\n    .tabs li.active {\n      background-color: #ddd;\n    }\n  \n",
+            "styleUrlsData": [
+                {
+                    "data": "/* Importing Google font - Poppins */\r\n@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');\r\n\r\n        * {\r\n            margin: 0;\r\n            padding: 0;\r\n            box-sizing: border-box;\r\n            font-family: 'Poppins', sans-serif;\r\n        }\r\n\r\n        body {\r\n            height: 100vh;\r\n            display: flex;\r\n            justify-content: center;\r\n            align-items: center;\r\n        }\r\n\r\n        .new-container {\r\n            overflow-x: hidden;\r\n            color: #000;\r\n            font-size: 1.15rem;\r\n            width: 60%;\r\n            display: flex;\r\n            flex-direction: column;\r\n            background: #9c9c9b;\r\n            border-radius: 10px;\r\n            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);\r\n        }\r\n\r\n        .new-activeTab-indicator {\r\n            display: inline-block;\r\n            height: 2px;\r\n            width: 33.3%;\r\n            background-color: #fff;\r\n            transition: transform 0.4s ease-out;\r\n        }\r\n\r\n        .new-tabHeader-container {\r\n            display: flex;\r\n            justify-content: space-between;\r\n            background: #9c9c9b;\r\n        }\r\n\r\n        .new-tabContent-container {\r\n            display: flex;\r\n            transition: transform 0.4s ease-out;\r\n        }\r\n\r\n        .new-tabHeader {\r\n            cursor: pointer;\r\n            color: #000;\r\n            transition: color 0.4s ease;\r\n            padding: 15px 20px;\r\n            flex-grow: 1;\r\n            text-align: center;\r\n        }\r\n\r\n        .new-tabContent {\r\n            width: 100%;\r\n            flex-shrink: 0;\r\n            padding: 15px 20px;\r\n            box-sizing: border-box;\r\n            background: #9c9c9b;\r\n        }\r\n\r\n        .new-tabContent h1 {\r\n            margin: 0;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(1):checked~.new-tabContent-container {\r\n            transform: translateX(0);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(1):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(1) {\r\n            color: #fff;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(1):checked~.new-activeTab-indicator {\r\n            transform: translateX(0);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(2):checked~.new-tabContent-container {\r\n            transform: translateX(-100%);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(2):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(2) {\r\n            color: #fff;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(2):checked~.new-activeTab-indicator {\r\n            transform: translateX(100%);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(3):checked~.new-tabContent-container {\r\n            transform: translateX(-200%);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(3):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(3) {\r\n            color: #fff;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(3):checked~.new-activeTab-indicator {\r\n            transform: translateX(200%);\r\n        }\r\n",
+                    "styleUrl": "./tabs.component.scss"
+                }
+            ],
+            "stylesData": "",
             "extends": [],
             "implements": [
                 "AfterContentInit"
-            ]
+            ],
+            "templateData": "<div class=\"new-container\">\n        <input type=\"radio\" name=\"new-radio\" class=\"new-radioInput\" id=\"new-one\" checked hidden />\n        <input type=\"radio\" name=\"new-radio\" class=\"new-radioInput\" id=\"new-two\" hidden />\n        <input type=\"radio\" name=\"new-radio\" class=\"new-radioInput\" id=\"new-three\" hidden />\n\n        <div class=\"new-tabHeader-container\">\n            <label for=\"new-one\" class=\"new-tabHeader\">One</label>\n            <label for=\"new-two\" class=\"new-tabHeader\">Two</label>\n            <label for=\"new-three\" class=\"new-tabHeader\">Three</label>\n        </div>\n\n        <span class=\"new-activeTab-indicator\"></span>\n        <div class=\"new-tabContent-container\">\n            <div class=\"new-tabContent new-one-content\">\n                <h1>hello1</h1>\n                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia dolor reprehenderit id dicta modiaspernatur possimus optio. Quibusdam similique, ullam consequuntur magniiusto veniam iste obcaecatieum autem, accusantium dicta.</p>\n            </div>\n\n            <div class=\"new-tabContent new-two-content\">\n                <h1>hello 2</h1>\n                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia dolor reprehenderit id dicta modiaspernatur possimus optio. Quibusdam similique, ullam consequuntur magniiusto veniam iste obcaecatieum autem, accusantium dicta.</p>\n            </div>\n\n            <div class=\"new-tabContent new-three-content\">\n                <h1>hello 3</h1>\n                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia dolor reprehenderit id dicta modiaspernatur possimus optio. Quibusdam similique, ullam consequuntur magniiusto veniam iste obcaecatieum autem, accusantium dicta.</p>\n            </div>\n        </div>\n    </div>\n"
         },
         {
             "name": "TextFieldComponent",
@@ -5211,7 +5312,7 @@
         },
         {
             "name": "ToastComponent",
-            "id": "component-ToastComponent-6d960021e727095f05e35f169d1a342b893097f24b269f749b31c42649068deb1da9806401f2164d6a3a4c326d462a6d5882e7fe4c1dcf80b925e88abc71986b",
+            "id": "component-ToastComponent-09b468efc57e02a2e4a26912450f7561a612969c7dca757230232a3924c975c55e4cac0a092769c6a5c91e8120447af94ba2e892560e65e0e35774aa36879113",
             "file": "src/app/components/toast/toast.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5290,11 +5391,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit, OnDestroy, TemplateRef } from '@angular/core';\nimport { ToastService } from 'src/app/services/toast.service';\n\n@Component({\n  selector: 'app-toast',\n  templateUrl: './toast.component.html',\n  styleUrls: ['./toast.component.scss'],\n})\nexport class ToastComponent implements OnInit, OnDestroy {\n  @Input() content: string | TemplateRef<any> | null = null;\n  @Input() type: 'success' | 'info' | 'warn' | 'error' = 'info';\n  @Input() duration: number = 3000;\n\n  constructor(private toastService: ToastService) {}\n\n  ngOnInit(): void {\n    setTimeout(() => this.toastService.removeToast(this), this.duration);\n  }\n\n  ngOnDestroy(): void {\n    console.log('Toast destroyed');\n  }\n}\n",
+            "sourceCode": "import { Component, Input, OnInit, OnDestroy, TemplateRef } from '@angular/core';\nimport { ToastService } from 'src/app/services/toast.service';\n\n@Component({\n  selector: 'app-toast',\n  templateUrl: './toast.component.html',\n  styleUrls: ['./toast.component.scss'],\n})\nexport class ToastComponent implements OnInit, OnDestroy {\n  @Input() content: string | TemplateRef<any> | null = null;\n  @Input() type: 'success' | 'info' | 'warn' | 'error' = 'info';\n  @Input() duration: number = 3000;\n\n  constructor(private toastService: ToastService) {}\n\n  ngOnInit(): void {\n    // setTimeout(() => this.toastService.removeToast(this), this.duration);\n  }\n\n  ngOnDestroy(): void {\n    console.log('Toast destroyed');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "\r\n:root {\r\n  --notification-background: #313e2c;\r\n  --notification-primary: #aaec8a;\r\n  --background: #FAF9FF;\r\n}\r\n\r\n* {\r\n  box-sizing: border-box;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nbody {\r\n  font-family: 'Poppins', sans-serif;\r\n  height: 100vh;\r\n  background-color: var(--background);\r\n}\r\n\r\n.notification {\r\n  position: absolute;\r\n  width: max-content;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 1.5rem;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  border-radius: 0.375rem;\r\n  background-color: var(\r\n      --notification-background);\r\n  color: var(--notification-primary);\r\n  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);\r\n  transform: translateY(1.875rem);\r\n  opacity: 0;\r\n  visibility: hidden;\r\n  animation: fade-in 3s linear;\r\n}\r\n\r\n.notification__icon {\r\n  height: 1.625rem;\r\n  width: 1.625rem;\r\n  margin-right: 0.25rem;\r\n}\r\n\r\n.notification__body {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  padding: 1rem 0.5rem;\r\n}\r\n\r\n.notification__progress {\r\n  position: absolute;\r\n  left: 0.25rem;\r\n  bottom: 0.25rem;\r\n  width: calc(100% - 0.5rem);\r\n  height: 0.2rem;\r\n  transform: scaleX(0);\r\n  transform-origin: left;\r\n  background: linear-gradient(\r\n      to right,\r\n      var(--notification-background),\r\n      var(--notification-primary)\r\n  );\r\n  border-radius: inherit;\r\n  animation: progress 2.5s 0.3s linear;\r\n}\r\n\r\n@keyframes fade-in {\r\n  5% {\r\n      opacity: 1;\r\n      visibility: visible;\r\n      transform: translateY(0);\r\n  }\r\n  95% {\r\n      opacity: 1;\r\n      transform: translateY(0);\r\n  }\r\n}\r\n\r\n@keyframes progress {\r\n  to {\r\n      transform: scaleX(1);\r\n  }\r\n}\r\n",
                     "styleUrl": "./toast.component.scss"
                 }
             ],
@@ -5330,7 +5431,7 @@
                 "OnInit",
                 "OnDestroy"
             ],
-            "templateData": "<div class=\"toast\" [class]=\"type\">\n  <!-- <div class=\"icon\">{{ iconMap[type] }}</div> -->\n  <div class=\"content\">\n    <ng-container *ngIf=\"content; else defaultContent\">{{ content }}</ng-container>\n    <ng-template #defaultContent>No content</ng-template>\n  </div>\n</div>\n"
+            "templateData": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Poppins&display=swap\" rel=\"stylesheet\">\n<div class=\"notification\">\n  <div class=\"notification__body\">\n    <img src=\"assets/check-circle.svg\" alt=\"Success\" class=\"notification__icon\">\n    Your account has been created! &#128640;\n  </div>\n  <div class=\"notification__progress\"></div>\n</div>\n"
         },
         {
             "name": "ToastContainerComponent",
@@ -5551,7 +5652,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "/* Tooltip container */\r\n.tooltip {\r\n  position: relative;\r\n  display: inline-block;\r\n  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */\r\n}\r\n\r\n/* Tooltip text */\r\n.tooltip .tooltiptext {\r\n  visibility: hidden;\r\n  width: 120px;\r\n  background-color: #555;\r\n  color: #fff;\r\n  text-align: center;\r\n  padding: 5px 0;\r\n  border-radius: 6px;\r\n\r\n  /* Position the tooltip text */\r\n  position: absolute;\r\n  z-index: 1;\r\n  bottom: 125%;\r\n  left: 50%;\r\n  margin-left: -60px;\r\n\r\n  /* Fade in tooltip */\r\n  opacity: 0;\r\n  transition: opacity 0.3s;\r\n}\r\n\r\n/* Tooltip arrow */\r\n.tooltip .tooltiptext::after {\r\n  content: \"\";\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 50%;\r\n  margin-left: -5px;\r\n  border-width: 5px;\r\n  border-style: solid;\r\n  border-color: #555 transparent transparent transparent;\r\n}\r\n\r\n/* Show the tooltip text when you mouse over the tooltip container */\r\n.tooltip:hover .tooltiptext {\r\n  visibility: visible;\r\n  opacity: 1;\r\n}\r\n",
                     "styleUrl": "./tooltip.component.scss"
                 }
             ],
@@ -5613,7 +5714,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<div class=\"tooltip-wrapper\" [style]=\"{'background-color': themeColor}\" [class]=\"placement\">\n  {{ content }}\n  <ng-container *ngIf=\"showArrow\">\n    <div class=\"tooltip-arrow\"></div>\n  </ng-container>\n</div>\n"
+            "templateData": "<div class=\"tooltip\">Hover over me\n  <span class=\"tooltiptext\">Tooltip text</span>\n</div>\n"
         },
         {
             "name": "TooltipContentComponent",
@@ -5698,7 +5799,7 @@
         },
         {
             "name": "UploadComponent",
-            "id": "component-UploadComponent-0ac50a8045607716482f2c81fedc57cf8f681c8fdec04ee244d1c7475a0980f2ec2786600805d6e7116885193d396f4478f78e63239f4a64910947c8cf6f908a",
+            "id": "component-UploadComponent-532f5e9999e458eda6a2b8c9ac2d7afc9c7c74a9db910f944e76fc7d0810cfc64b63c7621484c309f5088e0be8cfdbf83d4121e0ad689f9affa152c1c37dad35",
             "file": "src/app/components/upload/upload.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5715,67 +5816,117 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "accept",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 10,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "multiple",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 11,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "resetKey",
-                    "defaultValue": "0",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 9,
-                    "type": "number",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "change",
-                    "defaultValue": "new EventEmitter<FileList | null>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 12,
-                    "type": "EventEmitter<FileList | null>"
-                }
-            ],
+            "inputsClass": [],
+            "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "inputFileRef",
+                    "name": "fileInput",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "ElementRef<HTMLInputElement>",
+                    "type": "ElementRef | undefined",
                     "optional": false,
                     "description": "",
-                    "line": 14,
+                    "line": 12,
                     "decorators": [
                         {
                             "name": "ViewChild",
-                            "stringifiedArguments": "'inputFileRef'"
+                            "stringifiedArguments": "'fileInput'"
                         }
                     ],
                     "modifierKind": [
                         170
                     ]
+                },
+                {
+                    "name": "isOver",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "message",
+                    "defaultValue": "'No Files Selected'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "handleOnChange",
+                    "name": "onDragLeave",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onDragOver",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "DragEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "DragEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onDrop",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "DragEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "DragEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onFileSelected",
                     "args": [
                         {
                             "name": "event",
@@ -5787,7 +5938,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 20,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -5803,14 +5954,52 @@
                     ]
                 },
                 {
-                    "name": "handleOnClickUpload",
+                    "name": "onReset",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 16,
+                    "line": 9,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "onSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateDropzoneFileList",
+                    "args": [
+                        {
+                            "name": "arg0",
+                            "type": "File",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "arg0",
+                            "type": "File",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "deprecated": false,
@@ -5822,29 +6011,29 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'app-upload',\n  templateUrl: './upload.component.html',\n  styleUrls: ['./upload.component.scss']\n})\nexport class UploadComponent {\n  @Input() resetKey: number = 0;\n  @Input() accept?: string;\n  @Input() multiple: boolean = false;\n  @Output() change: EventEmitter<FileList | null> = new EventEmitter<FileList | null>();\n  @ViewChild('inputFileRef')\n  inputFileRef!: ElementRef<HTMLInputElement>;\n\n  handleOnClickUpload(): void {\n    this.inputFileRef.nativeElement.click();\n  }\n\n  handleOnChange(event: Event): void {\n    const files = (event.target as HTMLInputElement).files;\n    this.change.emit(files);\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'app-upload',\n  templateUrl: './upload.component.html',\n  styleUrls: ['./upload.component.scss']\n})\nexport class UploadComponent {\nonReset() {\nthrow new Error('Method not implemented.');\n}\n  @ViewChild('fileInput') fileInput: ElementRef | undefined;\n  isOver: boolean = false;\n  message: string = 'No Files Selected';\n\n  onDragOver(event: DragEvent) {\n    event.preventDefault();\n    this.isOver = true;\n  }\n\n  onDragLeave() {\n    this.isOver = false;\n  }\n\n  onDrop(event: DragEvent) {\n    event.preventDefault();\n    const files = event.dataTransfer?.files;\n    if (files && files.length > 0) {\n      this.updateDropzoneFileList(files[0]);\n      if (this.fileInput?.nativeElement) {\n        this.fileInput.nativeElement.files = files;\n      }\n    }\n    this.isOver = false;\n  }\n  updateDropzoneFileList(arg0: File) {\n    throw new Error('Method not implemented.');\n  }\n\n  onFileSelected(event: Event) {\n    const input = event.target as HTMLInputElement;\n    if (input.files && input.files.length > 0) {\n      this.updateDropzoneFileList(input.files[0]);\n    }\n  }\n\n  onSubmit() {\n    const fileInput = this.fileInput?.nativeElement;\n    if (fileInput && fileInput.files && fileInput.files.length > 0) {\n      const file = fileInput.files[0];\n      console.log(file);\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "* {\r\n  box-sizing: border-box;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n:root {\r\n  --primary: #111926;\r\n  --white: #fff;\r\n  --background: #F8F8FF;\r\n  --gray: #D3D3D3;\r\n}\r\n\r\nbody {\r\n  font-family: 'Work Sans', sans-serif;\r\n  background-color: var(--background);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  height: 100vh;\r\n  padding: 1rem;\r\n}\r\n\r\n.dropzone-box {\r\n  border-radius: 2rem;\r\n  padding: 2rem;\r\n  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;\r\n  display: flex;\r\n  justify-content: center;\r\n  flex-direction: column;\r\n  max-width: 36rem;\r\n  width: 100%;\r\n  background-color: var(--white);\r\n}\r\n\r\n.dropzone-box h2 {\r\n  font-size: 2rem;\r\n  margin-bottom: 0.5rem;\r\n}\r\n\r\n.dropzone-area {\r\n  padding: 1rem;\r\n  position: relative;\r\n  margin-top: 1rem;\r\n  min-height: 16rem;\r\n  display: flex;\r\n  text-align: center;\r\n  justify-content: center;\r\n  align-items: center;\r\n  flex-direction: column;\r\n  border: 2px dashed var(--primary);\r\n  border-radius: 1rem;\r\n  color: var(--primary);\r\n  cursor: pointer;\r\n}\r\n\r\n.dropzone-area [type=\"file\"] {\r\n  cursor: pointer;\r\n  position: absolute;\r\n  opacity: 0;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n.dropzone-area .file-upload-icon svg {\r\n  height: 5rem;\r\n  width: 5rem;\r\n  margin-bottom: 0.5rem;\r\n  stroke: var(--primary);\r\n}\r\n\r\n.dropzone--over {\r\n  border-style: solid;\r\n  background-color: var(--background);\r\n}\r\n\r\n.dropzone-actions {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  padding-top: 1.5rem;\r\n  margin-top: 1.5rem;\r\n  border-top: 1px solid var(--gray);\r\n  gap: 1rem;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.dropzone-actions button {\r\n  flex-grow: 1;\r\n  min-height: 3rem;\r\n  font-size: 1.2rem;\r\n}\r\n\r\n.dropzone-actions button:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n.dropzone-actions button[type='reset'] {\r\n  background-color: transparent;\r\n  border: 1px solid var(--gray);\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem 1rem;\r\n  color: var(--primary);\r\n  cursor: pointer;\r\n}\r\n\r\n.dropzone-actions button[type='submit'] {\r\n  background-color: var(--primary);\r\n  border: 1px solid var(--primary);\r\n  border-radius: 0.5rem;\r\n  padding: 0.5rem 1rem;\r\n  color: var(--white);\r\n  cursor: pointer;\r\n}\r\n",
                     "styleUrl": "./upload.component.scss"
                 }
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<input\n  #inputFileRef\n  type=\"file\"\n  [attr.accept]=\"accept\"\n  [attr.multiple]=\"multiple ? 'multiple' : null\"\n  style=\"display: none\"\n  (change)=\"handleOnChange($event)\"\n/>\n<ng-content (click)=\"handleOnClickUpload()\"></ng-content>\n"
+            "templateData": "<!-- file-upload.component.html -->\n<div class=\"dropzone-box\" (dragover)=\"onDragOver($event)\" (drop)=\"onDrop($event)\" (dragleave)=\"onDragLeave()\">\n  <h2>Upload and attach files</h2>\n  <p>Attach files to this project</p>\n  <div class=\"dropzone-area\" [class.dropzone--over]=\"isOver\">\n    <div class=\"file-upload-icon\">\n      <!-- SVG icon here -->\n    </div>\n    <p>Click to upload or drag and drop</p>\n    <input type=\"file\" required (change)=\"onFileSelected($event)\" #fileInput>\n    <p class=\"message\">{{ message }}</p>\n  </div>\n  <div class=\"dropzone-actions\">\n    <button type=\"reset\" (click)=\"onReset()\">\n      Cancel\n    </button>\n    <button type=\"submit\" (click)=\"onSubmit()\">\n      Save\n    </button>\n  </div>\n</div>\n"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-d1e97f473e9718600a109f126db5a2c195a9b7d74dcc762249544527809a52c0da1b52a2fd69c6f58fa8281159fbbcd361ac0d5d071ba0250f39d3ba60fd2707",
+            "id": "module-AppModule-c7bd006ad7b2076e7cb7fc5479d249c580d75c7e2d61caf53364163c2821176aec3d8df3f4fc697db845ebc15808022db41e2d82ef946f20be6a1425eb7c05f8",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -6103,7 +6292,7 @@
                 "linktype": "component",
                 "name": "BadgeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
@@ -6185,7 +6374,7 @@
                 "linktype": "component",
                 "name": "CardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
@@ -6348,7 +6537,7 @@
                 "linktype": "component",
                 "name": "RadioComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {
@@ -6393,7 +6582,7 @@
                 "linktype": "component",
                 "name": "SliderComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {
@@ -6402,7 +6591,7 @@
                 "linktype": "component",
                 "name": "SpinComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -6429,7 +6618,7 @@
                 "linktype": "component",
                 "name": "TableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -6447,7 +6636,7 @@
                 "linktype": "component",
                 "name": "TabsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {
@@ -6501,7 +6690,7 @@
                 "linktype": "component",
                 "name": "UploadComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {
