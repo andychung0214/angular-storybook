@@ -1,24 +1,36 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { AccordionHeaderComponent } from '../accordion-header/accordion-header.component';
-import { AccordionPanelComponent } from '../accordion-panel/accordion-panel.component';
-import { CommonModule } from '@angular/common';
+import { Component, Input, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-accordion',
-  standalone: true,
-  imports:[
-    AccordionPanelComponent,
-    CommonModule
-  ],
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
-
+  // No need for 'inputs' property to import CommonModule, remove it.
 })
 export class AccordionComponent {
-  @Input() title: string = '';
-  isOpen: boolean = false;
 
-  toggle() {
-    this.isOpen = !this.isOpen;
+@Input() items= [
+  { question: 'Who is your favorite artist?', answer: 'Leonardo da Vinci.' },
+  { question: 'What is your favorite movie genre?', answer: 'Science fiction.' },
+  { question: 'What is your favorite book?', answer: '"To Kill a Mockingbird" by Harper Lee.' },
+  { question: 'Do you have any pets?', answer: 'Yes, I have a dog named Max.' }
+];
+
+  // items = [
+  //   { question: 'Who is your favorite artist?', answer: 'Leonardo da Vinci.' },
+  //   { question: 'What is your favorite movie genre?', answer: 'Science fiction.' },
+  //   { question: 'What is your favorite book?', answer: '"To Kill a Mockingbird" by Harper Lee.' },
+  //   { question: 'Do you have any pets?', answer: 'Yes, I have a dog named Max.' }
+  // ];
+
+  constructor(private renderer: Renderer2) {}
+
+  toggleAccordion(item: any, index: number): void {
+    const isActive = item.classList.toggle('active'); // This toggles and returns the new state
+    const content = item.querySelector('.item-content');
+    const icon = item.querySelector('.item-icon i');
+
+    this.renderer.setStyle(content, 'maxHeight', isActive ? `${content.scrollHeight}px` : null);
+    console.log(`Accordion ${index} is now ${isActive ? 'open' : 'closed'}.`);
   }
+
 }

@@ -19,6 +19,9 @@ export const Default = {
   args: {
     header: 'Header Content Here',
     isExpand: false,
+    items :[
+      { question: 'Who is your favorite artist?', answer: 'Leonardo da Vinci.' },
+    ],
   },
   template: `
     <app-accordion

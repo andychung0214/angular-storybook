@@ -1,8 +1,15 @@
-<div class="accordion">
-      <div class="accordion-header" (click)="toggle()">
-        {{ title }}
-      </div>
-      <div *ngIf="isOpen" class="accordion-body">
-        <ng-content></ng-content>
-      </div>
+<div class="accordion-container">
+    <h2>Accordion Design</h2>
+
+    <div class="accordion-item" #item *ngFor="let qa of items; let i = index">
+        <header class="item-header" (click)="toggleAccordion(item, i)">
+            <h4 class="item-question">{{ qa.question }}</h4>
+            <div class="item-icon">
+                <i class='bx bx-chevron-down'></i>
+            </div>
+        </header>
+        <div class="item-content">
+            <p class="item-answer">{{ qa.answer }}</p>
+        </div>
     </div>
+</div>
