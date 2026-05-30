@@ -1,5 +1,5 @@
 .card {
-  border: 1px solid #DDD;
+  border: 1px solid var(--line);
   border-radius: 4px;
   overflow: hidden;
   width: 300px;
@@ -34,7 +34,7 @@
 }
 .meta-description {
   font-size: 14px;
-  color: #666;
+  color: var(--line);
 }
 
 .verticalStyle {
@@ -61,7 +61,7 @@
 
 .Actions {
   padding: 16px 16px 4px 16px;
-  color: #888;
+  color: var(--line);
   & > svg {
     cursor: pointer;
   }

@@ -9,8 +9,8 @@
   padding: 0 6px;
   height: 20px;
   border-radius: 10px;
-  background-color: #F85149; /* 可以透過 @Input 進行自定義 */
-  color: white;
+  background-color: var(--forest-500); /* 可以透過 @Input 進行自定義 */
+  color: var(--forest-950);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +65,7 @@
   z-index: 1;
   transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   // background-color: ${(props) => props.$color};
-  color: #FFF;
+  color: var(--forest-950);
 }
 
 .DotBadge {

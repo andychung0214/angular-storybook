@@ -1,19 +1,72 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 html, body {
   margin: 0;
   height: 100%;
+  font-family: "Rajdhani", "Segoe UI", sans-serif;
+  color: #e6ffef;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(40, 177, 101, 0.2) 0%, transparent 36%),
+    radial-gradient(circle at 88% 90%, rgba(19, 103, 57, 0.24) 0%, transparent 34%),
+    linear-gradient(140deg, #010a06 0%, #062315 42%, #041a10 100%);
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(95, 216, 148, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(95, 216, 148, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  z-index: -1;
+}
+
 storybook-dynamic-app-root {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100%;
-  padding: 25px;
+  padding: 24px;
 }
+
 storybook-dynamic-app-root > ng-component {
   margin: 0 auto;
+  width: 100%;
+}
+
+.sbdocs,
+.sbdocs-wrapper,
+.sbdocs-content {
+  color: #e6ffef !important;
+  font-family: "Rajdhani", "Segoe UI", sans-serif !important;
+}
+
+.sbdocs-preview,
+.docs-story {
+  border: 1px solid rgba(95, 216, 148, 0.32) !important;
+  border-radius: 12px;
+  background: linear-gradient(150deg, rgba(9, 50, 31, 0.94) 0%, rgba(5, 24, 15, 0.98) 90%) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(95, 216, 148, 0.2), inset 0 0 24px rgba(95, 216, 148, 0.08) !important;
+}
+
+.sbdocs h1,
+.sbdocs h2,
+.sbdocs h3,
+.sbdocs h4,
+.sbdocs h5,
+.sbdocs h6 {
+  font-family: "Orbitron", "Rajdhani", sans-serif !important;
+  letter-spacing: 0.04em;
+}
+
+.sbdocs code,
+.sbdocs pre {
+  background: rgba(2, 18, 10, 0.8) !important;
+  border: 1px solid rgba(95, 216, 148, 0.3) !important;
+  color: #baf8d2 !important;
 }
 </style>

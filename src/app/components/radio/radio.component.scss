@@ -22,13 +22,13 @@
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #eee;
+  background-color: var(--line);
   border-radius: 50%;
 }
 
 /* 當選中時，添加一個藍色背景 */
 .radio-container input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: var(--forest-500);
 }
 
 /* 創建標記的指示器（"點"） */
@@ -50,5 +50,5 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: white;
+  background: var(--text-main);
 }

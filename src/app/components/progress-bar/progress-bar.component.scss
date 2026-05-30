@@ -1,13 +1,14 @@
 #myProgress {
   width: 100%;
-  background-color: #ddd;
+  background-color: rgba(2, 18, 10, 0.75);
+  border: 1px solid var(--line);
 }
 
 #myBar {
   width: 10%;
   height: 30px;
-  background-color: #04AA6D;
+  background-color: var(--forest-500);
   text-align: center;
   line-height: 30px;
-  color: white;
+  color: var(--forest-950);
 }

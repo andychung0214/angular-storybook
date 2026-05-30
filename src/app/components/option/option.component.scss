@@ -26,6 +26,6 @@
 
   &:hover .option__unchecked-icon:not(.disabled) {
     // color: #your-hover-color; // 替換為實際應用顏色
-    color: green; // 替換為實際應用顏色
+    color: var(--forest-500); // 替換為實際應用顏色
   }
 }

@@ -5,10 +5,10 @@
 }
 
 :root {
-  --primary: #111926;
-  --white: #fff;
-  --background: #F8F8FF;
-  --gray: #D3D3D3;
+  --primary: var(--forest-500);
+  --white: var(--text-main);
+  --background: rgba(2, 22, 12, 0.9);
+  --gray: var(--line);
 }
 
 body {
@@ -24,7 +24,7 @@ body {
 .dropzone-box {
   border-radius: 2rem;
   padding: 2rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.36), inset 0 0 18px rgba(95, 216, 148, 0.09);
   display: flex;
   justify-content: center;
   flex-direction: column;

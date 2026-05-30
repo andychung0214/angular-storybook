@@ -6,7 +6,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #FFF;
+    background: var(--text-main);
     opacity: 0.8;
     top: 0;
     left: 0;
@@ -27,7 +27,7 @@
 .spin {
   border: 4px solid rgba(0,0,0,0.1);
   border-radius: 50%;
-  border-top-color: #000;
+  border-top-color: var(--forest-950);
   animation: spin 1s ease-in-out infinite;
   -webkit-animation: spin 1s ease-in-out infinite;
 }
@@ -38,7 +38,7 @@
 }
 
 // .spin {
-//   background-color: #000;
+//   background-color: var(--forest-950);
 //   border-radius: 50%;
 //   opacity: 0.5;
 //   animation: fadeInOut 1.5s ease-in-out infinite;

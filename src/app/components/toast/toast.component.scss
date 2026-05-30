@@ -1,8 +1,8 @@
 
 :root {
-  --notification-background: #313e2c;
-  --notification-primary: #aaec8a;
-  --background: #FAF9FF;
+  --notification-background: var(--forest-900);
+  --notification-primary: var(--forest-300);
+  --background: rgba(2, 22, 12, 0.9);
 }
 
 * {
@@ -29,7 +29,7 @@ body {
   background-color: var(
       --notification-background);
   color: var(--notification-primary);
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35), inset 0 0 24px rgba(95, 216, 148, 0.1);
   transform: translateY(1.875rem);
   opacity: 0;
   visibility: hidden;

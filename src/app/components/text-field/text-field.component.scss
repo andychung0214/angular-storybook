@@ -1,7 +1,7 @@
 .styled-text-field {
   display: inline-flex;
   align-items: center;
-  border: 1px solid #DDD;
+  border: 1px solid var(--line);
   border-radius: 4px;
   padding: 8px 12px;
   box-sizing: border-box;
@@ -12,23 +12,23 @@
   }
 
   &.error {
-    border: 1px solid red;
+    border: 1px solid var(--forest-400);
     &:hover {
-      border: 1px solid red;
+      border: 1px solid var(--forest-400);
     }
   }
 
   &.disabled {
-    border: 1px solid #CCC;
+    border: 1px solid var(--line);
     cursor: not-allowed;
-    background: #EEE;
+    background: var(--line);
 
     .input {
       cursor: not-allowed;
       background: none;
     }
     &:hover {
-      border: 1px solid #CCC;
+      border: 1px solid var(--line);
     }
   }
 

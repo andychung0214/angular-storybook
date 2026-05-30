@@ -21,15 +21,15 @@
 
   &.contained {
     // Contained style
-    color: #FFF;
+    color: var(--text-main);
   }
   &.outlined {
     // Outlined style
-    background: #FFF;
+    background: var(--text-main);
   }
   &.text {
     // Text style
-    background: #FFF;
+    background: var(--text-main);
   }
   &.is-loading {
     // Loading style

@@ -1,14 +1,13 @@
 :root {
-  --primary: #0969DA;
-  --background: #24292F;
-  --gray: #847F90;
-  --white: #FCFCFC;
+  --primary: var(--forest-500);
+  --background: var(--forest-900);
+  --gray: var(--text-muted);
+  --white: var(--text-main);
   --navbar-height: 60px;
 }
 
 body {
-  font-family: "Red Hat Display",
-      sans-serif;
+  font-family: "Rajdhani", sans-serif;
   font-size: 16px;
 }
 
@@ -26,11 +25,9 @@ body {
   width: 100vw;
   z-index: 2;
   gap: 24px;
-  background-color: var(
-      --background
-  );
+  background-color: var(--background);
   height: var(--navbar-height);
-  padding: 0px 16px;
+  padding: 0 16px;
   align-items: center;
 }
 
@@ -56,16 +53,15 @@ body {
   list-style-type: none;
   align-items: center;
   gap: 8px;
-  background-color: var(
-      --background);
+  background-color: var(--background);
 }
 
 .navigation > li {
-display: flex;
-position: relative;
-cursor: pointer;
-align-items: center;
-height: 42px;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  align-items: center;
+  height: 42px;
 }
 
 .navigation > li > button > svg {
@@ -100,8 +96,6 @@ height: 42px;
   display: flex;
   padding: 3px 0;
   position: relative;
-  transition: all 0.2s
-      ease-in-out;
 }
 
 .navigation > li > button:hover,
@@ -123,25 +117,21 @@ height: 42px;
   display: none;
   flex-direction: column;
   padding: 16px;
-  box-shadow: 0 5px 30px
-      rgba(27, 31, 35, 0.1),
-      0 0 1px rgba(27, 31, 35, 0.4),
-      0 1px 2px rgba(27, 31, 35, 0.15);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(95, 216, 148, 0.18);
   z-index: 2;
   animation: fadeIn 0.2s ease-in-out;
 }
 
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: scale(0.99)
-          translateY(-0.7em);
-      transform-origin: top;
+    opacity: 0;
+    transform: scale(0.99) translateY(-0.7em);
+    transform-origin: top;
   }
+
   to {
-      opacity: 1;
-      transform: scale(1)
-          translateY(0);
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 
@@ -158,7 +148,6 @@ height: 42px;
   gap: 4px;
 }
 
-
 .list-menu-items > li > a {
   display: flex;
   gap: 16px;
@@ -167,7 +156,6 @@ height: 42px;
   color: var(--gray);
   text-decoration: none;
 }
-
 
 .list-menu-items > li > a:hover {
   color: var(--primary);
@@ -228,7 +216,7 @@ height: 42px;
 }
 
 .action-buttons a:hover {
-  opacity: .75;
+  opacity: 0.75;
 }
 
 .secondary {
@@ -256,25 +244,23 @@ height: 42px;
   stroke: var(--white);
 }
 
-
 @media (max-width: 600px) {
   .hide {
-      display: none;
+    display: none;
   }
 
   .menu__wrapper {
-      justify-content: space-between;
+    justify-content: space-between;
   }
 
   .action-buttons {
-      order: -1;
+    order: -1;
   }
 }
 
-
 @media (max-width: 600px) {
   .burger-menu {
-      display: flex;
-      align-items: center;
+    display: flex;
+    align-items: center;
   }
 }

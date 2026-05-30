@@ -4,7 +4,7 @@
   justify-content: space-between;
   height: 38px;
   box-sizing: border-box;
-  border: 1px solid #ddd;
+  border: 1px solid var(--line);
   border-radius: 4px;
   padding: 6px 12px;
   cursor: pointer;
@@ -16,22 +16,22 @@
 }
 
 .select-box.disabled {
-  background: #f5f5f5;
-  color: #00000040;
+  background: rgba(2, 22, 12, 0.9);
+  color: rgba(230, 255, 239, 0.35);
   cursor: not-allowed;
 }
 
 .select-box:not(.disabled) {
-  color: #333;
+  color: var(--text-main);
 }
 
 .select-box:not(.disabled):hover {
-  border: 1px solid #222;
+  border: 1px solid var(--forest-400);
 }
 
 .circular-progress {
   margin-right: 8px;
-  color: #00000040;
+  color: rgba(230, 255, 239, 0.35);
 }
 
 .arrow-down {
@@ -58,13 +58,13 @@
   padding: 6px 12px;
   box-sizing: border-box;
   cursor: pointer;
-  color: #222;
+  color: var(--text-main);
 }
 
 .menu-item.selected {
-  color: #3091fd;
+  color: var(--forest-300);
 }
 
 .menu-item:hover {
-  background: #e7f4f9;
+  background: rgba(26, 138, 78, 0.22);
 }
