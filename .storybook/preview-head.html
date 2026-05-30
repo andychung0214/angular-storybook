@@ -69,4 +69,141 @@ storybook-dynamic-app-root > ng-component {
   border: 1px solid rgba(95, 216, 148, 0.3) !important;
   color: #baf8d2 !important;
 }
+
+.sb-theme-panel {
+  border: 1px solid rgba(95, 216, 148, 0.32);
+  border-radius: 12px;
+  padding: 14px;
+  margin: 0 0 16px;
+  background: linear-gradient(145deg, rgba(9, 50, 31, 0.94) 0%, rgba(5, 24, 15, 0.98) 100%);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.33), inset 0 0 18px rgba(95, 216, 148, 0.1);
+}
+
+.sb-theme-panel h4 {
+  margin: 0 0 10px;
+  font-family: "Orbitron", "Rajdhani", sans-serif;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+}
+
+.sb-theme-meta {
+  margin-bottom: 10px;
+  color: #baf8d2;
+  font-weight: 600;
+}
+
+.sb-theme-token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+}
+
+.sb-theme-token-item {
+  border: 1px solid rgba(95, 216, 148, 0.22);
+  border-radius: 8px;
+  padding: 6px 8px;
+  background: rgba(4, 18, 12, 0.56);
+}
+
+.sb-theme-token-name {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.sb-theme-token-value {
+  font-size: 12px;
+  color: #e6ffef;
+}
 </style>
+<script>
+(() => {
+  const TOKENS = [
+    "--forest-950",
+    "--forest-900",
+    "--forest-700",
+    "--forest-500",
+    "--forest-300",
+    "--text-main",
+    "--text-muted",
+    "--line",
+    "--surface"
+  ];
+
+  const NAME_MAP = {
+    "theme-forest": "森林綠",
+    "theme-london-blue": "倫敦藍",
+    "theme-wine": "酒紅色",
+    "theme-luxury-gold": "奢華金"
+  };
+
+  const getThemeClass = () => {
+    const all = ["theme-forest", "theme-london-blue", "theme-wine", "theme-luxury-gold"];
+    return all.find((name) => document.documentElement.classList.contains(name)) || "theme-forest";
+  };
+
+  const createPanelIfNeeded = () => {
+    const docsRoot = document.querySelector(".sbdocs-wrapper, .sbdocs-content, .sbdocs");
+    if (!docsRoot) {
+      return null;
+    }
+
+    let panel = document.getElementById("sb-theme-panel");
+    if (!panel) {
+      panel = document.createElement("section");
+      panel.id = "sb-theme-panel";
+      panel.className = "sb-theme-panel";
+      panel.innerHTML = `
+        <h4>Theme Inspector</h4>
+        <div class="sb-theme-meta" id="sb-theme-meta"></div>
+        <div class="sb-theme-token-grid" id="sb-theme-token-grid"></div>
+      `;
+      docsRoot.prepend(panel);
+    }
+
+    return panel;
+  };
+
+  const renderThemePanel = () => {
+    const panel = createPanelIfNeeded();
+    if (!panel) {
+      return;
+    }
+
+    const meta = panel.querySelector("#sb-theme-meta");
+    const grid = panel.querySelector("#sb-theme-token-grid");
+    if (!meta || !grid) {
+      return;
+    }
+
+    const themeClass = getThemeClass();
+    const themeName = NAME_MAP[themeClass] || "森林綠";
+    const styles = getComputedStyle(document.documentElement);
+
+    meta.textContent = `目前主題: ${themeName} (${themeClass})`;
+    grid.innerHTML = TOKENS.map((token) => {
+      const value = styles.getPropertyValue(token).trim() || "(empty)";
+      return `
+        <div class="sb-theme-token-item">
+          <div class="sb-theme-token-name">${token}</div>
+          <div class="sb-theme-token-value">${value}</div>
+        </div>
+      `;
+    }).join("");
+  };
+
+  const observer = new MutationObserver(() => {
+    renderThemePanel();
+  });
+
+  const start = () => {
+    renderThemePanel();
+    observer.observe(document.documentElement, { attributes: true, subtree: true, childList: true, attributeFilter: ["class"] });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();
+</script>

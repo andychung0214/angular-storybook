@@ -1,6 +1,5 @@
 import type { Preview } from "@storybook/angular";
 import { setCompodocJson } from "@storybook/addon-docs/angular";
-import { create } from "@storybook/theming";
 import docJson from "../documentation.json";
 
 setCompodocJson(docJson);
@@ -14,25 +13,28 @@ const THEME_CLASS = {
 
 const DEFAULT_THEME = "forest";
 
-const docsTheme = create({
-  base: "dark",
-  brandTitle: "Angular Storybook Tech Theme",
-  appBg: "#07130d",
-  appContentBg: "#0f2d1f",
-  appBorderColor: "rgba(95, 216, 148, 0.34)",
-  appBorderRadius: 10,
-  textColor: "#e6ffef",
-  textInverseColor: "#031108",
-  barBg: "#0a2315",
-  barTextColor: "#baf8d2",
-  barSelectedColor: "#5fd894",
-  colorPrimary: "#28b165",
-  colorSecondary: "#9ef0bf",
-  inputBg: "#0b2518",
-  inputBorder: "rgba(95, 216, 148, 0.32)",
-  inputTextColor: "#e6ffef",
-  inputBorderRadius: 8,
-});
+const STORAGE_KEY = "sb-preferred-theme";
+
+const readStoredTheme = (): keyof typeof THEME_CLASS => {
+  try {
+    const stored = globalThis.localStorage?.getItem(STORAGE_KEY) as keyof typeof THEME_CLASS | null;
+    if (stored && stored in THEME_CLASS) {
+      return stored;
+    }
+  } catch {
+    // Ignore storage access error in restricted environments.
+  }
+
+  return DEFAULT_THEME;
+};
+
+const writeStoredTheme = (themeKey: keyof typeof THEME_CLASS): void => {
+  try {
+    globalThis.localStorage?.setItem(STORAGE_KEY, themeKey);
+  } catch {
+    // Ignore storage access error in restricted environments.
+  }
+};
 
 const applyThemeClass = (themeKey: keyof typeof THEME_CLASS) => {
   const classes = Object.values(THEME_CLASS);
@@ -45,12 +47,14 @@ const applyThemeClass = (themeKey: keyof typeof THEME_CLASS) => {
   document.body.classList.add(nextClass);
 };
 
+const initialTheme = readStoredTheme();
+
 const preview: Preview = {
   globalTypes: {
     theme: {
       name: "Theme",
       description: "Global high-tech theme",
-      defaultValue: DEFAULT_THEME,
+      defaultValue: initialTheme,
       toolbar: {
         icon: "paintbrush",
         items: [
@@ -65,15 +69,13 @@ const preview: Preview = {
   },
   decorators: [
     (storyFn, context) => {
-      const selectedTheme = (context.globals["theme"] as keyof typeof THEME_CLASS) ?? DEFAULT_THEME;
+      const selectedTheme = (context.globals["theme"] as keyof typeof THEME_CLASS) ?? initialTheme;
       applyThemeClass(selectedTheme);
+      writeStoredTheme(selectedTheme);
       return storyFn();
     },
   ],
   parameters: {
-    docs: {
-      theme: docsTheme,
-    },
     backgrounds: {
       default: "tech-grid",
       values: [
