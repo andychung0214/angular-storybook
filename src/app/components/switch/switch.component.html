@@ -1,11 +1,16 @@
-<div
-      class="switch-button"
-      [style]="{ 'width.px': switchWidth, 'background-color': switchColor, 'border-color': switchColor }"
-      (click)="isDisabled ? null : toggleSwitch()"
-    >
-      <div class="thumb" [style]="{ 'left.px': isChecked ? switchWidth - thumbSize : 0 }"></div>
-      <div class="label" [style]="{ 'padding.px': thumbSize / 3 }">
-        <span *ngIf="isChecked">{{ checkedChildren }}</span>
-        <span *ngIf="!isChecked">{{ unCheckedChildren }}</span>
+<!-- <div class="switch-button" [style]="{'width.px': switchWidth, 'background-color': switchColor}" (click)="toggleSwitch()">
+      <div class="thumb" [style]="{'left.px': isChecked ? switchWidth - thumbSize : 0}"></div>
+      <div class="label" [style]="{'padding.px': thumbSize / 3}">
+        {{ isChecked ? checkedChildren : unCheckedChildren }}
       </div>
-    </div>
+    </div> -->
+
+<!-- app-switch.component.html -->
+<div class="switch-container" [class.checked]="isChecked" (click)="toggleSwitch()" [style]="{'background-color': themeColor} ">
+  <div class="switch-icon">
+    <!-- 條件顯示 icon，這裡以 done 為例 -->
+    <mat-icon *ngIf="isChecked">done</mat-icon>
+    <mat-icon *ngIf="!isChecked">close</mat-icon>
+  </div>
+  <div class="switch-button"></div>
+</div>

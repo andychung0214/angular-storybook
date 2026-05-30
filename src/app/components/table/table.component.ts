@@ -17,4 +17,5 @@ interface TableColumn {
 export class TableComponent {
   @Input() columns: TableColumn[] = [];
   @Input() dataSource: any[] = [];
+  @Input() tableClass: string = '';
 }

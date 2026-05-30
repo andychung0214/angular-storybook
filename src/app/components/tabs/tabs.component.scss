@@ -1,0 +1,105 @@
+/* Importing Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .new-container {
+            overflow-x: hidden;
+            color: #000;
+            font-size: 1.15rem;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            background: #9c9c9b;
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .new-activeTab-indicator {
+            display: inline-block;
+            height: 2px;
+            width: 33.3%;
+            background-color: #fff;
+            transition: transform 0.4s ease-out;
+        }
+
+        .new-tabHeader-container {
+            display: flex;
+            justify-content: space-between;
+            background: #9c9c9b;
+        }
+
+        .new-tabContent-container {
+            display: flex;
+            transition: transform 0.4s ease-out;
+        }
+
+        .new-tabHeader {
+            cursor: pointer;
+            color: #000;
+            transition: color 0.4s ease;
+            padding: 15px 20px;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .new-tabContent {
+            width: 100%;
+            flex-shrink: 0;
+            padding: 15px 20px;
+            box-sizing: border-box;
+            background: #9c9c9b;
+        }
+
+        .new-tabContent h1 {
+            margin: 0;
+        }
+
+        .new-radioInput:nth-of-type(1):checked~.new-tabContent-container {
+            transform: translateX(0);
+        }
+
+        .new-radioInput:nth-of-type(1):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(1) {
+            color: #fff;
+        }
+
+        .new-radioInput:nth-of-type(1):checked~.new-activeTab-indicator {
+            transform: translateX(0);
+        }
+
+        .new-radioInput:nth-of-type(2):checked~.new-tabContent-container {
+            transform: translateX(-100%);
+        }
+
+        .new-radioInput:nth-of-type(2):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(2) {
+            color: #fff;
+        }
+
+        .new-radioInput:nth-of-type(2):checked~.new-activeTab-indicator {
+            transform: translateX(100%);
+        }
+
+        .new-radioInput:nth-of-type(3):checked~.new-tabContent-container {
+            transform: translateX(-200%);
+        }
+
+        .new-radioInput:nth-of-type(3):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(3) {
+            color: #fff;
+        }
+
+        .new-radioInput:nth-of-type(3):checked~.new-activeTab-indicator {
+            transform: translateX(200%);
+        }
+

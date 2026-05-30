@@ -9,12 +9,6 @@ const meta: Meta<SliderComponent> = {
   title: 'Data-Input-Components/Slider',
   component: SliderComponent,
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
-  },
-  args: { onChange: fn() },
   decorators: [
     applicationConfig({
       providers: [
@@ -29,31 +23,31 @@ type Story = StoryObj<SliderComponent>;
 
 export const Default: Story = {
   args: {
-    isChecked: false,
+
   },
 };
 
 export const CustomColor: Story = {
   args: {
-    isChecked: false,
+
   },
 };
 
 export const WithStep: Story = {
   args: {
-    isChecked: false,
+
   },
 };
 
 export const WithDefaultValue: Story = {
   args: {
-    isChecked: false,
+
   },
 };
 
 export const HandmadeSlider: Story = {
   args: {
-    isChecked: false,
+
   },
 };
 

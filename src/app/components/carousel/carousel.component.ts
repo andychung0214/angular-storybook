@@ -16,6 +16,9 @@ export class CarouselComponent implements OnInit, AfterViewInit {
   currentIndex: number = 0;
   imageWidth: number = 600; // 預設值
 
+  imgContext: string = 'context.png';
+  tempImg: string = 'temp.jpg';
+
   ngOnInit(): void {
   }
 

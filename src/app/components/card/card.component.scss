@@ -23,9 +23,10 @@
 }
 .meta-content {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height:84px;
+  flex-direction: unset;
+  justify-content: left;
+  // height:84px;
+  margin-left: 1.2rem;
 }
 .meta-title {
   font-size: 16px;
@@ -39,6 +40,15 @@
 .verticalStyle {
   display: inline-flex;
   flex-direction: column;
+}
+
+.horizontalReverseStyle   {
+  display: flex;
+}
+
+.horizontalReverseStyle {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .VariantGroup{

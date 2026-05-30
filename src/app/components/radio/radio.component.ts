@@ -6,15 +6,17 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./radio.component.scss']
 })
 export class RadioComponent {
-  @Input() isChecked: boolean = false;
-  @Input() isDisabled: boolean = false;
-  @Input() themeColor: 'primary' | 'secondary' | string = 'primary';
+  @Input() label: string = '';
+
+
+@Input() name: string = '';
+@Input() backgroundColor: string = '#f0f0f0';
   @Input() value: any = null;
+  @Input() checked: boolean = false;
+  @Input() isDisable: boolean = false;
   @Output() change = new EventEmitter<any>();
 
-  handleClick(): void {
-    if (!this.isDisabled) {
-      this.change.emit(this.value);
-    }
+  onChange() {
+    this.change.emit(this.value);
   }
 }

@@ -26,3 +26,30 @@
     }
   }
 }
+
+
+.styledTable {
+  border-collapse: collapse;
+  * {
+    border: 1px solid #000;
+    box-sizing: border-box;
+  }
+  background-color: gold;
+  width: 100%;
+}
+
+.stickyLeftStyle {
+  position: sticky;
+  left: 0px;
+  z-index: 2;
+  &:after {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 30px;
+    height: 100%;
+    box-shadow: inset 10px 0 8px -8px #00000026;
+    transform: translateX(100%);
+  }
+}

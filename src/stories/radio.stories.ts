@@ -9,7 +9,7 @@ const meta: Meta<RadioComponent> = {
   component: RadioComponent,
   tags: ['autodocs'],
   argTypes: {
-    themeColor: {
+    backgroundColor: {
       control: 'color',
     },
   },
@@ -29,27 +29,40 @@ type Story = StoryObj<RadioComponent>;
 
 export const Default: Story = {
   args: {
-    value: 'Radio',
+    label: 'Option 1',
+    name: 'option',
+    value: '1',
+    checked: true,
+    isDisable: false
   },
 };
 
 export const CustomizeColor: Story = {
   args: {
-    value: 'Radio',
-    isChecked: true,
+    label: 'Option 2',
+    name: 'option',
+    value: '2',
+    checked: false,
+    isDisable: false
   },
 };
 
 export const DisabledRadio: Story = {
   args: {
-    value: 'Radio',
-    isDisabled: true,
+    label: 'Option 3',
+    name: 'option',
+    value: '2',
+    checked: false,
+    isDisable: true
   },
 };
 
 export const WithRadioGroup: Story = {
   args: {
-    value: 'Radio',
-    isDisabled: true,
+    label: 'Option 4',
+    name: 'option',
+    value: '2',
+    checked: false,
+    isDisable: false
   },
 };

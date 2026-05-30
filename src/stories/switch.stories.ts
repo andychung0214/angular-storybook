@@ -34,8 +34,8 @@ export const Default: Story = {
   isDisabled: false,
   size: 'default',
   themeColor: 'primary',
-  checkedChildren: 'On',
-  unCheckedChildren: 'Off',
+  checkedChildren: '開',
+  unCheckedChildren: '關',
   },
 };
 
@@ -46,7 +46,7 @@ export const CustomColor: Story = {
   isChecked: false,
   isDisabled: false,
   size: 'default',
-  themeColor: 'primary',
+  themeColor: 'gold',
   checkedChildren: 'On',
   unCheckedChildren: 'Off',
   },
@@ -56,7 +56,7 @@ export const DisabledSwitch: Story = {
   args: {
 
   isChecked: false,
-  isDisabled: false,
+  isDisabled: true,
   size: 'default',
   themeColor: 'primary',
   checkedChildren: 'On',
@@ -64,36 +64,36 @@ export const DisabledSwitch: Story = {
   },
 };
 
-export const SwitchWithSize: Story = {
-  args: {
+// export const SwitchWithSize: Story = {
+//   args: {
 
-  isChecked: false,
-  isDisabled: false,
-  size: 'default',
-  themeColor: 'primary',
-  checkedChildren: 'On',
-  unCheckedChildren: 'Off',
-  },
-};
+//   isChecked: false,
+//   isDisabled: false,
+//   size: 'default',
+//   themeColor: 'primary',
+//   checkedChildren: 'On',
+//   unCheckedChildren: 'Off',
+//   },
+// };
 
 
-export const SwitchWithChildrenLabel: Story = {
-  args: {
+// export const SwitchWithChildrenLabel: Story = {
+//   args: {
 
-  isChecked: false,
-  isDisabled: false,
-  size: 'default',
-  themeColor: 'primary',
-  checkedChildren: 'On',
-  unCheckedChildren: 'Off',
-  },
-};
+//   isChecked: false,
+//   isDisabled: false,
+//   size: 'default',
+//   themeColor: 'primary',
+//   checkedChildren: 'On',
+//   unCheckedChildren: 'Off',
+//   },
+// };
 
-export const Checked: Story = {
-  args: {
+// export const Checked: Story = {
+//   args: {
 
-    ...Default.args,
-    isChecked: true,
-  },
-};
+//     ...Default.args,
+//     isChecked: true,
+//   },
+// };
 

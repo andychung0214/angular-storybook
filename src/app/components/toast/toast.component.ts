@@ -14,7 +14,7 @@ export class ToastComponent implements OnInit, OnDestroy {
   constructor(private toastService: ToastService) {}
 
   ngOnInit(): void {
-    setTimeout(() => this.toastService.removeToast(this), this.duration);
+    // setTimeout(() => this.toastService.removeToast(this), this.duration);
   }
 
   ngOnDestroy(): void {

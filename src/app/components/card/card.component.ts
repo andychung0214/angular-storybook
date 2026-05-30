@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [CommonModule, MatIconModule,MatButtonModule]
 })
 export class CardComponent {
+  @Input() className?: 'verticalStyle' | 'horizontalReverseStyle' | 'horizontalStyle';
   @Input() imageUrl?: string;
   @Input() title?: string;
   @Input() description?: string;

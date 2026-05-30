@@ -8,6 +8,7 @@ import { Component, Input, AfterViewInit, ViewChild, ElementRef } from '@angular
 export class SpinComponent implements AfterViewInit {
   @Input() indicator: string | HTMLElement = '';
   @Input() isLoading: boolean = false;
+  @Input() size: number = 50; // 默認大小為 50px
   @ViewChild('indicatorElement') indicatorElement: ElementRef | undefined;
 
   indicatorSize: { width: number, height: number } = { width: 0, height: 0 };

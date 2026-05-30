@@ -23,42 +23,42 @@ type Story = StoryObj<BadgeComponent>;
 
 export const Default: Story = {
   args: {
-    content: '4',
-    placement: 'top-right',
+    badgeContent: 4,
+    placement: 'topLeftStyle',
   },
 };
 
 export const Placement: Story = {
   args: {
-    content: '4',
-    placement: 'top-right',
+    badgeContent: 4,
+    placement: 'topRightStyle',
   },
 };
 
 export const WithMax: Story = {
   args: {
-    content: '4',
-    placement: 'top-right',
+    badgeContent: 87,
+    placement: 'bottomLeftStyle',
   },
 };
 
 export const VariantDot: Story = {
   args: {
-    content: '4',
-    placement: 'top-right',
+    badgeContent: 4,
+    placement: 'DotBadge',
   },
 };
 
 export const CustomColor: Story = {
   args: {
-    content: '4',
+    badgeContent: 4,
     placement: 'top-right',
   },
 };
 
 export const ShowZero: Story = {
   args: {
-    content: '4',
+    badgeContent: 4,
     placement: 'top-right',
   },
 };
@@ -66,14 +66,14 @@ export const ShowZero: Story = {
 
 export const TopRight : Story = {
   args: {
-    content: '4',
+    badgeContent: 4,
     placement: 'top-right',
   },
 };
 
 export const BottomLeft : Story = {
   args: {
-    content: '99+',
+    badgeContent: '99+',
   placement: 'bottom-left',
   },
 };

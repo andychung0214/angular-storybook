@@ -1,9 +1,21 @@
-<input
-  #inputFileRef
-  type="file"
-  [attr.accept]="accept"
-  [attr.multiple]="multiple ? 'multiple' : null"
-  style="display: none"
-  (change)="handleOnChange($event)"
-/>
-<ng-content (click)="handleOnClickUpload()"></ng-content>
+<!-- file-upload.component.html -->
+<div class="dropzone-box" (dragover)="onDragOver($event)" (drop)="onDrop($event)" (dragleave)="onDragLeave()">
+  <h2>Upload and attach files</h2>
+  <p>Attach files to this project</p>
+  <div class="dropzone-area" [class.dropzone--over]="isOver">
+    <div class="file-upload-icon">
+      <!-- SVG icon here -->
+    </div>
+    <p>Click to upload or drag and drop</p>
+    <input type="file" required (change)="onFileSelected($event)" #fileInput>
+    <p class="message">{{ message }}</p>
+  </div>
+  <div class="dropzone-actions">
+    <button type="reset" (click)="onReset()">
+      Cancel
+    </button>
+    <button type="submit" (click)="onSubmit()">
+      Save
+    </button>
+  </div>
+</div>

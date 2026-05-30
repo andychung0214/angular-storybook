@@ -18,3 +18,61 @@
   line-height: 1;
   font-weight: 500;
 }
+
+.topLeftStyle {
+  top: 0px;
+  left: 0px;
+  transform: translate(-50%, -50%);
+}
+
+.topRightStyle {
+  top: 0px;
+  right: 0px;
+  transform: translate(50%, -50%);
+}
+
+.bottomLeftStyle {
+  bottom: 0px;
+  left: 0px;
+  transform: translate(-50%, 50%);
+}
+
+.bottomRightStyle {
+  bottom: 0px;
+  right: 0px;
+  transform: translate(50%, 50%);
+}
+
+
+.BadgeWrapper {
+  display: inline-flex;
+  position: relative;
+}
+.StandardBadge {
+  display: flex;
+  flex-flow: row wrap;
+  place-content: center;
+  align-items: center;
+  position: absolute;
+  box-sizing: border-box;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  min-width: 20px;
+  padding: 0px 6px;
+  height: 20px;
+  border-radius: 10px;
+  z-index: 1;
+  transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  // background-color: ${(props) => props.$color};
+  color: #FFF;
+}
+
+.DotBadge {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  // background-color: ${(props) => props.$color};
+  // ${(props) => placementStyleMap[props.$placement] || topRightStyle}
+}

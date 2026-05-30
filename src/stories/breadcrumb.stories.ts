@@ -34,15 +34,7 @@ type Story = StoryObj<BreadcrumbComponent>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
-
-  routes: [
-    { label: 'Home', to: '/' },
-    { label: 'Catalog', to: '/catalog' },
-    { label: 'Product', to: '/catalog/product' }
-  ],
-  maxItems: 3,
-  separator: '>',
-  },
+  }
 };
 
 export const WithIcon: Story = {

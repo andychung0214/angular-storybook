@@ -28,6 +28,7 @@ type Story = StoryObj<CardComponent>;
 
 export const Default: Story = {
   args: {
+    className: 'verticalStyle',
     imageUrl: 'https://ithelp.ithome.com.tw/static/2021ironman/event/img/fb.jpg',
     title: '2021 iThome 鐵人賽',
     description: '喚醒心中最強大的鐵人',
@@ -37,6 +38,7 @@ export const Default: Story = {
 
 export const Variant: Story = {
   args: {
+    className: 'horizontalReverseStyle',
     imageUrl: 'https://ithelp.ithome.com.tw/static/2021ironman/event/img/fb.jpg',
     title: '2021 iThome 鐵人賽',
     description: '喚醒心中最強大的鐵人',

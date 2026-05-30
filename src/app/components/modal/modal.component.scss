@@ -1,17 +1,41 @@
-.mask {
+/* modal.component.scss */
+body {font-family: Arial, Helvetica, sans-serif;}
+
+.modal {
+  display: none;
   position: fixed;
-  top: 0;
+  z-index: 1;
+  padding-top: 100px;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #00000080;
-  z-index: 2;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
 }
 
-.modal-wrapper {
-  position: fixed;
-  z-index: 3;
-  top: 100px;
-  left: 50%;
-  transform: translateX(-50%);
+.modal.show {
+  display: block;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }

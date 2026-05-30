@@ -1,9 +1,16 @@
-<app-button>Open Modal</app-button>
-<!-- <ng-container *ngIf="isOpen">
-  <div class="mask" *ngIf="hasMask" [@fade]="{value: '', params: {duration: animationDuration}}" (click)="onClose()"></div>
-  <div class="modal-wrapper" [@fade]="{value: '', params: {duration: animationDuration}}">
-    <ng-content></ng-content>
+<!-- modal.component.html -->
+<h2>Modal Example</h2>
+
+<!-- Trigger/Open The Modal -->
+<button (click)="openModal()">Open Modal</button>
+
+<!-- The Modal -->
+<div [class]="{'modal': true, 'show': showModal}" (click)="onModalClicked($event)">
+
+  <!-- Modal content -->
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <p>Some text in the Modal..</p>
   </div>
 
-</ng-container> -->
-
+</div>

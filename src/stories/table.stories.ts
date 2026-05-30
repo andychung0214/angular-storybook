@@ -46,6 +46,7 @@ export const Default: Story = {
   args: {
     columns,
     dataSource,
+    tableClass : 'styled-table',
   },
 };
 
@@ -53,7 +54,8 @@ export const AntdStyledTable: Story = {
   args: {
     columns,
     dataSource,
-  },
+    tableClass : 'styledTable',
+  }
 };
 
 export const StickyColumn: Story = {
@@ -68,7 +70,8 @@ export const StickyColumn: Story = {
       return column;
     }),
     dataSource,
-  },
+    tableClass : 'stickyLeftStyle'
+  }
 };
 
 export const CustomContent: Story = {

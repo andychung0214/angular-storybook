@@ -26,29 +26,29 @@ type Story = StoryObj<UploadComponent>;
 
 export const Default: Story = {
   args: {
-    accept: 'image/*',
-  multiple: true,
+
+
   },
 };
 
 export const PreviewUploadImage: Story = {
   args: {
-    accept: 'image/*',
-  multiple: true,
+
+
   },
 };
 
 export const UploadMultiple: Story = {
   args: {
-    accept: 'image/*',
-  multiple: true,
+
+
   },
 };
 
 export const PictureWall: Story = {
   args: {
-    accept: 'image/*',
-  multiple: true,
+
+
   },
 };
 

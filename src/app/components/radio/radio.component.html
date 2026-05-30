@@ -1,5 +1,6 @@
-<!-- <div class="radio-option" (click)="handleClick()">
-  <mat-icon *ngIf="isChecked; else unchecked">{{ checkedIcon }}</mat-icon>
-  <ng-template #unchecked><mat-icon>{{ unCheckedIcon }}</mat-icon></ng-template>
-  <span><ng-content></ng-content></span>
-</div> -->
+<!-- src/app/components/radio/radio.component.html -->
+<label class="radio-container">
+  {{label}}
+  <input type="radio" [name]="name" [value]="value" [checked]="checked" [disabled]="isDisable" (change)="onChange()" [style]="{'backgound-color': backgroundColor}">
+  <span class="checkmark"></span>
+</label>

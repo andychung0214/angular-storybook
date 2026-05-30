@@ -544,7 +544,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<div class=\"accordion-container\">\n    <h2>Accordion Design</h2>\n\n    <div class=\"accordion-item\" #item *ngFor=\"let qa of items; let i = index\">\n        <header class=\"item-header\" (click)=\"toggleAccordion(item, i)\">\n            <h4 class=\"item-question\">{{ qa.question }}</h4>\n            <div class=\"item-icon\">\n                <i class='bx bx-chevron-down'></i>\n            </div>\n        </header>\n        <div class=\"item-content\">\n            <p class=\"item-answer\">{{ qa.answer }}</p>\n        </div>\n    </div>\n</div>\n"
+            "templateData": "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.7/css/boxicons.min.css\" integrity=\"sha512-...=\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" />\n\n<div class=\"accordion-container\">\n    <h2>Accordion Design</h2>\n\n    <div class=\"accordion-item\" #item *ngFor=\"let qa of items; let i = index\">\n        <header class=\"item-header\" (click)=\"toggleAccordion(item, i)\">\n            <h4 class=\"item-question\">{{ qa.question }}</h4>\n            <div class=\"item-icon\">\n                <i class='bx bx-chevron-down'></i>\n            </div>\n        </header>\n        <div class=\"item-content\">\n            <p class=\"item-answer\">{{ qa.answer }}</p>\n        </div>\n    </div>\n</div>\n"
         },
         {
             "name": "AccordionHeaderComponent",
@@ -1738,7 +1738,7 @@
         },
         {
             "name": "CarouselComponent",
-            "id": "component-CarouselComponent-07b3bb50ef6a67b6bc0013aaa083666e98e0bc3a5cf9917f1b7ad2f026bf769abf2aa59324c33b92a13d20e445be4e2cc7c57884c8b5785c13805f9618e02646",
+            "id": "component-CarouselComponent-3e553f8d2723fda3860553236162b75007f801fa9025878af4e3573fa1907822e59c0f8c705e05e9e364aaec9e5d805054226f5fe81b094e62451ee68159b705",
             "file": "src/app/components/carousel/carousel.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1832,6 +1832,26 @@
                     "optional": false,
                     "description": "",
                     "line": 17
+                },
+                {
+                    "name": "imgContext",
+                    "defaultValue": "'context.png'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "tempImg",
+                    "defaultValue": "'temp.jpg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
                 }
             ],
             "methodsClass": [
@@ -1841,7 +1861,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 45,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1851,7 +1871,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1868,7 +1888,7 @@
                     "optional": false,
                     "returnType": "number",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 50,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1889,7 +1909,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 22,
+                    "line": 25,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1899,7 +1919,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1909,7 +1929,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 19,
+                    "line": 22,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1926,7 +1946,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1947,7 +1967,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1961,7 +1981,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';\n\n@Component({\n  selector: 'app-carousel',\n  templateUrl: './carousel.component.html',\n  styleUrls: ['./carousel.component.scss']\n})\nexport class CarouselComponent implements OnInit, AfterViewInit {\n  @Input() dataSource: string[] = [];\n  @Input() hasDots: boolean = true;\n  @Input() hasControlArrow: boolean = true;\n  @Input() autoplay: boolean = false;\n\n  @ViewChild('carouselWrapper') carouselWrapper: ElementRef<HTMLDivElement> | undefined;\n\n  currentIndex: number = 0;\n  imageWidth: number = 600; // 預設值\n\n  ngOnInit(): void {\n  }\n\n  ngAfterViewInit(): void {\n    this.updateCarouselWidth();\n    window.addEventListener('resize', this.updateCarouselWidth.bind(this));\n  }\n\n  ngOnDestroy(): void {\n    window.removeEventListener('resize', this.updateCarouselWidth.bind(this));\n  }\n\n  updateCarouselWidth(): void {\n    if (this.carouselWrapper) {\n      this.imageWidth = this.carouselWrapper.nativeElement.clientWidth;\n    }\n  }\n\n  handleClickPrev(): void {\n    const prevIndex = this.currentIndex - 1 < 0 ? this.dataSource.length - 1 : this.currentIndex - 1;\n    this.currentIndex = prevIndex;\n  }\n\n  handleClickNext(): void {\n    const nextIndex = (this.currentIndex + 1) % this.dataSource.length;\n    this.currentIndex = nextIndex;\n  }\n\n  makePosition(itemIndex: number): number {\n    return (itemIndex - this.currentIndex) * this.imageWidth;\n  }\n\n  setCurrentIndex(index: number): void {\n    this.currentIndex = index;\n  }\n}\n",
+            "sourceCode": "import { Component, Input, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';\n\n@Component({\n  selector: 'app-carousel',\n  templateUrl: './carousel.component.html',\n  styleUrls: ['./carousel.component.scss']\n})\nexport class CarouselComponent implements OnInit, AfterViewInit {\n  @Input() dataSource: string[] = [];\n  @Input() hasDots: boolean = true;\n  @Input() hasControlArrow: boolean = true;\n  @Input() autoplay: boolean = false;\n\n  @ViewChild('carouselWrapper') carouselWrapper: ElementRef<HTMLDivElement> | undefined;\n\n  currentIndex: number = 0;\n  imageWidth: number = 600; // 預設值\n\n  imgContext: string = 'context.png';\n  tempImg: string = 'temp.jpg';\n\n  ngOnInit(): void {\n  }\n\n  ngAfterViewInit(): void {\n    this.updateCarouselWidth();\n    window.addEventListener('resize', this.updateCarouselWidth.bind(this));\n  }\n\n  ngOnDestroy(): void {\n    window.removeEventListener('resize', this.updateCarouselWidth.bind(this));\n  }\n\n  updateCarouselWidth(): void {\n    if (this.carouselWrapper) {\n      this.imageWidth = this.carouselWrapper.nativeElement.clientWidth;\n    }\n  }\n\n  handleClickPrev(): void {\n    const prevIndex = this.currentIndex - 1 < 0 ? this.dataSource.length - 1 : this.currentIndex - 1;\n    this.currentIndex = prevIndex;\n  }\n\n  handleClickNext(): void {\n    const nextIndex = (this.currentIndex + 1) % this.dataSource.length;\n    this.currentIndex = nextIndex;\n  }\n\n  makePosition(itemIndex: number): number {\n    return (itemIndex - this.currentIndex) * this.imageWidth;\n  }\n\n  setCurrentIndex(index: number): void {\n    this.currentIndex = index;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1975,11 +1995,11 @@
                 "OnInit",
                 "AfterViewInit"
             ],
-            "templateData": "\n<!-- <div class=\"carousel-wrapper\" #carouselWrapper>\n  <div class=\"image-wrapper\">\n    <ng-container *ngFor=\"let imageUrl of dataSource; let i = index\">\n      <img [src]=\"imageUrl\" [style.left.px]=\"makePosition(i)\" [alt]=\"`Image ${i}`\" class=\"image\">\n    </ng-container>\n  </div>\n  <ng-container *ngIf=\"hasControlArrow\">\n    <div class=\"control-buttons\">\n      <svg (click)=\"handleClickPrev()\"> Left</svg>\n      <svg (click)=\"handleClickNext()\">Right</svg>\n    </div>\n  </ng-container>\n  <ng-container *ngIf=\"hasDots\">\n    <div class=\"dots\">\n      <ng-container *ngFor=\"let dot of dataSource; let k = index\">\n        <div class=\"dot\" [class.is-current]=\"k === currentIndex\" (click)=\"setCurrentIndex(k)\"></div>\n      </ng-container>\n    </div>\n  </ng-container>\n</div> -->\n"
+            "templateData": "\n<!-- <div class=\"carousel-wrapper\" #carouselWrapper>\n  <div class=\"image-wrapper\">\n    <ng-container *ngFor=\"let imageUrl of dataSource; let i = index\">\n      <img [src]=\"imageUrl\" [style.left.px]=\"makePosition(i)\" [alt]=\"`Image ${i}`\" class=\"image\">\n    </ng-container>\n  </div>\n  <ng-container *ngIf=\"hasControlArrow\">\n    <div class=\"control-buttons\">\n      <svg (click)=\"handleClickPrev()\"> Left</svg>\n      <svg (click)=\"handleClickNext()\">Right</svg>\n    </div>\n  </ng-container>\n  <ng-container *ngIf=\"hasDots\">\n    <div class=\"dots\">\n      <ng-container *ngFor=\"let dot of dataSource; let k = index\">\n        <div class=\"dot\" [class.is-current]=\"k === currentIndex\" (click)=\"setCurrentIndex(k)\"></div>\n      </ng-container>\n    </div>\n  </ng-container>\n</div> -->\n\n<!-- <img [src]=\"tempImg\" /> -->\n<!-- {{imgContext}} -->\n<img [src]=\"imgContext\" />\n"
         },
         {
             "name": "CarouselItemComponent",
-            "id": "component-CarouselItemComponent-5129df5001dd55cb177118ef3a4c716ec5a943776f75e5ad9172f5b287418712d926c4a22ed163c215a1a29ab084ddb1371cd1077cf153b023ee4fbd1dca7bca",
+            "id": "component-CarouselItemComponent-5391a38ecd7a9060df1533bbc91239f6d48b293200d30492498a1642b98d435b4dc1c27e187419b76e777ed106f324e21215ec87050a633d2da7a09a29d3e925",
             "file": "src/app/components/carousel-item/carousel-item.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1998,7 +2018,28 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "imgContext",
+                    "defaultValue": "'assets/context.png'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "tempImg",
+                    "defaultValue": "'temp.jpg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -2009,7 +2050,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-carousel-item',\n  templateUrl: './carousel-item.component.html',\n  styleUrls: ['./carousel-item.component.scss']\n})\nexport class CarouselItemComponent {\n\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\n// import { ImgContext  } from '.assets/context.png';\n// import { ImgContext  } from '../../../../public/temp.jpg';\n// import { TempImg  } from '/temp.jpg';\n\n@Component({\n  selector: 'app-carousel-item',\n  templateUrl: './carousel-item.component.html',\n  styleUrls: ['./carousel-item.component.scss']\n})\nexport class CarouselItemComponent {\n  // imgContext: ImgContext | undefined;\n  // tempImg: TempImg | undefined;\n\n  imgContext: string = 'assets/context.png';\n  tempImg: string = 'temp.jpg';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2019,7 +2060,7 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>carousel-item works!</p>\n"
+            "templateData": "<p>carousel-item works!</p>\n<img [src]=\"tempImg\" />\n<img [src]=\"imgContext\" />\n\n"
         },
         {
             "name": "CheckboxComponent",
@@ -3072,11 +3113,9 @@
         },
         {
             "name": "ModalComponent",
-            "id": "component-ModalComponent-38957a0b0105212a6b369a3ab9556a2d1dcbf1c6408e71423127c948e31e6b66d075ce0f2fd695e1224fa937ab577bda0939a4a91ec6c7c605570e545bc82d59",
+            "id": "component-ModalComponent-f5e5ad90d884e2adc67d49e0b1d71fcc828f74cdda165e5702956f953372524422b06121403da008cdc0f5b6bc93866ffdc3277b2290a5e45d7346deb097ebf1",
             "file": "src/app/components/modal/modal.component.ts",
-            "encapsulation": [
-                "ViewEncapsulation.ShadowDom"
-            ],
+            "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
@@ -3097,7 +3136,7 @@
                     "defaultValue": "200",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 14,
                     "type": "number",
                     "decorators": []
                 },
@@ -3106,7 +3145,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 13,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -3115,29 +3154,41 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 12,
                     "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "onClose",
-                    "defaultValue": "() => {}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 30,
-                    "type": "function",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "showModal",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
             "methodsClass": [
                 {
-                    "name": "ngOnChanges",
+                    "name": "closeModal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onModalClicked",
                     "args": [
                         {
-                            "name": "changes",
-                            "type": "SimpleChanges",
+                            "name": "event",
+                            "type": "Event",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -3145,13 +3196,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 25,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "changes",
-                            "type": "SimpleChanges",
+                            "name": "event",
+                            "type": "Event",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -3161,119 +3212,36 @@
                     ]
                 },
                 {
-                    "name": "onDocumentClick",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "MouseEvent",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
+                    "name": "openModal",
+                    "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 17,
                     "deprecated": false,
-                    "deprecationMessage": "",
-                    "decorators": [
-                        {
-                            "name": "HostListener",
-                            "stringifiedArguments": "'document:click', ['$event']"
-                        }
-                    ],
-                    "modifierKind": [
-                        170
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "MouseEvent",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
+                    "deprecationMessage": ""
                 }
             ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
-            "hostListeners": [
-                {
-                    "name": "document:click",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "MouseEvent",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "argsDecorator": [
-                        "$event"
-                    ],
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 41
-                }
-            ],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "ButtonComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnChanges, SimpleChanges, HostListener, ElementRef, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';\nimport { animate, style, transition, trigger } from '@angular/animations';\nimport { ButtonComponent } from '../button/button.component';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'app-modal',\n  templateUrl: './modal.component.html',\n  standalone: true, // Mark as standalone\n  styleUrls: ['./modal.component.scss'],\n  animations: [\n    trigger('fade', [\n      transition(':enter', [\n        style({ opacity: 0 }),\n        animate('{{duration}}ms ease-in-out', style({ opacity: 1 })),\n      ]),\n      transition(':leave', [\n        animate('{{duration}}ms ease-in-out', style({ opacity: 0 })),\n      ]),\n    ]),\n  ],\n  imports: [ButtonComponent, CommonModule], // Import ButtonComponent here,\n  schemas: [CUSTOM_ELEMENTS_SCHEMA],\n  encapsulation: ViewEncapsulation.ShadowDom\n})\nexport class ModalComponent implements OnChanges {\n  @Input() isOpen: boolean = false;\n  @Input() hasMask: boolean = true;\n  @Input() animationDuration: number = 200;\n  @Input() onClose: () => void = () => {};\n\n  constructor(private elRef: ElementRef) {}\n\n  ngOnChanges(changes: SimpleChanges): void {\n    if (changes['isOpen'] && !this.isOpen) {\n      setTimeout(() => this.onClose(), this.animationDuration);\n    }\n  }\n\n  @HostListener('document:click', ['$event'])\n  onDocumentClick(event: MouseEvent): void {\n    if (this.hasMask && !this.elRef.nativeElement.contains(event.target)) {\n      this.onClose();\n    }\n  }\n}\n",
+            "sourceCode": "import { Component, Input, OnChanges, SimpleChanges, HostListener, ElementRef, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';\nimport { animate, style, transition, trigger } from '@angular/animations';\nimport { ButtonComponent } from '../button/button.component';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'app-modal',\n  templateUrl: './modal.component.html',\n  styleUrls: ['./modal.component.scss']\n})\nexport class ModalComponent {\n  @Input () isOpen: boolean = false;\n  @Input () hasMask: boolean = true;\n  @Input () animationDuration: number = 200;\n  showModal: boolean = false;\n\n  openModal() {\n    this.showModal = true;\n  }\n\n  closeModal() {\n    this.showModal = false;\n  }\n\n  onModalClicked(event: Event) {\n    if ((event.target as HTMLElement).classList.contains('modal')) {\n      this.closeModal();\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".mask {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100vw;\r\n  height: 100vh;\r\n  background: #00000080;\r\n  z-index: 2;\r\n}\r\n\r\n.modal-wrapper {\r\n  position: fixed;\r\n  z-index: 3;\r\n  top: 100px;\r\n  left: 50%;\r\n  transform: translateX(-50%);\r\n}\r\n",
+                    "data": "/* modal.component.scss */\r\nbody {font-family: Arial, Helvetica, sans-serif;}\r\n\r\n.modal {\r\n  display: none;\r\n  position: fixed;\r\n  z-index: 1;\r\n  padding-top: 100px;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: auto;\r\n  background-color: rgba(0,0,0,0.4);\r\n}\r\n\r\n.modal.show {\r\n  display: block;\r\n}\r\n\r\n.modal-content {\r\n  background-color: #fefefe;\r\n  margin: auto;\r\n  padding: 20px;\r\n  border: 1px solid #888;\r\n  width: 80%;\r\n}\r\n\r\n.close {\r\n  color: #aaaaaa;\r\n  float: right;\r\n  font-size: 28px;\r\n  font-weight: bold;\r\n}\r\n\r\n.close:hover,\r\n.close:focus {\r\n  color: #000;\r\n  text-decoration: none;\r\n  cursor: pointer;\r\n}\r\n",
                     "styleUrl": "./modal.component.scss"
                 }
             ],
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "elRef",
-                        "type": "ElementRef",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 30,
-                "jsdoctags": [
-                    {
-                        "name": "elRef",
-                        "type": "ElementRef",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
             "extends": [],
-            "implements": [
-                "OnChanges"
-            ],
-            "templateData": "<app-button>Open Modal</app-button>\n<!-- <ng-container *ngIf=\"isOpen\">\n  <div class=\"mask\" *ngIf=\"hasMask\" [@fade]=\"{value: '', params: {duration: animationDuration}}\" (click)=\"onClose()\"></div>\n  <div class=\"modal-wrapper\" [@fade]=\"{value: '', params: {duration: animationDuration}}\">\n    <ng-content></ng-content>\n  </div>\n\n</ng-container> -->\n\n"
+            "templateData": "<!-- modal.component.html -->\n<h2>Modal Example</h2>\n\n<!-- Trigger/Open The Modal -->\n<button (click)=\"openModal()\">Open Modal</button>\n\n<!-- The Modal -->\n<div [class]=\"{'modal': true, 'show': showModal}\" (click)=\"onModalClicked($event)\">\n\n  <!-- Modal content -->\n  <div class=\"modal-content\" (click)=\"$event.stopPropagation()\">\n    <span class=\"close\" (click)=\"closeModal()\">&times;</span>\n    <p>Some text in the Modal..</p>\n  </div>\n\n</div>\n"
         },
         {
             "name": "OptionComponent",
@@ -4842,7 +4810,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<!-- src/app/components/spin/spin.component.html -->\n<div *ngIf=\"isLoading\" class=\"spin\" [style]=\"{'width.px': size, 'height.px': size}\"></div>\n"
+            "templateData": "\n<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n<div class=\"w3-container\">\n  <h2>Spin</h2>\n  <p>The w3-spin class spins an element round and round.</p>\n  <p><i class=\"fa fa-refresh w3-spin\" style=\"font-size:64px\"></i></p>\n</div>\n"
         },
         {
             "name": "SwitchComponent",
@@ -5173,7 +5141,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/* Importing Google font - Poppins */\r\n@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');\r\n\r\n        * {\r\n            margin: 0;\r\n            padding: 0;\r\n            box-sizing: border-box;\r\n            font-family: 'Poppins', sans-serif;\r\n        }\r\n\r\n        body {\r\n            height: 100vh;\r\n            display: flex;\r\n            justify-content: center;\r\n            align-items: center;\r\n        }\r\n\r\n        .new-container {\r\n            overflow-x: hidden;\r\n            color: #000;\r\n            font-size: 1.15rem;\r\n            width: 60%;\r\n            display: flex;\r\n            flex-direction: column;\r\n            background: #9c9c9b;\r\n            border-radius: 10px;\r\n            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);\r\n        }\r\n\r\n        .new-activeTab-indicator {\r\n            display: inline-block;\r\n            height: 2px;\r\n            width: 33.3%;\r\n            background-color: #fff;\r\n            transition: transform 0.4s ease-out;\r\n        }\r\n\r\n        .new-tabHeader-container {\r\n            display: flex;\r\n            justify-content: space-between;\r\n            background: #9c9c9b;\r\n        }\r\n\r\n        .new-tabContent-container {\r\n            display: flex;\r\n            transition: transform 0.4s ease-out;\r\n        }\r\n\r\n        .new-tabHeader {\r\n            cursor: pointer;\r\n            color: #000;\r\n            transition: color 0.4s ease;\r\n            padding: 15px 20px;\r\n            flex-grow: 1;\r\n            text-align: center;\r\n        }\r\n\r\n        .new-tabContent {\r\n            width: 100%;\r\n            flex-shrink: 0;\r\n            padding: 15px 20px;\r\n            box-sizing: border-box;\r\n            background: #9c9c9b;\r\n        }\r\n\r\n        .new-tabContent h1 {\r\n            margin: 0;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(1):checked~.new-tabContent-container {\r\n            transform: translateX(0);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(1):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(1) {\r\n            color: #fff;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(1):checked~.new-activeTab-indicator {\r\n            transform: translateX(0);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(2):checked~.new-tabContent-container {\r\n            transform: translateX(-100%);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(2):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(2) {\r\n            color: #fff;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(2):checked~.new-activeTab-indicator {\r\n            transform: translateX(100%);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(3):checked~.new-tabContent-container {\r\n            transform: translateX(-200%);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(3):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(3) {\r\n            color: #fff;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(3):checked~.new-activeTab-indicator {\r\n            transform: translateX(200%);\r\n        }\r\n",
+                    "data": "/* Importing Google font - Poppins */\r\n@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');\r\n\r\n        * {\r\n            margin: 0;\r\n            padding: 0;\r\n            box-sizing: border-box;\r\n            font-family: 'Poppins', sans-serif;\r\n        }\r\n\r\n        body {\r\n            height: 100vh;\r\n            display: flex;\r\n            justify-content: center;\r\n            align-items: center;\r\n        }\r\n\r\n        .new-container {\r\n            overflow-x: hidden;\r\n            color: #000;\r\n            font-size: 1.15rem;\r\n            width: 60%;\r\n            display: flex;\r\n            flex-direction: column;\r\n            background: #9c9c9b;\r\n            border-radius: 10px;\r\n            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);\r\n        }\r\n\r\n        .new-activeTab-indicator {\r\n            display: inline-block;\r\n            height: 2px;\r\n            width: 33.3%;\r\n            background-color: #fff;\r\n            transition: transform 0.4s ease-out;\r\n        }\r\n\r\n        .new-tabHeader-container {\r\n            display: flex;\r\n            justify-content: space-between;\r\n            background: #9c9c9b;\r\n        }\r\n\r\n        .new-tabContent-container {\r\n            display: flex;\r\n            transition: transform 0.4s ease-out;\r\n        }\r\n\r\n        .new-tabHeader {\r\n            cursor: pointer;\r\n            color: #000;\r\n            transition: color 0.4s ease;\r\n            padding: 15px 20px;\r\n            flex-grow: 1;\r\n            text-align: center;\r\n        }\r\n\r\n        .new-tabContent {\r\n            width: 100%;\r\n            flex-shrink: 0;\r\n            padding: 15px 20px;\r\n            box-sizing: border-box;\r\n            background: #9c9c9b;\r\n        }\r\n\r\n        .new-tabContent h1 {\r\n            margin: 0;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(1):checked~.new-tabContent-container {\r\n            transform: translateX(0);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(1):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(1) {\r\n            color: #fff;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(1):checked~.new-activeTab-indicator {\r\n            transform: translateX(0);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(2):checked~.new-tabContent-container {\r\n            transform: translateX(-100%);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(2):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(2) {\r\n            color: #fff;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(2):checked~.new-activeTab-indicator {\r\n            transform: translateX(100%);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(3):checked~.new-tabContent-container {\r\n            transform: translateX(-200%);\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(3):checked~.new-tabHeader-container .new-tabHeader:nth-of-type(3) {\r\n            color: #fff;\r\n        }\r\n\r\n        .new-radioInput:nth-of-type(3):checked~.new-activeTab-indicator {\r\n            transform: translateX(200%);\r\n        }\r\n\r\n",
                     "styleUrl": "./tabs.component.scss"
                 }
             ],
@@ -6027,13 +5995,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-c7bd006ad7b2076e7cb7fc5479d249c580d75c7e2d61caf53364163c2821176aec3d8df3f4fc697db845ebc15808022db41e2d82ef946f20be6a1425eb7c05f8",
+            "id": "module-AppModule-d1e97f473e9718600a109f126db5a2c195a9b7d74dcc762249544527809a52c0da1b52a2fd69c6f58fa8281159fbbcd361ac0d5d071ba0250f39d3ba60fd2707",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -6383,7 +6351,7 @@
                 "linktype": "component",
                 "name": "CarouselItemComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -6392,7 +6360,7 @@
                 "linktype": "component",
                 "name": "CarouselComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/18",
                 "status": "low"
             },
             {
@@ -6474,7 +6442,7 @@
                 "linktype": "component",
                 "name": "ModalComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/9",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {

@@ -1,0 +1,54 @@
+/* src/app/components/radio/radio.component.scss */
+.radio-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 隱藏 radio 按鈕 */
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* 自定義的 radio 按鈕標記 */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* 當選中時，添加一個藍色背景 */
+.radio-container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* 創建標記的指示器（"點"） */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* 當選中時顯示指示器（"點"） */
+.radio-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* 自定義指示器（"點"）的樣式 */
+.radio-container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
