@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "storybook": "ng run angular-storybook:storybook",
+    "storybook": "ng run angular-storybook:storybook --port 6006",
+    "storybook:6009": "ng run angular-storybook:storybook --port 6009",
     "build-storybook": "storybook build -o storybook-static"
   },
   "private": true,

@@ -191,13 +191,28 @@ storybook-dynamic-app-root > ng-component {
     }).join("");
   };
 
-  const observer = new MutationObserver(() => {
-    renderThemePanel();
-  });
-
   const start = () => {
     renderThemePanel();
-    observer.observe(document.documentElement, { attributes: true, subtree: true, childList: true, attributeFilter: ["class"] });
+
+    // Only observe theme class changes to avoid recursive re-render loops.
+    const classObserver = new MutationObserver(() => {
+      renderThemePanel();
+    });
+
+    classObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+
+    // Storybook docs navigation updates route without full reload; refresh panel periodically.
+    const timerId = window.setInterval(() => {
+      renderThemePanel();
+    }, 1200);
+
+    window.addEventListener("beforeunload", () => {
+      classObserver.disconnect();
+      window.clearInterval(timerId);
+    }, { once: true });
   };
 
   if (document.readyState === "loading") {
