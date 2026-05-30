@@ -9,7 +9,7 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-mdx-gfm"
   ],
-  staticDirs: ['../public', '../static'],
+  staticDirs: ["../public"],
   framework: {
     name: "@storybook/angular",
     options: {},
